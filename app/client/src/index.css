@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sevillana&display=swap');
+@import "tailwindcss";
+
+html {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.font-lobster {
+    font-family: 'Lobster', 'cursive';
+}

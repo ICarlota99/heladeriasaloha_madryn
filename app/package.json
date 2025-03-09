@@ -1,0 +1,22 @@
+{
+  "name": "heladerias_aloha_v0.3",
+  "version": "0.3.0",
+  "description": "A website for an icecream shop",
+  "private": true,
+  "main": "index.js",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm start -w server\" \"npm run dev -w client\"",
+    "install-all": "npm install",
+    "build": "npm run build -w client"
+  },
+  "keywords": [],
+  "author": "Irene Carlota del Cueto Mora",
+  "type": "module",
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
