@@ -1,12 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sevillana&display=swap');
-@import "tailwindcss";
-
-html {
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+/*****************************************TAG SELECTORS*******************************************/
+body{
+    background-color: #fce0c9;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.5;
+    padding-top: 50px;
+}
+h1, h2, h3, h4{
+    font-weight: bolder;
+}
+a{
+    color: #fce0c9;
+    text-decoration: underline;
+}
+span{
+    color: #FF7800;
 }
 
-.font-lobster {
-    font-family: 'Lobster', 'cursive';
+/* General css */
+.container-fluid{
+    padding: 4% 6%;
+}
+
+.dark_container{
+    background-color: #FF7800;
+    color: white;
+}
+
+.sucursal{
+    font-family: "Playwrite DK Loopet", cursive;
+    font-size: 150%;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Nav Bar Section*/
+#navbar_div{
+    padding-top: 0% !important;
+    padding-bottom: 0% !important;
+}
+
+.nav-item{
+    color: white;
+    padding: 0 2%;
+    position: relative;
+    text-align: right;
 }
