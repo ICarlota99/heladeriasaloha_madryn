@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+// npm install vite-plugin-svgr 
+import { useState, useEffect } from 'react'
 import logo from "../assets/logo.png"
 
 const Header = () => {
@@ -23,12 +24,12 @@ const Header = () => {
 
     return (
         <div>
-            <nav id="navbar-menu" className="navbar fixed-top navbar-dark navbar-expand-xxl dark_container">
-                <div id="navbar_div" className="container-fluid">
+            <nav id="navbar-menu" className="navbar fixed-top navbar-dark navbar-expand-xl dark-container">
+                <div className="container-fluid py-0">
                     {/* Logo  */}
                     <div>
                         <img src={logo} alt="logo" className='logo'/>
-                        {isMobile ? null : <a className="navbar-brand sucursal" href="#">Heladerías Aloha, Puerto Madryn</a>}
+                        {isMobile ? null : <a className="navbar-brand sucursal" href="#">Heladerías Aloha, Madryn</a>}
                     </div>
                         
                     {/* Toggler menu */}
@@ -39,7 +40,7 @@ const Header = () => {
                     <div className="collapse navbar-collapse justify-content-end" id="top_navbar">
                         <div className="navbar-nav menu_list d-flex justify-content-end">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="index.html#home_section">Inicio</a>
+                                <a className="nav-link" href="index.html#hero_section">Inicio</a>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#products" role="button" data-bs-toggle="dropdown" aria-expanded="false">
