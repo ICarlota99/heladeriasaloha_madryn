@@ -1,0 +1,54 @@
+import { useEffect } from 'react';
+import heroicecream from '../assets/hero_icecream.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+const Hero = () => {
+
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+    });
+  }, [])
+
+  return (
+    //  Hero Section
+    <section id="hero_section">
+        <div className="row align-items-center">
+          <div className="col-lg-5" style={{ paddingLeft: '8%' }}>
+              <h1 className="mt-5" data-aos="zoom-in" data-aos-delay="200">Comete un helado <br/>
+              <span>Disfrutá la vida</span>
+              </h1>
+              <div data-aos="zoom-in" data-aos-delay="300">
+                <h3 className='pt-3'>Sabores explosivos y novedosos</h3>
+                <h4>Bocados de felicidad</h4>
+              </div>
+              <div data-aos="slide-up" data-aos-delay="400">
+                <button type="button" className="btn btn-lg btn-dark me-4 hvr-grow-shadow mt-2">
+                    <a href="#">Pedite el tuyo</a>   
+                </button>
+                <button type="button" className="btn btn-lg btn-light hvr-grow-shadow mt-2">
+                    <a href="#">Ver productos</a>   
+                </button>
+              </div>
+          </div>
+          <div
+            className="col-lg-7 d-flex justify-content-center"
+            style={{ height: '500px', overflow: 'show' }}
+            data-aos="slide-left" data-aos-delay="200"
+          >
+            <img
+              src={heroicecream}
+              alt="cono de helado"
+              className="mw-100 mh-100"
+              style={{ objectFit: 'cover', overflow: 'show'}}
+            />
+        </div>
+      </div>
+    </section>
+  )
+};
+
+export default Hero
