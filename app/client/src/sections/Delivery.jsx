@@ -61,7 +61,7 @@ const Delivery = () => {
         style={customDiv}
       >
         <div
-          data-aos="slide-down"
+          data-aos="fade-up-right"
           data-aos-delay="400"
           className="dark-container py-4 px-4 mb-4"
         >
@@ -70,7 +70,7 @@ const Delivery = () => {
         </div>
 
         <div
-          data-aos="slide-up"
+          data-aos="fade-up-left"
           data-aos-delay="400"
           className="px-5 py-4 mt-4 bg-white"
         >
