@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sevillana&display=swap');
+/* @import "tailwindcss"; */
+
 /*****************************************TAG SELECTORS*******************************************/
 body{
     background-color: #fce0c9;
     color: black;
-    font-family: "Montserrat", sans-serif;
     line-height: 1.5;
     padding-top: 50px;
+    overflow-x: hidden;
 }
 h1, h2, h3, h4{
     font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
 }
 a{
     color: #fce0c9;
@@ -17,12 +21,12 @@ span{
     color: #FF7800;
 }
 
-/* General css */
+/********************************* General css **********************/
 .container-fluid{
-    padding: 4% 8%;
+    padding: 0% 8%;
 }
 
-.dark_container{
+.dark-container{
     background-color: #FF7800;
     color: white;
 }
@@ -34,12 +38,41 @@ span{
     margin: 0;
 }
 
-/* Nav Bar Section*/
-#navbar_div{
-    padding-top: 0% !important;
-    padding-bottom: 0% !important;
+.font-lobster {
+    font-family: 'Lobster', 'cursive';
 }
 
+.btn-dark{
+    --bs-btn-font-weight: bolder;
+    --bs-btn-border-color: #FF7800;
+    --bs-btn-hover-color: rgb(61, 59, 59);
+    --bs-btn-hover-bg: #e78d3e;
+    --bs-btn-hover-border-color: white;
+    --bs-btn-active-color: #FF7800;
+    --bs-btn-color: white;
+    --bs-btn-bg: #FF7800;
+}
+.btn-light{
+    --bs-btn-font-weight: bolder;
+    --bs-btn-border-color: #FF7800;
+    --bs-btn-hover-color: rgb(61, 59, 59);
+    --bs-btn-hover-bg: #f0b17a;
+    --bs-btn-hover-border-color: white;
+    --bs-btn-active-color: #FF7800;
+    --bs-btn-color: black;
+    --bs-btn-bg: none;
+}
+
+.btn a{
+    text-decoration: none;
+}
+
+.btn-light a {
+    color: #FF7800;
+}
+
+/**************************** Sections ********************/
+/* Nav Bar Section*/
 .nav-item{
     color: white;
     padding: 0 2%;
@@ -51,4 +84,66 @@ span{
     width: 100px;
     height: auto;
     padding-right: 20px;
+}
+
+/* Products Section */
+.product_img{
+    border-radius: 20%;
+    padding: 7% 2% 0%;
+}
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+/* Flavors Section  */
+.flavor_img{
+    border-radius: 100%;
+    padding: 3%;
+    width: 30%;
+}
+
+/* Mobile Phone Responsiveness */
+@media (max-width: 768px) {
+    p {
+      font-size: 14px;
+    }
+
+    #navbar_div{
+        padding: 0.3% !important;
+    }
+    #hero_section{
+        text-align: center;
+    }
+    .title {
+        font-size: 40px;
+        line-height: 1.2;
+      }
+    .sucursal {
+        font-size: 16px;
+    }
+    .flavor_img{
+        width: 70%;
+    }
+    .local_front_img{
+        height: auto;
+        width: 60%;
+    }
+    #delivery-img{
+        display: none;
+    }
 }
