@@ -17,6 +17,7 @@
   "author": "Irene Carlota del Cueto Mora",
   "type": "module",
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }

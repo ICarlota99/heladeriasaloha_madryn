@@ -1,4 +1,3 @@
-// npm install vite-plugin-svgr 
 import { useState, useEffect } from 'react'
 import logo from "../assets/logo.png"
 
