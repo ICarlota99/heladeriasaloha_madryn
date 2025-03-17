@@ -7,6 +7,11 @@ const Delivery = () => {
   const [customDiv, setCustomDiv] = useState({ position: 'absolute', top: '10%', right: '5%', width: '50%' }); // Default div styles
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Initial width
   
+  // Whatsapp data
+  const phoneNumber = '+542804881974';
+  const message = '¡Hola! Quiero hacer un pedido de helados.';
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
   useEffect(() => {
     AOS.init({
       offset: 200,
@@ -29,12 +34,6 @@ const Delivery = () => {
     if (windowWidth < 900) {
       // Small and medium screens
       setCustomDiv({ width: '100%' });
-    // } else if (windowWidth >= 900 && windowWidth < 992) {
-    //   // Medium screens
-    //   setCustomDiv({ width: '100%' });
-    // } else if (windowWidth >= 900 && windowWidth < 1024) {
-    //   // Large screens
-    //   setCustomDiv({ width: '50%' });
     } else {
       // XL screens
       setCustomDiv({ width: '50%' });
@@ -86,7 +85,11 @@ const Delivery = () => {
             <h4 className='py-4'>Pedi <span><strong>DELIVERY</strong></span> 🚚 <br />
             y disfruta de una experiencia inolvidable.</h4>
           <button className="btn btn-lg btn-dark hvr-grow-shadow ">
-            <a href="">CONTÁCTANOS</a>
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >CONTÁCTANOS</a>
           </button>
         </div>
       </div>
