@@ -17,7 +17,7 @@ const Hero = () => {
     //  Hero Section
     <section id="hero_section">
         <div className="row align-items-center">
-          <div className="col-lg-5" style={{ paddingLeft: '8%' }}>
+          <div className="col-lg-5" style={{ paddingLeft: '10%' }}>
               <h1 className="mt-5" data-aos="zoom-in" data-aos-delay="200">Comete un helado <br/>
               <span>Disfrutá la vida</span>
               </h1>
@@ -36,14 +36,14 @@ const Hero = () => {
           </div>
           <div
             className="col-lg-7 d-flex justify-content-center"
-            style={{ height: '500px', overflow: 'show' }}
+            style={{ height: '70vh', overflow: 'show' }}
             data-aos="slide-left" data-aos-delay="200"
           >
             <img
               src={heroicecream}
               alt="cono de helado"
               className="mw-100 mh-100"
-              style={{ objectFit: 'cover', overflow: 'show'}}
+              style={{ objectFit: 'cover', overflow: 'show', marginRight: '20%'}}
             />
         </div>
       </div>
