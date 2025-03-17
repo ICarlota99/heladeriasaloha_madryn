@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import whyus from '../assets/whyus.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -44,7 +44,7 @@ const Whyus = () => {
             en cada bocado. ¡Te esperamos con la heladera llena! 🍦🌴 <br />
           </p>
           <button className='btn btn-lg btn-dark hvr-grow-shadow'>
-            <Link to="/About">LEER MÁS</Link>
+            <HashLink to="/About#about">LEER MÁS</HashLink>
           </button>
         </div>
       </div>     
