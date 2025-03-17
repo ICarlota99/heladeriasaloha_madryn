@@ -1,25 +1,27 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./sections/Header";
-import Hero from "./sections/Hero";
-import Shop from "./sections/Shop";
-import Flavors from "./sections/Flavors";
-import Whyus from "./sections/Whyus";
-import Delivery from "./sections/Delivery";
-import Contact from "./sections/Contact";
-// import Footer from "./sections/Footer";
+import Home from "./pages/Home";
+import About from './pages/About';
+// import Products from './pages/Products';
+// import Contact from './pages/Contact';
 import WhatsAppButton from "./components/WhatsappButton";
 
-export default function Home() {
+export default function App() {
   return (
-    <>
+    <Router>
       <Header />
-      <Hero />
-      <Shop />
-      <Flavors />
-      <Whyus />
-      <Delivery />
-      <Contact />
-      {/* <Footer />  */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        {/* <Route path="/products" element={<Products />} /> */}
+        {/* <Route path="/contact" element={<Contact />} /> */}
+      </Routes>
       <WhatsAppButton />
-    </>
+    </Router>
+    // <>
+    //   <Header />
+    //   <Home />
+    //   <WhatsAppButton />
+    // </>
   )
 }
