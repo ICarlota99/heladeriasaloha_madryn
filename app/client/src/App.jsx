@@ -4,10 +4,9 @@ import Shop from "./sections/Shop";
 import Flavors from "./sections/Flavors";
 import Whyus from "./sections/Whyus";
 import Delivery from "./sections/Delivery";
-import WhatsAppButton from "./components/WhatsappButton";
-// import About from "./sections/About";
-// import Contact from "./sections/Contact";
+import Contact from "./sections/Contact";
 // import Footer from "./sections/Footer";
+import WhatsAppButton from "./components/WhatsappButton";
 
 export default function Home() {
   return (
@@ -18,12 +17,9 @@ export default function Home() {
       <Flavors />
       <Whyus />
       <Delivery />
-      <WhatsAppButton />
-      {/* <About />
-
-
       <Contact />
-      <Footer /> */}
+      {/* <Footer />  */}
+      <WhatsAppButton />
     </>
   )
 }
