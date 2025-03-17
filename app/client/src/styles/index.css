@@ -54,15 +54,6 @@ p span {
     padding: 120px 0;
 }
 
-.w-lg-75 {
-    width: 75% !important;
-  }
-  
-  .w-xl-50 {
-    width: 65% !important;
-  }
-  
-
 .sucursal{
     font-family: "Playwrite DK Loopet", cursive;
     font-size: 150%;
@@ -162,6 +153,21 @@ p span {
 
 .hvr-black:hover{
     color: var(--primary-color);
+}
+
+/* Nosotros Page */
+.info{
+    font-size: 125%;
+    line-height: 1.7;
+}
+
+.info a {
+    color: black;
+    text-decoration: underline;
+}
+
+.info a:hover {
+    color: var(--primary-color)
 }
 
 /* Contact */
