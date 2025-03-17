@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import alfajorMarplatense from '../assets/flavors/alfajor_marplatense.jpg';
 import chocorrica from '../assets/flavors/chocorrica.jpg';
 import cookiesAndCream from '../assets/flavors/cookies_and_cream.jpg';
-import mousseChocolateYFrutilla from '../assets/flavors/cookies_and_cream.jpg';
+import mousseChocolateYFrutilla from '../assets/flavors/mousse_de_chocolate_con_frutilla.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -17,10 +17,16 @@ const Flavors = () => {
 
   return (
         <section id="flavors" className="container-fluid text-center pt-5">
-            <h2>Explorá nuestros sabores más populares</h2>
+            <div data-aos="fade-down" data-aos-delay="200">
+                <h2>Explorá nuestros sabores más populares</h2>
+            </div>
 
             {/* Carousel */}
-            <div id="flavors_carousel" className="carousel slide mb-2" data-bs-ride="carousel" data-bs-theme="dark">
+            <div 
+                id="flavors_carousel" 
+                className="carousel slide mb-2"
+                data-bs-ride="carousel" 
+                data-bs-theme="dark">
                 <div className="carousel-inner">
                     <div className="carousel-item active" data-bs-interval="3000">
                         <img className="flavor_img" src={alfajorMarplatense}  alt="Alfajor marplatense"/>
