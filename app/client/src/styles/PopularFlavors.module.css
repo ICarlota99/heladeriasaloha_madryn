@@ -1,0 +1,46 @@
+/* styles/PopularFlavors.module.css */
+.flavorCard {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .flavorCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .imageContainer {
+    position: relative;
+  }
+  
+  .flavorImage {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  .flavorCard:hover .overlay {
+    opacity: 0.7;
+  }
+  
+  .description {
+    font-weight: bolder;
+    text-align: center;
+    font-size: x-large;
+    padding: 10px;
+  }
