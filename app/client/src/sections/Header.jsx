@@ -95,7 +95,7 @@ const Header = () => {
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink to="/#contact" className="nav-link">
+                <HashLink to="/#footer" className="nav-link">
                   Contacto
                 </HashLink>
               </li>
