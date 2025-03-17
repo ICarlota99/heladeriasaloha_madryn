@@ -16,7 +16,7 @@ const Shop = () => {
   }, []);
 
   return (
-    <div className='dark-section'>
+    <div id='shop' className='dark-section'>
       {/* Products Section */}
       <div className="my-5 py-5">
         <section id="products" className="container-fluid text-center">

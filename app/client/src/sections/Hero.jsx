@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { HashLink } from 'react-router-hash-link';
 import heroicecream from '../assets/hero_icecream.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -27,10 +28,14 @@ const Hero = () => {
               </div>
               <div data-aos="slide-up" data-aos-delay="400">
                 <button type="button" className="btn btn-lg btn-dark me-4 hvr-grow-shadow mt-2">
-                    <a href="#">Pedite el tuyo</a>   
+                  <HashLink to="/cart/#order">
+                  Pedite el tuyo
+                  </HashLink>
                 </button>
                 <button type="button" className="btn btn-lg btn-light me-4 hvr-grow-shadow mt-2">
-                    <a href="#">Ver productos</a>   
+                  <HashLink to="/#shop">
+                    Ver productos
+                  </HashLink>  
                 </button>
               </div>
           </div>
