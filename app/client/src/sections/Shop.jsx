@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-// import { ReactComponent as DarkBg } from '../assets/orange_section_bg.svg';
+import { useEffect } from 'react';
 import conosImg from '../assets/conos.png';
 import pintasImg from '../assets/pintas.png';
 import postresImg from '../assets/postres.png';
@@ -8,49 +7,20 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Shop = () => {
-  const [customHeight, setCustomHeight] = useState({ height: '500px' }); // Default section height
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Initial width
-
   useEffect(() => {
     AOS.init({
       offset: 100,
       duration: 600,
       easing: 'ease-in-sine',
     });
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth); // Update the width on resize
-    };
-    // Listen for resize events
-    window.addEventListener('resize', handleResize);
-    // Clean up the event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
-  useEffect(() => {
-    // Calculate section height based on window width
-    if (windowWidth < 768) {
-      // Small screens
-      setCustomHeight({ height: '1800px' });
-    } else if (windowWidth >= 768 && windowWidth < 992) {
-      // Medium screens
-      setCustomHeight({ height: '1000px' });
-    } else {
-      // Large screens
-      setCustomHeight({ height: '600px' });
-    }
-  }, [windowWidth]);
-
   return (
-    <div>
+    <div className='dark-section'>
       {/* Products Section */}
-      <div className='my-5 py-5 dark-container'>
-        {/* Render SVG as a React Component */}
-        {/* <DarkBg style={{ position: 'absolute', width: '100%', height: '100%' }} /> */}
+      <div className="my-5 py-5">
         <section id="products" className="container-fluid text-center">
-          <div>
+          <div data-aos="slide-down" data-aos-delay="200">
             <h2>Elegí tu helado favorito</h2>
             <h4>¿Cuál preferís probar hoy?</h4>
           </div>
