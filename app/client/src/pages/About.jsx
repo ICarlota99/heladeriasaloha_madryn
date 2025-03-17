@@ -18,11 +18,11 @@ const About = () => {
       <img src={banner} alt="banner" className='w-100 text-center'/>
         <div className="container-fluid mt-5 info row">
           <div 
-            className='col-md-8' 
+            className='col-lg-8' 
             data-aos="zoom-out-right" 
-            data-aos-delay="300"
+            data-aos-delay="200"
           >
-            <h2 className="sucursal">Heladerías Aloha, Puerto Madryn</h2>
+            <h1>Heladerías Aloha, Puerto Madryn</h1>
               <p className='mt-4'>
                 En Heladerías Aloha, somos una familia apasionada por las delicias heladas. 
                 Con más de 20 años de experiencia en el arte de la heladería, nos enfocamos
@@ -53,27 +53,34 @@ const About = () => {
                 Nuestros locales son espacios acogedores donde la atención al cliente es nuestra 
                 prioridad.
               </p>
-              <h3 className='mt-4'><span>Únete a Nuestra Familia</span></h3>
-              <p>
-                Si estás buscando una experiencia dulce y memorable, <strong>Heladerías Aloha</strong> es tu lugar. 
-                Ven y descubre por qué somos la elección preferida de aquellos que buscan la 
-                perfección en cada helado. ¡Te esperamos! 🍦🌴 <br/>
-              </p>
-              <p><strong>🕔 Horarios:</strong> De 12 del mediodía a 12 de la noche</p>
-              <p>
-              <strong>🗺️ Dónde encontrarnos:</strong><br/>
-              <a href="">📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
-              <a href="">📍 España y Lombardo</a>
-              </p>
           </div>
           <div 
-            className='col-md-4 text-end'
+            className='col-lg-4 text-end'
             data-aos="zoom-out-left" 
-            data-aos-delay="300"
+            data-aos-delay="200"
           >
             <img src={localImage} alt="Local de Aloha" className='w-100'/>
           </div>
         </div>
+        <div 
+          className='container-fluid info' 
+          data-aos="zoom-out-right" 
+          data-aos-delay="200"
+        >
+          <h3 className='mt-4'><span>Únete a Nuestra Familia</span></h3>
+          <p>
+            Si estás buscando una experiencia dulce y memorable, <strong>Heladerías Aloha</strong> es tu lugar. 
+            Ven y descubre por qué somos la elección preferida de aquellos que buscan la 
+            perfección en cada helado. ¡Te esperamos! 🍦🌴 <br/>
+          </p>
+          <p><strong>🕔 Horarios:</strong> De 12 del mediodía a 12 de la noche</p>
+          <p>
+          <strong>🗺️ Dónde encontrarnos:</strong><br/>
+          <a href="">📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
+          <a href="">📍 España y Lombardo</a>
+          </p>
+        </div>
+        
     </section>
   );
 };
