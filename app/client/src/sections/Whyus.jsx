@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import whyus from '../assets/whyus.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -13,7 +14,7 @@ const Whyus = () => {
   }, [])
 
   return (
-    <div id='whyus' className='row container-fluid my-5 py-5 d-flex align-items-stretch'>
+    <section id='whyus' className='row container-fluid my-5 py-5 d-flex align-items-stretch'>
       <div data-aos="slide-right" data-aos-delay="300" className='col-lg-6'>
         <img src={whyus} alt="why us image" className='w-100 h-100 object-cover' />
       </div> 
@@ -43,11 +44,11 @@ const Whyus = () => {
             en cada bocado. ¡Te esperamos con la heladera llena! 🍦🌴 <br />
           </p>
           <button className='btn btn-lg btn-dark hvr-grow-shadow'>
-            <a href="">LEER MÁS</a>
+            <Link to="/About">LEER MÁS</Link>
           </button>
         </div>
       </div>     
-    </div>
+    </section>
   )
 }
 

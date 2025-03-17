@@ -14,8 +14,11 @@ const Contact = () => {
 
   return (
     <div 
-    className='dark-section mt-5'
-    data-aos="zoom-in-up" data-aos-delay="300">
+      id='contact'
+      className='dark-section mt-5'
+      data-aos="zoom-in-up" 
+      data-aos-delay="300"
+    >
       <div className='row container-fluid mt-5'>
         <div className='col-lg-3 col-md-6 col-sm-12 my-4'>
           <img src={logo} alt="logo" className='w-75'/>

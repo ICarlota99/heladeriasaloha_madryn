@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     //  Hero Section
-    <section id="hero_section">
+    <section id="hero">
         <div className="row align-items-center">
           <div className="col-lg-5" style={{ paddingLeft: '10%' }}>
               <h1 className="mt-5" data-aos="zoom-in" data-aos-delay="200">Comete un helado <br/>
@@ -29,7 +29,7 @@ const Hero = () => {
                 <button type="button" className="btn btn-lg btn-dark me-4 hvr-grow-shadow mt-2">
                     <a href="#">Pedite el tuyo</a>   
                 </button>
-                <button type="button" className="btn btn-lg btn-light hvr-grow-shadow mt-2">
+                <button type="button" className="btn btn-lg btn-light me-4 hvr-grow-shadow mt-2">
                     <a href="#">Ver productos</a>   
                 </button>
               </div>

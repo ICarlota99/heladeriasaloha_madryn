@@ -4,6 +4,7 @@ import Flavors from "../sections/Flavors";
 import Whyus from "../sections/Whyus";
 import Delivery from "../sections/Delivery";
 import Contact from "../sections/Contact";
+
 export default function Home() {
   return (
     <>
@@ -14,5 +15,5 @@ export default function Home() {
       <Delivery />
       <Contact />
     </>
-  )
+  );
 }
