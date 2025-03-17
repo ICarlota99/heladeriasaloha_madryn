@@ -1,35 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sevillana&display=swap');
 /* @import "tailwindcss"; */
 
+/* Global Theme Variables */
+:root {
+    --bg-color: #fce0c9;
+    --primary-color: #F47821;
+    /* --secondary-color: #F6EACB; */
+}
+
 /*****************************************TAG SELECTORS*******************************************/
+html, body{
+    overflow-x: hidden;
+}
 body{
-    background-color: #fce0c9;
+    background-color: var(--bg-color);
     color: black;
     line-height: 1.5;
     padding-top: 50px;
-    overflow-x: hidden;
+
 }
 h1, h2, h3, h4{
     font-weight: bolder;
     font-family: "Montserrat", sans-serif;
 }
 a{
-    color: #fce0c9;
+    color: var(--bg-color);
     text-decoration: underline;
 }
 span{
-    color: #FF7800;
+    color: var(--primary-color);
+}
+p span {
+    color: black;
 }
 
 /********************************* General css **********************/
 .container-fluid{
-    padding: 0% 8%;
+    padding: 0% 10%;
 }
 
 .dark-container{
-    background-color: #FF7800;
+    background-color: var(--primary-color);
     color: white;
 }
+
+.dark-section {
+    background-image: url('/src/assets/orange_section_bg.svg#svgView(preserveAspectRatio(none))');
+    background-size: 3000px 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 120px 0;
+}
+
+.w-lg-75 {
+    width: 75% !important;
+  }
+  
+  .w-xl-50 {
+    width: 65% !important;
+  }
+  
 
 .sucursal{
     font-family: "Playwrite DK Loopet", cursive;
@@ -44,21 +75,21 @@ span{
 
 .btn-dark{
     --bs-btn-font-weight: bolder;
-    --bs-btn-border-color: #FF7800;
+    --bs-btn-border-color: var(--primary-color);
     --bs-btn-hover-color: rgb(61, 59, 59);
     --bs-btn-hover-bg: #e78d3e;
     --bs-btn-hover-border-color: white;
-    --bs-btn-active-color: #FF7800;
+    --bs-btn-active-color: var(--primary-color);
     --bs-btn-color: white;
-    --bs-btn-bg: #FF7800;
+    --bs-btn-bg: var(--primary-color);
 }
 .btn-light{
     --bs-btn-font-weight: bolder;
-    --bs-btn-border-color: #FF7800;
+    --bs-btn-border-color: var(--primary-color);
     --bs-btn-hover-color: rgb(61, 59, 59);
     --bs-btn-hover-bg: #f0b17a;
     --bs-btn-hover-border-color: white;
-    --bs-btn-active-color: #FF7800;
+    --bs-btn-active-color: var(--primary-color);
     --bs-btn-color: black;
     --bs-btn-bg: none;
 }
@@ -68,7 +99,7 @@ span{
 }
 
 .btn-light a {
-    color: #FF7800;
+    color: var(--primary-color);
 }
 
 /**************************** Sections ********************/
@@ -84,6 +115,11 @@ span{
     width: 100px;
     height: auto;
     padding-right: 20px;
+}
+
+/* Hero */
+#hero_section {
+    min-height: 70vh;
 }
 
 /* Products Section */
@@ -117,11 +153,31 @@ span{
     width: 30%;
 }
 
+/* Whyus Section */
+.hvr-black{
+    color:black;
+}
+
+.hvr-black:hover{
+    color: var(--primary-color);
+}
+
+/* Contact */
+.light-link{
+    color: var(--bg-color);
+    height: auto;
+    width: 3rem;
+    text-decoration: none;
+}
+.light-link:hover{
+    color: white;
+    text-decoration: underline;
+}
 /* Mobile Phone Responsiveness */
-@media (max-width: 768px) {
-    p {
+@media (max-width: 900px) {
+    /* p {
       font-size: 14px;
-    }
+    } */
 
     #navbar_div{
         padding: 0.3% !important;
