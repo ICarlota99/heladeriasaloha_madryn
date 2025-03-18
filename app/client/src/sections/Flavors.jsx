@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import styles from '../styles/PopularFlavors.module.css';
+import { useEffect } from 'react';
+import ProductCard from '../components/ProductCard';
 import alfajorMarplatense from '../assets/flavors/alfajor_marplatense.jpg';
 import chocorrica from '../assets/flavors/chocorrica.jpg';
 import cookiesAndCream from '../assets/flavors/cookies_and_cream.jpg';
@@ -8,7 +8,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Flavors = () => {
-  const [visibleDescriptions, setVisibleDescriptions] = useState({});
 
   useEffect(() => {
     AOS.init({
@@ -18,45 +17,37 @@ const Flavors = () => {
     });
   }, []);
 
-  // Sample data for popular flavors
+  // Data for popular flavors
   const flavors = [
     {
       id: 1,
       name: 'Alfajor Marplatense',
       description: 'Helado con trozos de alfajor marplatense',
       image: alfajorMarplatense,
+      price: 3.50,
     },
     {
       id: 2,
       name: 'Chocorrica',
       description: 'El sabor de la torta más rica',
       image: chocorrica,
+      price: 3.50,
     },
     {
       id: 3,
       name: 'Cookies & Cream',
       description: 'Crema de leche helada con galletitas de chocolate',
       image: cookiesAndCream,
+      price: 3.50,
     },
     {
       id: 4,
       name: 'Mousse de Chocolate con Frutilla',
       description: 'Crema helada tipo mousse de chocolate con frutilla natural',
       image: mousseChocolateYFrutilla,
+      price: 3.50,
     },
   ];
-
-  const handleAddToCart = (flavor) => {
-    console.log('Added to cart:', flavor.name);
-    // Add logic to handle adding to cart here
-  };
-
-  const toggleDescription = (id) => {
-    setVisibleDescriptions((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   return (
     <section id="flavors" className="container-fluid text-center pt-5">
@@ -64,45 +55,20 @@ const Flavors = () => {
         <h2>Explorá nuestros sabores más populares</h2>
       </div>
 
-      <div className="row pt-4">
-        {flavors.map((flavor, index) => (
-          <div
-            key={flavor.id}
-            className="col-lg-3 col-md-6 mb-4"
-            data-aos="fade-left"
-            data-aos-delay={index * 300}
-          >
-            <div className={`card ${styles.flavorCard}`}>
-              <div className={styles.imageContainer}>
-                <img
-                  src={flavor.image}
-                  alt={flavor.name}
-                  className={`card-img-top ${styles.flavorImage}`}
-                  onClick={() => toggleDescription(flavor.id)}
-                  style={{ cursor: 'pointer' }}
-                />
-                {(visibleDescriptions[flavor.id] || styles.overlayHover) && (
-                  <div
-                    className={`${styles.overlay} ${
-                      visibleDescriptions[flavor.id] ? styles.overlayVisible : ''
-                    }`}
-                  >
-                    <p className={styles.description}>{flavor.description}</p>
-                  </div>
-                )}
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">{flavor.name}</h5>
-                <button
-                  className="btn btn-dark hvr-grow-shadow"
-                  onClick={() => handleAddToCart(flavor)}
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className='row g-4 pt-4'>
+        {flavors.length > 0 ? (
+          flavors.map((flavor, index) => (
+            <ProductCard
+              className="col-lg-3 col-md-6 mb-4"
+              key={flavor.id} 
+              product={flavor} 
+              data-aos='fade-left'
+              data-aos-delay={index * 300}
+              />
+          ))
+        ) : (
+          <p>No products found in this category.</p>
+        )}
       </div>
 
       <button className="btn btn-lg btn-dark mt-2 hvr-grow-shadow">
