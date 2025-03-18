@@ -60,7 +60,7 @@ const Flavors = () => {
                     {flavors.map((flavor, index) => (
                       <div
                       key={flavor.id}
-                      className="col-lg-3 col-md-4 mb-4"
+                      className="col-lg-3 col-md-6 mb-4"
                       data-aos="fade-left"
                       data-aos-delay={index * 300}
                     >
