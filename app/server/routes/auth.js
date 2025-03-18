@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import passport from 'passport';
+import pool from '../config/db.js';
+import bcrypt from 'bcryptjs';
+
 const router = express.Router();
-const passport = require('passport');
-const pool = require('../config/db');
-const bcrypt = require('bcryptjs');
 
 // Register route
 router.post('/register', async (req, res) => {
@@ -15,7 +16,7 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'El usuario ya existe' });
     }
 
-    // Hash the pw
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new user
@@ -50,4 +51,4 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-module.exports = router;
+export default router;

@@ -1,8 +1,10 @@
-const express = require('express');
-const passport = require('passport');
-const authRoutes = require('./routes/auth');
-require('dotenv').config();
-require('./config/passport');
+import express from 'express';
+import passport from 'passport';
+import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
+import './config/passport.js';
+
+dotenv.config();
 
 const app = express();
 
@@ -14,7 +16,7 @@ app.use(passport.initialize());
 app.use('/api/auth', authRoutes);
 
 // Initialice server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
