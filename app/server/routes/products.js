@@ -37,7 +37,13 @@ router.get('/:category', async (req, res) => {
     `;
     const productsResult = await pool.query(productsQuery, [categoryId]);
 
-    res.status(200).json(productsResult.rows);
+    // Add the base URL to the image paths
+    const productsWithFullImageUrls = productsResult.rows.map((product) => ({
+      ...product,
+      image: `http://localhost:5000${product.image}`,
+    }));
+
+    res.status(200).json(productsWithFullImageUrls);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
