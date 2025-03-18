@@ -13,7 +13,9 @@ const Products = () => {
   const categoryToH1 = {
     cakes: 'Tortas Heladas',
     cones: 'Conos y Paletas',
-    desserts: 'Postres',
+    flavors: 'Sabores de Helados',
+    desserts: 'Postres Helados',
+    pints: 'Pintas y Baldes',
   };
 
   // Get the h1 text based on the category, or default to the category name if not found
@@ -47,7 +49,7 @@ const Products = () => {
   return (
     <div className='text-center container-fluid mt-5'>
       <h1>{h1Text}</h1>
-      <div className='row pt-4'>
+      <div className='row'>
         {products.length > 0 ? (
           products.map((product, index) => (
             <ProductCard 
@@ -55,7 +57,7 @@ const Products = () => {
               key={product.id} 
               product={product}
               data-aos='fade-left'
-              data-aos-delay={index * 300}
+              data-aos-delay={index * 100}
             />
           ))
         ) : (

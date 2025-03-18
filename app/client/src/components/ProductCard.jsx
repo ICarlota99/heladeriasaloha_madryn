@@ -36,7 +36,7 @@ const ProductCard = ({ product, onAddToCart, ...props }) => {
 
   return (
     <div {...props}>
-      <div className={`card ${styles.productCard}`}>
+      <div className={`card my-3 ${styles.productCard}`}>
         <div
           // onClick={toggleDescription}
           onClick={() => toggleDescription(id)}
@@ -48,6 +48,9 @@ const ProductCard = ({ product, onAddToCart, ...props }) => {
               alt={name}
               className={`card-img-top ${styles.productImage}`}
             />
+            {/* Info Icon */}
+            <i className={`fa-solid fa-info-circle fa-2x ${styles.infoIcon}`}></i>
+
             {(visibleDescriptions[id] || styles.overlayHover) && (
               <div
                 className={`${styles.overlay} ${
