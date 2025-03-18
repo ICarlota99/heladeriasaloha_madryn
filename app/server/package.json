@@ -7,10 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": ["backend", "nodejs", "express", "API", "helados", "ecommerce"],
+  "keywords": [
+    "backend",
+    "nodejs",
+    "express",
+    "API",
+    "helados",
+    "ecommerce"
+  ],
   "author": "Irene Carlota del Cueto Mora",
   "type": "module",
   "dependencies": {
-    "express": "^4.21.2"
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.14.1"
   }
 }

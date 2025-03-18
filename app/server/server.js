@@ -1,17 +1,20 @@
-import express from 'express';
+const express = require('express');
+const passport = require('passport');
+const authRoutes = require('./routes/auth');
+require('dotenv').config();
+require('./config/passport');
 
 const app = express();
-const PORT = 5000;
 
 // Middleware
 app.use(express.json());
+app.use(passport.initialize());
 
-// Ruta principal
-app.get('/', (req, res) => {
-  res.send('¡Bienvenido a la API del negocio de helados!');
-});
+// Routes 
+app.use('/api/auth', authRoutes);
 
-// Iniciar servidor
+// Initialice server
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
