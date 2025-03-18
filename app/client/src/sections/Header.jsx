@@ -63,22 +63,22 @@ const Header = () => {
                 </HashLink>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link to="/cones" className="dropdown-item">
+                    <Link to="category/cones" className="dropdown-item">
                       Conos y paletas
                     </Link>
                   </li>
                   <li>
-                    <Link to="/desserts" className="dropdown-item">
+                    <Link to="category/desserts" className="dropdown-item">
                       Postres helados
                     </Link>
                   </li>
                   <li>
-                    <Link to="/pints" className="dropdown-item">
+                    <Link to="category/pints" className="dropdown-item">
                       Pintas y baldes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/cakes" className="dropdown-item">
+                    <Link to="category/cakes" className="dropdown-item">
                       Tortas heladas
                     </Link>
                   </li>
