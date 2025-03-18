@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import conosImg from '../assets/conos.png';
 import pintasImg from '../assets/pintas.png';
 import postresImg from '../assets/postres.png';
@@ -26,34 +27,34 @@ const Shop = () => {
           </div>
           {/* Product options */}
           <div className="row position-relative">
-            <a className="col-lg-3 col-md-6" href="#" data-aos="zoom-in" data-aos-delay="200">
+            <Link className="col-lg-3 col-md-6" to="/category/cones" data-aos="zoom-in" data-aos-delay="200">
               <img
                 className="img-fluid product_img hvr-grow-shadow"
                 src={conosImg}
                 alt="conos y paletas"
               />
-            </a>
-            <a className="col-lg-3 col-md-6" href="#" data-aos="zoom-in" data-aos-delay="200">
+            </Link>
+            <Link className="col-lg-3 col-md-6" to="/category/desserts"data-aos="zoom-in" data-aos-delay="200">
               <img
                 className="img-fluid product_img hvr-grow-shadow"
                 src={postresImg}
                 alt="postres"
               />
-            </a>
-            <a className="col-lg-3 col-md-6" href="#" data-aos="zoom-in" data-aos-delay="200">
+            </Link>
+            <Link className="col-lg-3 col-md-6" to="/category/pints" data-aos="zoom-in" data-aos-delay="200">
               <img
                 className="img-fluid product_img hvr-grow-shadow"
                 src={pintasImg}
                 alt="pintas"
               />
-            </a>
-            <a className="col-lg-3 col-md-6" href="#" data-aos="zoom-in" data-aos-delay="200">
+            </Link>
+            <Link className="col-lg-3 col-md-6" to="/category/cakes" data-aos="zoom-in" data-aos-delay="200">
               <img
                 className="img-fluid product_img hvr-grow-shadow"
                 src={tortasImg}
                 alt="tortas heladas"
               />
-            </a>
+            </Link>
           </div>
         </section>
       </div>
