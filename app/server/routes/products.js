@@ -33,7 +33,8 @@ router.get('/:category', async (req, res) => {
       SELECT p.*, c.category AS category_name
       FROM products p
       JOIN categories c ON p.category_id = c.id
-      WHERE p.category_id = $1;
+      WHERE p.category_id = $1
+      ORDER BY p.name ASC;
     `;
     const productsResult = await pool.query(productsQuery, [categoryId]);
 
