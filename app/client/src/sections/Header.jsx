@@ -109,6 +109,11 @@ const Header = () => {
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </Link>
               </li>
+              <li>
+                <Link to="/login" className="nav-link">
+                  <i className="fas fa-user"></i>
+                </Link>
+              </li>
             </div>
           </div>
         </div>
