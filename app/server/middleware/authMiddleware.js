@@ -1,4 +1,5 @@
 import validator from 'validator';
+import passport from 'passport';
 
 const validateUserInput = (req, res, next) => {
     const { email, phone } = req.body;
@@ -21,4 +22,15 @@ const validateUserInput = (req, res, next) => {
     next();
 };
 
-export default validateUserInput;
+const requireAuth = passport.authenticate('jwt', { session: false });
+
+const requireRole = (role) => {
+  return (req, res, next) => {
+    if (req.user.role !== role) {
+      return res.status(403).json({ error: 'Unauthorized' });
+    }
+    next();
+  };
+};
+
+export{  validateUserInput, requireAuth, requireRole };
