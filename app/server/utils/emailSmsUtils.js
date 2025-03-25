@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-import twilio from 'twilio';
 
 // Send verification email
 const sendVerificationEmail = async (email, token) => {
@@ -30,23 +29,4 @@ const sendVerificationEmail = async (email, token) => {
     }
 };
 
-// Initialize Twilio client
-const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
-
-// Send verification SMS
-const sendVerificationSMS = async (phone, token) => {
-    try {
-        // Send the SMS
-        await client.messages.create({
-            body: `Tu token de verificación es: ${token}\n\nEste token es válido por 15 minutos.`,
-            from: process.env.TWILIO_PHONE_NUMBER,
-            to: phone,
-        });
-        console.log(`Verification SMS sent to ${phone}`);
-    } catch (error) {
-        console.error('Error sending verification SMS:', error);
-        throw new Error('Failed to send verification SMS');
-    }
-};
-
-export { sendVerificationEmail, sendVerificationSMS };
+export { sendVerificationEmail };
