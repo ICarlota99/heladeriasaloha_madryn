@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import styles from '../styles/ProductCard.module.css';
+import { useCart } from '../components/CartContext';
 
-const ProductCard = ({ product, onAddToCart, ...props }) => {
+const ProductCard = ({ product, ...props }) => {
   const [quantity, setQuantity] = useState(1);
   const [visibleDescriptions, setVisibleDescriptions] = useState(false);
+  const { addToCart } = useCart();
+
 
   // Ensure product is defined and has the required properties
   if (!product) {
@@ -24,7 +27,8 @@ const ProductCard = ({ product, onAddToCart, ...props }) => {
   };
 
   const handleAddToCart = () => {
-    onAddToCart(product, quantity);
+    addToCart(product, quantity);
+    setQuantity(1); // Reset quantity after adding to cart
   };
 
   const toggleDescription = (id) => {
