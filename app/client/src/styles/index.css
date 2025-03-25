@@ -103,6 +103,10 @@ p span {
     text-align: right;
 }
 
+.nav-link {
+    color: white;
+}
+
 .logo {
     width: 100px;
     height: auto;
