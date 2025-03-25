@@ -1,6 +1,6 @@
 import { useCart } from '../context/CartContext';
-import Link from 'next/link';
-import styles from '../styles/Cart.module.css';
+import { Link } from 'react-router-dom';
+// import styles from '../styles/Cart.module.css';
 
 const CartPage = () => {
   const { 
@@ -15,7 +15,7 @@ const CartPage = () => {
     return (
       <div className="container my-5 text-center">
         <h2>Tu carrito está vacío</h2>
-        <Link href="/" className="btn btn-primary mt-3">
+        <Link to="/" className="btn btn-dark mt-3">
           Volver al menú
         </Link>
       </div>
@@ -69,8 +69,8 @@ const CartPage = () => {
                     </button>
                   </div>
                 </td>
-                <td>ARS {item.price.toFixed(2)}</td>
-                <td>ARS {(item.price * item.quantity).toFixed(2)}</td>
+                <td>ARS {Number(item.price).toFixed(2)}</td>
+                <td>ARS {(Number(item.price) * item.quantity).toFixed(2)}</td>
                 <td>
                   <button 
                     className="btn btn-danger btn-sm" 
@@ -108,12 +108,12 @@ const CartPage = () => {
           
           <div className="d-flex justify-content-between mt-4">
             <button 
-              className="btn btn-outline-secondary" 
+              className="btn btn-light" 
               onClick={clearCart}
             >
               Vaciar Carrito
             </button>
-            <Link href="/checkout" className="btn btn-primary">
+            <Link to="/checkout" className="btn btn-dark">
               Continuar
             </Link>
           </div>
