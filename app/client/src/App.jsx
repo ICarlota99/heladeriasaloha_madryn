@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
+import CartPage from './pages/Cart';
+import CheckoutPage from './pages/Checkout'
 import Header from "./sections/Header";
-import Home from "./pages/Home";
+import HomePage from "./pages/Home";
 import About from './pages/About';
 import Products from './pages/Products';
 import Footer from "./sections/Footer";
 import WhatsAppButton from "./components/WhatsappButton";
-import { CartProvider } from './components/CartContext';
 
 export default function App() {
   return (
@@ -13,9 +15,11 @@ export default function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/category/:category" element={<Products />} />
+          <Route path="/cart" element={<CartPage />} /> 
+          <Route path='/checkout' element={<CheckoutPage />} />
         </Routes>
         <Footer />
         <WhatsAppButton />

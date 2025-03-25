@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'; 
 import logo from '../assets/logo.png';
-import { useCart } from '../components/CartContext';
+import { useCart } from '../context/useCart';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -102,7 +102,7 @@ const Header = () => {
                 </HashLink>
               </li>
               <li className="nav-item">
-                <Link href="/cart" className="btn btn-outline-light position-relative">
+                <Link to="/cart" className="nav-link position-relative">
                   <i className="fas fa-shopping-cart"></i>
                   {totalItems > 0 && (
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -111,16 +111,11 @@ const Header = () => {
                   )}
               </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/search" className="nav-link">
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </Link>
-              </li>
-              <li>
+              {/* <li>
                 <Link to="/login" className="nav-link">
                   <i className="fas fa-user"></i>
                 </Link>
-              </li>
+              </li> */}
             </div>
           </div>
         </div>
