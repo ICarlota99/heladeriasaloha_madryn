@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'; 
 import logo from '../assets/logo.png';
+import { useCart } from '../components/CartContext';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleResize = () => {
@@ -100,9 +102,14 @@ const Header = () => {
                 </HashLink>
               </li>
               <li className="nav-item">
-                <Link to="/cart" className="nav-link">
-                  <i className="fa-solid fa-cart-shopping"></i>
-                </Link>
+                <Link href="/cart" className="btn btn-outline-light position-relative">
+                  <i className="fas fa-shopping-cart"></i>
+                  {totalItems > 0 && (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {totalItems}
+                    </span>
+                  )}
+              </Link>
               </li>
               <li className="nav-item">
                 <Link to="/search" className="nav-link">
