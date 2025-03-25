@@ -2,10 +2,11 @@ import express from 'express';
 import passport from 'passport';
 import dotenv from 'dotenv';
 import path from 'path';
+import rateLimit from 'express-rate-limit';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-import authRoutes from './routes/auth.js';
-import productRoutes from './routes/products.js'
+import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productsRoutes.js'
 import './config/passport.js';
 
 dotenv.config();
@@ -21,6 +22,18 @@ app.use(cors());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use('/assets', express.static(path.join(__dirname, 'public', 'assets')));
+
+// Rate limiter for auth routes (5 attempts/hour per IP)
+const authLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 5,                   // Max 5 attempts per IP
+  message: 'Demasiados intentos fallidos. Vuelva a intentar en 1 hora',
+  skipSuccessfulRequests: true, // Don't count successful logins
+});
+
+// Apply rate limiting to sensitive auth routes
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', authLimiter);
 
 // Routes 
 app.use('/api/auth', authRoutes);
