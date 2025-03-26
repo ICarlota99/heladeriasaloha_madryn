@@ -15,12 +15,12 @@ const About = () => {
 
   return (
     <section id='about'>
-      <img src={banner} alt="banner" className='w-100 text-center'/>
-        <div className="container-fluid mt-5 info row">
+      <img src={banner} alt='banner' className='w-100 text-center'/>
+        <div className='container-fluid mt-5 info row'>
           <div 
             className='col-lg-8' 
-            data-aos="zoom-out-right" 
-            data-aos-delay="200"
+            data-aos='zoom-out-right'
+            data-aos-delay='200'
           >
             <h1>Heladerías Aloha, Puerto Madryn</h1>
               <p className='mt-4'>
@@ -56,16 +56,16 @@ const About = () => {
           </div>
           <div 
             className='col-lg-4 text-end'
-            data-aos="zoom-out-left" 
-            data-aos-delay="200"
+            data-aos='zoom-out-left'
+            data-aos-delay='200'
           >
-            <img src={localImage} alt="Local de Aloha" className='w-100'/>
+            <img src={localImage} alt='Local de Aloha' className='w-100'/>
           </div>
         </div>
         <div 
           className='container-fluid info' 
-          data-aos="zoom-out-right" 
-          data-aos-delay="200"
+          data-aos='zoom-out-right'
+          data-aos-delay='200'
         >
           <h3 className='mt-4'><span>Únete a Nuestra Familia</span></h3>
           <p>
@@ -76,8 +76,8 @@ const About = () => {
           <p><strong>🕔 Horarios:</strong> De 12 del mediodía a 12 de la noche</p>
           <p>
           <strong>🗺️ Dónde encontrarnos:</strong><br/>
-          <a href="">📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
-          <a href="">📍 España y Lombardo</a>
+          <a href='https://maps.app.goo.gl/SiwEx7UsUJ7tJw5t5'>📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
+          <a href='https://maps.app.goo.gl/9N6YKpCPyGiCABo78'>📍 España y Lombardo</a>
           </p>
         </div>
         
