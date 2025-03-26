@@ -19,6 +19,7 @@ const CheckoutPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSent, setOrderSent] = useState(false);
 
+  // Frontend validators for user input
   const validateName = (name) => {
     if (!name.trim()) return 'El nombre es obligatorio';
     if (name.length < 3) return 'El nombre debe tener al menos 3 caracteres';
@@ -42,7 +43,7 @@ const CheckoutPage = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Validación en tiempo real
+    // Real Time Validation
     if (name === 'nombre') {
       setErrors(prev => ({ ...prev, nombre: validateName(value) }));
     } else if (name === 'telefono') {
@@ -72,7 +73,7 @@ const CheckoutPage = () => {
 
     setIsSubmitting(true);
     
-    // Generar mensaje para WhatsApp
+    // Generate WhatsApp msg
     const whatsappMessage = `*NUEVO PEDIDO - HELADERÍA ALOHA*\n\n` +
       `*Cliente:* ${formData.nombre}\n` +
       `*Teléfono:* ${formData.telefono}\n` +
@@ -83,12 +84,12 @@ const CheckoutPage = () => {
       `*Total:* ARS ${subtotal.toFixed(2)}\n\n` +
       `*Fecha:* ${new Date().toLocaleString()}`;
 
-    // Abrir WhatsApp con el mensaje
+    // Open whatsapp
     const phoneNumber = '542804881974';
     const encodedMessage = encodeURIComponent(whatsappMessage);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
     
-    // Limpiar carrito y mostrar confirmación
+    // Clean cart and show confirmation
     clearCart();
     setOrderSent(true);
     setIsSubmitting(false);
@@ -112,6 +113,7 @@ const CheckoutPage = () => {
     );
   }
 
+  // Empty cart
   if (cart.length === 0) {
     return (
       <div className="container my-5 text-center">
@@ -126,6 +128,7 @@ const CheckoutPage = () => {
     );
   }
 
+  // Page UI code
   return (
     <div className="container my-5">
       <div className="row justify-content-center">
