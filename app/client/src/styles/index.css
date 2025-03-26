@@ -28,7 +28,7 @@ a{
     color: var(--bg-color);
     text-decoration: underline;
 }
-span{
+.orange-color{
     color: var(--primary-color);
 }
 p span {

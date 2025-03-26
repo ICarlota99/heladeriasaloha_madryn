@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="row align-items-center">
           <div className="col-lg-5" style={{ paddingLeft: '10%' }}>
               <h1 className="mt-5" data-aos="zoom-in" data-aos-delay="200">Comete un helado <br/>
-              <span>Disfrutá la vida</span>
+              <span className='orange-color'>Disfrutá la vida</span>
               </h1>
               <div data-aos="zoom-in" data-aos-delay="300">
                 <h3 className='pt-3'>Sabores explosivos y novedosos</h3>
