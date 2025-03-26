@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import CartPage from './pages/Cart';
 import CheckoutPage from './pages/Checkout'
+import AuthForm from './pages/Auth';
 import Header from "./sections/Header";
 import HomePage from "./pages/Home";
 import About from './pages/About';
@@ -11,19 +13,22 @@ import WhatsAppButton from "./components/WhatsappButton";
 
 export default function App() {
   return (
-    <CartProvider>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/category/:category" element={<Products />} />
-          <Route path="/cart" element={<CartPage />} /> 
-          <Route path='/checkout' element={<CheckoutPage />} />
-        </Routes>
-        <Footer />
-        <WhatsAppButton />
-      </Router>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/category/:category" element={<Products />} />
+            <Route path="/cart" element={<CartPage />} /> 
+            <Route path='/checkout' element={<CheckoutPage />} />
+            <Route path='/login' element={<AuthForm />} />
+          </Routes>
+          <Footer />
+          <WhatsAppButton />
+        </Router>
+      </CartProvider>
+    </AuthProvider>
   )
 }
