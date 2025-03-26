@@ -29,6 +29,7 @@ const CartPage = () => {
         <table className="table">
           <thead>
             <tr>
+              <th>Imagen</th>
               <th>Producto</th>
               <th>Cantidad</th>
               <th>Precio Unitario</th>
@@ -47,9 +48,11 @@ const CartPage = () => {
                       className="img-thumbnail me-3" 
                       style={{ width: '80px', height: '80px', objectFit: 'cover' }}
                     />
-                    <div>
-                      <h5 className="mb-1">{item.name}</h5>
-                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <h5 className="mb-1">{item.name}</h5>
                   </div>
                 </td>
                 <td>
