@@ -38,8 +38,8 @@ const Whyus = () => {
             <strong>🕔 Horarios:</strong> 
             <br/>De 12 del mediodía a 12 de la noche <br /> <br />
             <strong>🗺️ Dónde encontrarnos:</strong><br/>
-            <a className="hvr-black" href="">📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
-            <a className="hvr-black" href="">📍 España y Lombardo</a><br /><br /> 
+            <a className="hvr-black" href='https://maps.app.goo.gl/SiwEx7UsUJ7tJw5t5'>📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
+            <a className="hvr-black" href='https://maps.app.goo.gl/9N6YKpCPyGiCABo78'>📍 España y Lombardo</a><br /><br />
             Ven y descubre por qué somos la elección preferida de aquellos que buscan la perfección 
             en cada bocado. ¡Te esperamos con la heladera llena! 🍦🌴 <br />
           </p>

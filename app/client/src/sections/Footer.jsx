@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import logo from "../assets/logo.svg";
+import GoogleMaps from '../components/GoogleMapsLink';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -25,13 +26,7 @@ const Footer = () => {
         </div>
         <div className='col-lg-3 col-md-6 col-sm-12 my-4'>
           <h5>INFO</h5>
-          <p>
-            <strong>🕔 Horarios:</strong> 
-            <br/>De 12 del mediodía a 12 de la noche <br /> <br />
-            <strong>🗺️ Dónde encontrarnos:</strong><br/>
-            <a className="light-link pt-1" href="">📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
-            <a className="light-link pt-1" href="">📍 España y Lombardo</a><br />
-          </p>
+          <GoogleMaps />
         </div>
         <div className='col-lg-3 col-md-6 col-sm-12 my-4'>
           <h5>CATÁLOGO</h5>

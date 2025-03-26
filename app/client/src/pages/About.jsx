@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import banner from '../assets/banner_about.jpg';
 import localImage from '../assets/local.png';
+import GoogleMaps from '../components/GoogleMapsLink';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -73,12 +74,7 @@ const About = () => {
             Ven y descubre por qué somos la elección preferida de aquellos que buscan la 
             perfección en cada helado. ¡Te esperamos! 🍦🌴 <br/>
           </p>
-          <p><strong>🕔 Horarios:</strong> De 12 del mediodía a 12 de la noche</p>
-          <p>
-          <strong>🗺️ Dónde encontrarnos:</strong><br/>
-          <a href='https://maps.app.goo.gl/SiwEx7UsUJ7tJw5t5'>📍 9 de Julio e Hipólito Yrigoyen</a> <br/>
-          <a href='https://maps.app.goo.gl/9N6YKpCPyGiCABo78'>📍 España y Lombardo</a>
-          </p>
+          <GoogleMaps />
         </div>
         
     </section>
