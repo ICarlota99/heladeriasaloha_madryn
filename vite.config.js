@@ -11,6 +11,9 @@ const __dirname = path.dirname(__filename);
 // https://vite.dev/config/
 export default defineConfig({
   base: '/heladeriasaloha_madryn/',
+  esbuild: {
+    loader: 'jsx'
+  },
   plugins: [
     react(),
     // svgr({
