@@ -1,6 +1,18 @@
+import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-// import styles from '../styles/Cart.module.css';
+
+// Dynamic import all images from assets folder
+const imageModules = import.meta.glob('../assets/**/*.{jpg,png,webp}');
+
+// Format prices
+const formatPrice = (price) => {
+  if (isNaN(price)) return '0.00';
+  return Number(price).toLocaleString('es-AR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+};
 
 const CartPage = () => {
   const { 
@@ -10,6 +22,34 @@ const CartPage = () => {
     subtotal,
     clearCart 
   } = useCart();
+
+  // State to store loaded images
+  const [loadedImages, setLoadedImages] = useState({});
+
+  // Load all cart images dynamically
+  useEffect(() => {
+    const loadImages = async () => {
+      const newLoadedImages = {};
+      
+      for (const item of cart) {
+        try {
+          if (item.image && !loadedImages[item.id]) {
+            const cleanPath = item.image.replace(/^\.+\//, '');
+            const imagePath = `../assets/${cleanPath}`;
+            const module = await imageModules[imagePath]();
+            newLoadedImages[item.id] = module.default;
+          }
+        } catch (err) {
+          console.error(`Error loading image for ${item.name}:`, err);
+          newLoadedImages[item.id] = ''; // Fallback to empty
+        }
+      }
+
+      setLoadedImages(prev => ({ ...prev, ...newLoadedImages }));
+    };
+
+    loadImages();
+  }, [cart]);
 
   if (cart.length === 0) {
     return (
@@ -42,12 +82,14 @@ const CartPage = () => {
               <tr key={item.id}>
                 <td>
                   <div className="d-flex align-items-center">
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      className="img-thumbnail me-3" 
-                      style={{ width: '80px', height: '80px', objectFit: 'cover' }}
-                    />
+                    {loadedImages[item.id] && (
+                      <img 
+                        src={loadedImages[item.id]} 
+                        alt={item.name} 
+                        className="img-thumbnail me-3" 
+                        style={{ width: '80px', height: '80px', objectFit: 'cover' }}
+                      />
+                    )}
                   </div>
                 </td>
                 <td>
@@ -72,8 +114,8 @@ const CartPage = () => {
                     </button>
                   </div>
                 </td>
-                <td>ARS {Number(item.price).toFixed(2)}</td>
-                <td>ARS {(Number(item.price) * item.quantity).toFixed(2)}</td>
+                <td>ARS {formatPrice(item.price)}</td>
+                <td>ARS {formatPrice(Number(item.price) * item.quantity)}</td>
                 <td>
                   <button 
                     className="btn btn-danger btn-sm" 
@@ -95,16 +137,11 @@ const CartPage = () => {
               <h5 className="card-title">Resumen del Pedido</h5>
               <div className="d-flex justify-content-between mb-2">
                 <span>Subtotal:</span>
-                <span>ARS {subtotal.toFixed(2)}</span>
+                <span>ARS {formatPrice(subtotal)}</span>
               </div>
-              <div className="d-flex justify-content-between mb-3">
-                <span>Envío:</span>
-                <span>ARS 0.00</span> {/* Add delivery cost logic here */}
-              </div>
-              <hr />
               <div className="d-flex justify-content-between fw-bold">
                 <span>Total:</span>
-                <span>ARS {subtotal.toFixed(2)}</span>
+                <span>ARS {formatPrice(subtotal)}</span>
               </div>
             </div>
           </div>
