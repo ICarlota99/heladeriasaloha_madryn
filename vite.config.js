@@ -22,6 +22,7 @@ export default defineConfig({
     // tailwindcss(),
   ],
   resolve: {
+    extensions: ['.js', '.jsx', '.json'],
     dedupe: ['react', 'react-dom'], // Prevent duplicate React instances
     alias: {
       '@': path.resolve(__dirname, './src'),
