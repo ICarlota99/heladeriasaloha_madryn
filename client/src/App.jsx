@@ -14,7 +14,7 @@ import WhatsAppButton from './components/WhatsappButton';
 export default function App() {
   return (
     <CartProvider>
-      <Router>
+      <Router basename="/heladeriasaloha_madryn">
         <Header />
         <ToastContainer position='top-right' autoClose={5000} />
         <Routes>
