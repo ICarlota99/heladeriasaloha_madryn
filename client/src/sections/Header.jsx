@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'; 
 import logo from '../assets/logo.svg';
 import { useCart } from '../context/useCart';
-import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const { totalItems } = useCart();
-  const { isLoggedIn, logout } = useAuth();
-  const navigate = useNavigate();
   
   useEffect(() => {
     const handleResize = () => {
@@ -22,11 +19,6 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
 
   return (
     <div>
@@ -113,36 +105,6 @@ const Header = () => {
                     </span>
                   )}
               </Link>
-              </li>
-              <li className="nav-item dropdown">
-                {isLoggedIn ? (
-                  <>
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i className="fas fa-user"></i>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end">
-                      <li>
-                        <button className="dropdown-item" onClick={handleLogout}>
-                          Cerrar sesión
-                        </button>
-                      </li>
-                      <li>
-                        <Link to="/reset_password" className="dropdown-item">
-                          Restablecer contraseña
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/delete_account" className="dropdown-item text-danger">
-                          Eliminar cuenta
-                        </Link>
-                      </li>
-                    </ul>
-                  </>
-                ) : (
-                  <Link to="/login" className="nav-link">
-                    <i className="fas fa-user"></i>
-                  </Link>
-                )}
               </li>
             </div>
           </div>
