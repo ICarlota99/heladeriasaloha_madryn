@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
-import alfajorMarplatense from '../assets/flavors/alfajor_marplatense.jpg';
-import chocorrica from '../assets/flavors/chocorrica.jpg';
-import cookiesAndCream from '../assets/flavors/cookies_and_cream.jpg';
-import mousseChocolateYFrutilla from '../assets/flavors/mousse_de_chocolate_con_frutilla.jpg';
+import { Link } from 'react-router-dom';
+import SimpleProductCard from '../components/SimpleProductCard';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -23,29 +20,25 @@ const Flavors = () => {
       id: 1,
       name: 'Alfajor Marplatense',
       description: 'Helado con trozos de alfajor marplatense',
-      image: alfajorMarplatense,
-      price: 3.50,
+      image: 'flavors/alfajor_marplatense.jpg',
     },
     {
       id: 2,
       name: 'Chocorrica',
       description: 'El sabor de la torta más rica',
-      image: chocorrica,
-      price: 3.50,
+      image: 'flavors/chocorrica.jpg',
     },
     {
       id: 3,
       name: 'Cookies & Cream',
       description: 'Crema de leche helada con galletitas de chocolate',
-      image: cookiesAndCream,
-      price: 3.50,
+      image: 'flavors/cookies_and_cream.jpg',
     },
     {
       id: 4,
       name: 'Mousse de Chocolate con Frutilla',
       description: 'Crema helada tipo mousse de chocolate con frutilla natural',
-      image: mousseChocolateYFrutilla,
-      price: 3.50,
+      image: 'flavors/mousse_de_chocolate_con_frutilla.jpg',
     },
   ];
 
@@ -58,7 +51,7 @@ const Flavors = () => {
       <div className='row g-4 pt-4'>
         {flavors.length > 0 ? (
           flavors.map((flavor, index) => (
-            <ProductCard
+            <SimpleProductCard
               className="col-lg-3 col-md-6 mb-4"
               key={flavor.id} 
               product={flavor} 
@@ -72,9 +65,9 @@ const Flavors = () => {
       </div>
 
       <button className="btn btn-lg btn-dark mt-2 hvr-grow-shadow">
-        <a href="#">
-          Ver más sabores <i className="fa-solid fa-arrow-right"></i>
-        </a>
+        <Link to='/flavors'>
+          Armá tu balde personalizado <i className="fa-solid fa-arrow-right"></i>
+        </Link>
       </button>
     </section>
   );

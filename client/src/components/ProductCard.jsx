@@ -2,19 +2,40 @@ import { useState } from 'react';
 import styles from '../styles/ProductCard.module.css';
 import { useCart } from '../context/useCart';
 
+// Dynamic import all images from assets folder at build time
+const imageModules = import.meta.glob('../assets/**/*.{jpg,png,webp}');
+
 const ProductCard = ({ product, ...props }) => {
   const [quantity, setQuantity] = useState(1);
   const [visibleDescriptions, setVisibleDescriptions] = useState(false);
   const { addToCart } = useCart();
+  const [imageSrc, setImageSrc] = useState('');
 
+  // Load image dynamically
+  useState(() => {
+    if (product?.image) {
+      const loadImage = async () => {
+        try {
+          // Remove any leading dots/slashes from the path
+          const cleanPath = product.image.replace(/^\.+\//, '');
+          const imagePath = `../assets/${cleanPath}`;
+          const module = await imageModules[imagePath]();
+          setImageSrc(module.default);
+        } catch (err) {
+          console.error('Error loading image:', err);
+          setImageSrc(''); // Fallback to empty or placeholder
+        }
+      };
+      loadImage();
+    }
+  }, [product?.image]);
 
-  // Ensure product is defined and has the required properties
   if (!product) {
     console.error('Product is undefined or null');
     return <div>No product data available.</div>;
   }
 
-  const { id, image, name, description, price } = product;
+  const { id, name, description, price } = product;
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
@@ -42,16 +63,17 @@ const ProductCard = ({ product, ...props }) => {
     <div {...props}>
       <div className={`card my-3 ${styles.productCard}`}>
         <div
-          // onClick={toggleDescription}
           onClick={() => toggleDescription(id)}
           style={{ cursor: 'pointer' }}
         >
           <div className={styles.imageContainer}>
-            <img
-              src={image}
-              alt={name}
-              className={`card-img-top ${styles.productImage}`}
-            />
+            {imageSrc && (
+              <img
+                src={imageSrc}
+                alt={name}
+                className={`card-img-top ${styles.productImage}`}
+              />
+            )}
             {/* Info Icon */}
             <i className={`fa-solid fa-info-circle fa-2x ${styles.infoIcon}`}></i>
 
