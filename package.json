@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://icarlota99.github.io/heladeriasaloha_madryn",
+  "homepage": "https://icarlota99.github.io/heladeriasaloha_madryn/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
