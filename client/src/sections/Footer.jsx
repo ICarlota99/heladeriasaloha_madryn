@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
       <div className='text-center pt-5 pb-1'>
         <p className="copyright">©2024 ALOSURMORA.SA Todos los derechos reservados</p>
-        <p>Diseñado y desarrollado por <a className='light-link' href="">ICarlota99</a></p>
+        <p>Diseñado y desarrollado por <a className='light-link' href='https://github.com/ICarlota99'>ICarlota99</a></p>
       </div>
     </div>
   )
