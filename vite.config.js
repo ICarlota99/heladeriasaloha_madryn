@@ -10,6 +10,9 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    outDir: 'build',
+  },
   base: '/heladeriasaloha_madryn/',
   esbuild: {
     loader: 'jsx'
