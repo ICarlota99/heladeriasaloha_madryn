@@ -1,0 +1,236 @@
+{
+    "categories": [
+      { "id": 1, "name": "cakes" },
+      { "id": 2, "name": "cones" },
+      { "id": 3, "name": "desserts" },
+      { "id": 4, "name": "flavors" },
+      { "id": 5, "name": "pints" }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Torta de Chocolate",
+        "description": "Crema helada de chocolate y dulce de leche granizado con salsa de chocolate",
+        "price": 3.50,
+        "image": "tortas_heladas/torta_chocolate.jpg",
+        "in_stock": true,
+        "category_id": 1
+      },
+      {
+        "id": 2,
+        "name": "Torta Chocorrica",
+        "description": "El sabor de la torta más rica",
+        "price": 4.00,
+        "image": "tortas_heladas/torta_chocorrica.jpg",
+        "in_stock": true,
+        "category_id": 1
+      },
+      {
+        "id": 3,
+        "name": "Torta de Frutilla",
+        "description": "Crema helada de americana y frutilla con salsa de frutilla",
+        "price": 3.50,
+        "image": "tortas_heladas/torta_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 1
+      },
+      {
+        "id": 4,
+        "name": "Torta Osada",
+        "description": "Crema helada de americana con galletitas de chocolate y crema helada de chocolates con pionono, decorada con dulce de leche y galletitas de chocolate",
+        "price": 3.50,
+        "image": "tortas_heladas/torta_osada.jpg",
+        "in_stock": true,
+        "category_id": 1
+      },
+      {
+        "id": 5,
+        "name": "Alfajor Black Granizado",
+        "description": "Alfajor de crema helada de americana granizada con dulce de leche, galletita de chocolate y baño de chocolate",
+        "price": 3.50,
+        "image": "postres_helados/alfajor_americana.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 6,
+        "name": "Alfajor Black Dulce de Leche",
+        "description": "Alfajor de crema helada de dulce de leche con dulce de leche, galletita de chocolate y baño de chocolate",
+        "price": 3.50,
+        "image": "postres_helados/alfajor_dulceleche.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 7,
+        "name": "Barrita Voodoo",
+        "description": "Barrita de helada de crema americana con salsa de dulce de leche cubierta con chocolate",
+        "price": 3.50,
+        "image": "postres_helados/barrita_voodoo.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 8,
+        "name": "Gran Bombón Escocés",
+        "description": "Crema helada de americana y chocolate con centro de dulce de leche natural y bañado de chocolate con crocante de maní",
+        "price": 3.50,
+        "image": "postres_helados/escoces_dark.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 9,
+        "name": "Bombón Suizo",
+        "description": "Helado de americana y dulce de leche bañado con chocolate",
+        "price": 3.50,
+        "image": "postres_helados/bombon_suizo.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 10,
+        "name": "Almendrado",
+        "description": "Crema helada de vainilla con crocante de maní y almendras",
+        "price": 3.50,
+        "image": "postres_helados/almendrado.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 11,
+        "name": "Finery Banana Split",
+        "description": "Crema helada de banana con corazón de dulce de leche y decorado de chocolate",
+        "price": 3.50,
+        "image": "postres_helados/finery_banana_split.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 12,
+        "name": "Finery Frutilla",
+        "description": "Crema helada de frutilla y americana con corazon de salsa de frutilla",
+        "price": 3.50,
+        "image": "postres_helados/finery_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 13,
+        "name": "Majestuoso Clásico",
+        "description": "Crema helada de dulce de leche, chocolate y americana con corazón de dulce de leche y trocitos de chocolate",
+        "price": 3.50,
+        "image": "postres_helados/majestuoso.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 14,
+        "name": "Mini Kúa Frutilla",
+        "description": "Copa helada de frutilla y americana",
+        "price": 3.50,
+        "image": "postres_helados/kua_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 15,
+        "name": "Mini Kúa Dulce de Leche",
+        "description": "Copa helada de dulce de leche y vainilla",
+        "price": 3.50,
+        "image": "postres_helados/kua_dulceleche.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 16,
+        "name": "Mini-Cake Osada",
+        "description": "Copa de Crema helada Americana con dulce de leche y galletitas de chocolate",
+        "price": 3.50,
+        "image": "postres_helados/mini_osada.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 17,
+        "name": "Trihelado",
+        "description": "Postre de crema helada de chocolate, frutilla y vainilla",
+        "price": 3.50,
+        "image": "postres_helados/trihelado_napolitano.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 18,
+        "name": "WaiCup Frutilla y Americana",
+        "description": "Copa de Crema helada de Americana, salsa de frutilla y cereal con baño de chocolate blanco",
+        "price": 3.50,
+        "image": "postres_helados/waicup_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 19,
+        "name": "WaiCup Banana Split",
+        "description": "Copa de Crema helada de banana con dulce de leche y granas de chocolate",
+        "price": 3.50,
+        "image": "postres_helados/waicup_banana.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 20,
+        "name": "WaiCup Frambuesa Granizada",
+        "description": "Copa de helado de frambuesa granizada con chocolate, salsa de frutilla y salsa de frambuesa",
+        "price": 3.50,
+        "image": "postres_helados/waicup_frambuesa.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 21,
+        "name": "Touch Me Menta",
+        "description": "Bomboncitos helados bañados en chocolate",
+        "price": 3.50,
+        "image": "postres_helados/touchme_menta.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 22,
+        "name": "Touch Me Frambuesa",
+        "description": "Bomboncitos helados bañados en chocolate",
+        "price": 3.50,
+        "image": "postres_helados/touchme_frambuesa.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 23,
+        "name": "Touch Me Americana",
+        "description": "Bomboncitos helados bañados en chocolate",
+        "price": 3.50,
+        "image": "postres_helados/touchme_americana.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 24,
+        "name": "Touch Me Dulce de Leche",
+        "description": "Bomboncitos helados bañados en chocolate",
+        "price": 3.50,
+        "image": "postres_helados/touchme_dulceleche.jpg",
+        "in_stock": true,
+        "category_id": 3
+      },
+      {
+        "id": 25,
+        "name": "Gran Bombón Escocés Blanco",
+        "description": "Crema helada de americana y chocolate con centro de dulce de leche natural y bañado de chocolate con crocante de maní",
+        "price": 3.50,
+        "image": "postres_helados/escoces_blanco.jpg",
+        "in_stock": true,
+        "category_id": 3
+      }
+    ]
+  }

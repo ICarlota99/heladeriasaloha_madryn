@@ -1,0 +1,249 @@
+[
+  {
+    "category": "Dulces de Leche",
+    "flavors": [
+      {
+        "id": "dl-01",
+        "name": "Dulce de leche",
+        "image": "/assets/sabores/dulce-leche.jpg"
+      },
+      {
+        "id": "dl-02",
+        "name": "Dulce de leche granizado",
+        "image": "/assets/sabores/dulce-leche-granizado.jpg"
+      },
+      {
+        "id": "dl-03",
+        "name": "Dulce de leche tentación",
+        "image": "/assets/sabores/dulce-tentacion.jpg"
+      },
+      {
+        "id": "dl-04",
+        "name": "Super dulce de leche",
+        "image": "/assets/sabores/super-dulce-leche.jpg"
+      },
+      {
+        "id": "dl-05",
+        "name": "Dulce de leche con Brownie",
+        "image": "/assets/sabores/dulce-brownie.jpg"
+      },
+      {
+        "id": "dl-06",
+        "name": "Dulce de leche con nuez",
+        "image": "/assets/sabores/dulce-nuez.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Cremas",
+    "flavors": [
+      {
+        "id": "cr-01",
+        "name": "Frutilla a la crema",
+        "image": "/assets/sabores/frutilla-crema.jpg"
+      },
+      {
+        "id": "cr-02",
+        "name": "Frutilla a la reina",
+        "image": "/assets/sabores/frutilla-reina.jpg"
+      },
+      {
+        "id": "cr-03",
+        "name": "Cereza a la crema",
+        "image": "/assets/sabores/cereza-crema.jpg"
+      },
+      {
+        "id": "cr-04",
+        "name": "Frutos del bosque",
+        "image": "/assets/sabores/frutos-bosque.jpg"
+      },
+      {
+        "id": "cr-05",
+        "name": "Vainilla",
+        "image": "/assets/sabores/vainilla.jpg"
+      },
+      {
+        "id": "cr-06",
+        "name": "Mousse de maracuyá",
+        "image": "/assets/sabores/maracuya.jpg"
+      },
+      {
+        "id": "cr-07",
+        "name": "Granizado",
+        "image": "/assets/sabores/granizado.jpg"
+      },
+      {
+        "id": "cr-08",
+        "name": "Sambayón",
+        "image": "/assets/sabores/sambayon.jpg"
+      },
+      {
+        "id": "cr-09",
+        "name": "Americana",
+        "image": "/assets/sabores/americana.jpg"
+      },
+      {
+        "id": "cr-10",
+        "name": "Crema rusa",
+        "image": "/assets/sabores/crema-rusa.jpg"
+      },
+      {
+        "id": "cr-11",
+        "name": "Crema Óreo",
+        "image": "/assets/sabores/crema-oreo.jpg"
+      },
+      {
+        "id": "cr-12",
+        "name": "Crema del cielo",
+        "image": "/assets/sabores/crema-cielo.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Frutales",
+    "flavors": [
+      {
+        "id": "fr-01",
+        "name": "Limón",
+        "image": "/assets/sabores/limon.jpg"
+      },
+      {
+        "id": "fr-02",
+        "name": "Banana",
+        "image": "/assets/sabores/banana.jpg"
+      },
+      {
+        "id": "fr-03",
+        "name": "Ananá",
+        "image": "/assets/sabores/anana.jpg"
+      },
+      {
+        "id": "fr-04",
+        "name": "Durazno",
+        "image": "/assets/sabores/durazno.jpg"
+      },
+      {
+        "id": "fr-05",
+        "name": "Frutilla al natural",
+        "image": "/assets/sabores/frutilla-natural.jpg"
+      },
+      {
+        "id": "fr-06",
+        "name": "Frambuesa",
+        "image": "/assets/sabores/frambuesa.jpg"
+      },
+      {
+        "id": "fr-07",
+        "name": "Frutos de estación",
+        "image": "/assets/sabores/frutos-estacion.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Chocolates",
+    "flavors": [
+      {
+        "id": "ch-01",
+        "name": "Chocolate",
+        "image": "/assets/sabores/chocolate.jpg"
+      },
+      {
+        "id": "ch-02",
+        "name": "Chocolate con almendras",
+        "image": "/assets/sabores/chocolate-almendras.jpg"
+      },
+      {
+        "id": "ch-03",
+        "name": "Chocolate blanco",
+        "image": "/assets/sabores/chocolate-blanco.jpg"
+      },
+      {
+        "id": "ch-04",
+        "name": "Chocolate nevado",
+        "image": "/assets/sabores/chocolate-nevado.jpg"
+      },
+      {
+        "id": "ch-05",
+        "name": "Chocolate extra black",
+        "image": "/assets/sabores/chocolate-black.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Especiales",
+    "flavors": [
+      {
+        "id": "es-01",
+        "name": "Banana Split",
+        "image": "/assets/sabores/banana-split.jpg"
+      },
+      {
+        "id": "es-02",
+        "name": "Flan con dulce de leche",
+        "image": "/assets/sabores/flan-dulce.jpg"
+      },
+      {
+        "id": "es-03",
+        "name": "Mascarpone con frutos del bosque",
+        "image": "/assets/sabores/mascarpone.jpg"
+      },
+      {
+        "id": "es-04",
+        "name": "Tramontana",
+        "image": "/assets/sabores/tramontana.jpg"
+      },
+      {
+        "id": "es-05",
+        "name": "Tiramisú",
+        "image": "/assets/sabores/tiramisu.jpg"
+      },
+      {
+        "id": "es-06",
+        "name": "Mantecol",
+        "image": "/assets/sabores/mantecol.jpg"
+      },
+      {
+        "id": "es-07",
+        "name": "Crema Marroc",
+        "image": "/assets/sabores/marroc.jpg"
+      },
+      {
+        "id": "es-08",
+        "name": "Ferrero Rocher",
+        "image": "/assets/sabores/ferrero.jpg"
+      },
+      {
+        "id": "es-09",
+        "name": "Bananita",
+        "image": "/assets/sabores/bananita.jpg"
+      },
+      {
+        "id": "es-10",
+        "name": "Selva Negra",
+        "image": "/assets/sabores/selva-negra.jpg"
+      },
+      {
+        "id": "es-11",
+        "name": "Yogurt con Maracuyá",
+        "image": "/assets/sabores/yogurt-maracuya.jpg"
+      },
+      {
+        "id": "es-12",
+        "name": "Alfajor Marplatense",
+        "image": "/assets/sabores/alfajor-marplatense.jpg"
+      },
+      {
+        "id": "es-13",
+        "name": "Crema Unicornio (uva, frutilla y crema del cielo) ¡Nuevo Sabor!",
+        "image": "/assets/sabores/unicornio.jpg",
+        "new": true
+      },
+      {
+        "id": "es-14",
+        "name": "Kinotos al Whisky ¡Nuevo Sabor!",
+        "image": "/assets/sabores/kinotos-whisky.jpg",
+        "new": true
+      }
+    ]
+  }
+]
