@@ -1,0 +1,56 @@
+.saboresContainer {
+    max-width: 1200px;
+  }
+  
+  .sizeSelection {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .flavorSelection {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .flavorCard {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+  
+  .flavorCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flavorCard.selected {
+    border: 3px solid #212529;
+    background-color: #f1f1f1;
+  }
+  
+  .flavorImageContainer {
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  
+  .flavorImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .cartActions {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .flavorImageContainer {
+      height: 120px;
+    }
+  }
