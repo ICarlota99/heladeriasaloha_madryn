@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import productsData from '../data/products.json';
 
 const Products = () => {
-  const { category } = useParams(); // Get the category from the URL
+  const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
-  // Map category values to their corresponding h1 text
   const categoryToH1 = {
     cakes: 'Tortas Heladas',
     cones: 'Conos y Paletas',
@@ -18,7 +18,6 @@ const Products = () => {
     pints: 'Pintas y Baldes',
   };
 
-  // Get the h1 text based on the category, or default to the category name if not found
   const h1Text = categoryToH1[category] || category.replace(/_/g, ' ');
 
   useEffect(() => {
@@ -28,23 +27,25 @@ const Products = () => {
       easing: 'ease-in-sine',
     });
 
-    // Fetch products for the selected category
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(`http://localhost:5000/api/products/${category}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
-        setProducts(data);
-        setError(null); 
-        console.log('Products:', data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    }
-    fetchProducts();
+    // Filter and sort products
+    const filteredProducts = productsData.products
+      .filter((product) => product.category_id === getCategoryId(category))
+      .sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically
+    
+    setProducts(filteredProducts);
   }, [category]);
+
+  // Helper function to map category names to their IDs
+  const getCategoryId = (categoryName) => {
+    const categoryMap = {
+      cakes: 1,
+      cones: 2,
+      desserts: 3,
+      flavors: 4,
+      pints: 5
+    };
+    return categoryMap[categoryName];
+  };
 
   return (
     <div className='text-center container-fluid mt-5'>
