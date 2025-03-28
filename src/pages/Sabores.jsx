@@ -17,28 +17,35 @@ const Sabores = () => {
       size: '1kg', 
       label: 'Balde 1kg', 
       maxFlavors: 4, 
-      price: 2500, 
+      price: 13000, 
       image: '/assets/baldes/1kg.jpg'
+    },
+    {
+      size: '3/4kg',
+      label: 'Balde 3/4kg',
+      maxFlavors: 4,
+      price: 11000,
+      image: '/assets/baldes/3/4kg.jpg'
     },
     { 
       size: '1/2kg', 
       label: 'Balde 1/2kg', 
       maxFlavors: 3, 
-      price: 1500, 
+      price: 7500, 
       image: '/assets/baldes/0.5kg.jpg' 
     },
     { 
       size: '1/4kg', 
       label: 'Balde 1/4kg', 
       maxFlavors: 2, 
-      price: 800, 
+      price: 5000, 
       image: '/assets/baldes/0.25kg.jpg' 
     },
   ];
 
   // Cone options (empty cones to go with buckets)
   const coneOptions = {
-    price: 100,
+    price: 250,
     label: 'Conos vacíos'
   };
 
@@ -156,7 +163,7 @@ const Sabores = () => {
               {saboresData.map((category) => (
                 <li className="nav-item" key={category.category}>
                   <button
-                    className={`nav-link ${activeCategory === category.category ? 'active' : ''}`}
+                    className={`nav-link text-dark ${activeCategory === category.category ? 'active' : ''}`}
                     onClick={() => setActiveCategory(category.category)}
                   >
                     {category.category}
