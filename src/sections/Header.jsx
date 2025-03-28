@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'; 
 import logo from '../assets/logo.svg';
 import { useCart } from '../context/useCart';
+import '../styles/Header.css';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -58,7 +59,7 @@ const Header = () => {
                 <HashLink to="/#products" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Productos
                 </HashLink>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu dropdown-menu-custom">
                   <li>
                     <Link to="category/cones" className="dropdown-item">
                       Conos y paletas
