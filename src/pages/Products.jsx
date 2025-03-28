@@ -29,8 +29,10 @@ const Products = () => {
 
     // Filter and sort products
     const filteredProducts = productsData.products
-      .filter((product) => product.category_id === getCategoryId(category))
-      .sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically
+      // Check if it´s in stock
+      .filter((product) => product.category_id === getCategoryId(category) && product.in_stock)
+      // Sort alphabetically
+      .sort((a, b) => a.name.localeCompare(b.name));
     
     setProducts(filteredProducts);
   }, [category]);
