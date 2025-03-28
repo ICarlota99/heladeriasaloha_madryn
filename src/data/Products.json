@@ -11,7 +11,7 @@
         "id": 1,
         "name": "Torta de Chocolate",
         "description": "Crema helada de chocolate y dulce de leche granizado con salsa de chocolate",
-        "price": 3.50,
+        "price": 20950,
         "image": "tortas_heladas/torta_chocolate.jpg",
         "in_stock": true,
         "category_id": 1
@@ -20,7 +20,7 @@
         "id": 2,
         "name": "Torta Chocorrica",
         "description": "El sabor de la torta más rica",
-        "price": 4.00,
+        "price": 20950,
         "image": "tortas_heladas/torta_chocorrica.jpg",
         "in_stock": true,
         "category_id": 1
@@ -29,7 +29,7 @@
         "id": 3,
         "name": "Torta de Frutilla",
         "description": "Crema helada de americana y frutilla con salsa de frutilla",
-        "price": 3.50,
+        "price": 20950,
         "image": "tortas_heladas/torta_frutilla.jpg",
         "in_stock": true,
         "category_id": 1
@@ -38,7 +38,7 @@
         "id": 4,
         "name": "Torta Osada",
         "description": "Crema helada de americana con galletitas de chocolate y crema helada de chocolates con pionono, decorada con dulce de leche y galletitas de chocolate",
-        "price": 3.50,
+        "price": 20950,
         "image": "tortas_heladas/torta_osada.jpg",
         "in_stock": true,
         "category_id": 1
@@ -47,7 +47,7 @@
         "id": 5,
         "name": "Alfajor Black Granizado",
         "description": "Alfajor de crema helada de americana granizada con dulce de leche, galletita de chocolate y baño de chocolate",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/alfajor_americana.jpg",
         "in_stock": true,
         "category_id": 3
@@ -56,7 +56,7 @@
         "id": 6,
         "name": "Alfajor Black Dulce de Leche",
         "description": "Alfajor de crema helada de dulce de leche con dulce de leche, galletita de chocolate y baño de chocolate",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/alfajor_dulceleche.jpg",
         "in_stock": true,
         "category_id": 3
@@ -65,7 +65,7 @@
         "id": 7,
         "name": "Barrita Voodoo",
         "description": "Barrita de helada de crema americana con salsa de dulce de leche cubierta con chocolate",
-        "price": 3.50,
+        "price": 1400,
         "image": "postres_helados/barrita_voodoo.jpg",
         "in_stock": true,
         "category_id": 3
@@ -74,7 +74,7 @@
         "id": 8,
         "name": "Gran Bombón Escocés",
         "description": "Crema helada de americana y chocolate con centro de dulce de leche natural y bañado de chocolate con crocante de maní",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/escoces_dark.jpg",
         "in_stock": true,
         "category_id": 3
@@ -83,16 +83,16 @@
         "id": 9,
         "name": "Bombón Suizo",
         "description": "Helado de americana y dulce de leche bañado con chocolate",
-        "price": 3.50,
+        "price": 0,
         "image": "postres_helados/bombon_suizo.jpg",
-        "in_stock": true,
+        "in_stock": false,
         "category_id": 3
       },
       {
         "id": 10,
         "name": "Almendrado",
-        "description": "Crema helada de vainilla con crocante de maní y almendras",
-        "price": 3.50,
+        "description": "Crema helada de vainilla con crocante de maní y almendras. 8 porciones",
+        "price": 12700,
         "image": "postres_helados/almendrado.jpg",
         "in_stock": true,
         "category_id": 3
@@ -101,7 +101,7 @@
         "id": 11,
         "name": "Finery Banana Split",
         "description": "Crema helada de banana con corazón de dulce de leche y decorado de chocolate",
-        "price": 3.50,
+        "price": 14700,
         "image": "postres_helados/finery_banana_split.jpg",
         "in_stock": true,
         "category_id": 3
@@ -110,7 +110,7 @@
         "id": 12,
         "name": "Finery Frutilla",
         "description": "Crema helada de frutilla y americana con corazon de salsa de frutilla",
-        "price": 3.50,
+        "price": 14700,
         "image": "postres_helados/finery_frutilla.jpg",
         "in_stock": true,
         "category_id": 3
@@ -119,7 +119,7 @@
         "id": 13,
         "name": "Majestuoso Clásico",
         "description": "Crema helada de dulce de leche, chocolate y americana con corazón de dulce de leche y trocitos de chocolate",
-        "price": 3.50,
+        "price": 18700,
         "image": "postres_helados/majestuoso.jpg",
         "in_stock": true,
         "category_id": 3
@@ -128,7 +128,7 @@
         "id": 14,
         "name": "Mini Kúa Frutilla",
         "description": "Copa helada de frutilla y americana",
-        "price": 3.50,
+        "price": 1600,
         "image": "postres_helados/kua_frutilla.jpg",
         "in_stock": true,
         "category_id": 3
@@ -137,7 +137,7 @@
         "id": 15,
         "name": "Mini Kúa Dulce de Leche",
         "description": "Copa helada de dulce de leche y vainilla",
-        "price": 3.50,
+        "price": 1600,
         "image": "postres_helados/kua_dulceleche.jpg",
         "in_stock": true,
         "category_id": 3
@@ -146,7 +146,7 @@
         "id": 16,
         "name": "Mini-Cake Osada",
         "description": "Copa de Crema helada Americana con dulce de leche y galletitas de chocolate",
-        "price": 3.50,
+        "price": 1600,
         "image": "postres_helados/mini_osada.jpg",
         "in_stock": true,
         "category_id": 3
@@ -155,7 +155,7 @@
         "id": 17,
         "name": "Trihelado",
         "description": "Postre de crema helada de chocolate, frutilla y vainilla",
-        "price": 3.50,
+        "price": 13400,
         "image": "postres_helados/trihelado_napolitano.jpg",
         "in_stock": true,
         "category_id": 3
@@ -164,7 +164,7 @@
         "id": 18,
         "name": "WaiCup Frutilla y Americana",
         "description": "Copa de Crema helada de Americana, salsa de frutilla y cereal con baño de chocolate blanco",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/waicup_frutilla.jpg",
         "in_stock": true,
         "category_id": 3
@@ -173,7 +173,7 @@
         "id": 19,
         "name": "WaiCup Banana Split",
         "description": "Copa de Crema helada de banana con dulce de leche y granas de chocolate",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/waicup_banana.jpg",
         "in_stock": true,
         "category_id": 3
@@ -182,7 +182,7 @@
         "id": 20,
         "name": "WaiCup Frambuesa Granizada",
         "description": "Copa de helado de frambuesa granizada con chocolate, salsa de frutilla y salsa de frambuesa",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/waicup_frambuesa.jpg",
         "in_stock": true,
         "category_id": 3
@@ -191,7 +191,7 @@
         "id": 21,
         "name": "Touch Me Menta",
         "description": "Bomboncitos helados bañados en chocolate",
-        "price": 3.50,
+        "price": 4500,
         "image": "postres_helados/touchme_menta.jpg",
         "in_stock": true,
         "category_id": 3
@@ -200,7 +200,7 @@
         "id": 22,
         "name": "Touch Me Frambuesa",
         "description": "Bomboncitos helados bañados en chocolate",
-        "price": 3.50,
+        "price": 4500,
         "image": "postres_helados/touchme_frambuesa.jpg",
         "in_stock": true,
         "category_id": 3
@@ -209,7 +209,7 @@
         "id": 23,
         "name": "Touch Me Americana",
         "description": "Bomboncitos helados bañados en chocolate",
-        "price": 3.50,
+        "price": 4500,
         "image": "postres_helados/touchme_americana.jpg",
         "in_stock": true,
         "category_id": 3
@@ -218,7 +218,7 @@
         "id": 24,
         "name": "Touch Me Dulce de Leche",
         "description": "Bomboncitos helados bañados en chocolate",
-        "price": 3.50,
+        "price": 4500,
         "image": "postres_helados/touchme_dulceleche.jpg",
         "in_stock": true,
         "category_id": 3
@@ -227,10 +227,289 @@
         "id": 25,
         "name": "Gran Bombón Escocés Blanco",
         "description": "Crema helada de americana y chocolate con centro de dulce de leche natural y bañado de chocolate con crocante de maní",
-        "price": 3.50,
+        "price": 2300,
         "image": "postres_helados/escoces_blanco.jpg",
         "in_stock": true,
         "category_id": 3
+      },
+      {
+        "id": 26,
+        "name": "Chocobana",
+        "description": "Palito sabor banana con cobertura chocolate negro.",
+        "price": 0,
+        "image": "conos/chocobana.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 27,
+        "name": "Cono Bola Americana",
+        "description": "Cono de crema helada americana con corazón de frutilla y baño de repostería.",
+        "price": 0,
+        "image": "conos/chocobana.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 28,
+        "name": "Cono Bola Dulce de Leche",
+        "description": "Cono de helado de dulce de leche con baño de repostería y maní crocante.",
+        "price": 0,
+        "image": "conos/chocobana.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 29,
+        "name": "Súper Bombón Crocante",
+        "description": "Palito de crema americana recubierto con baño de repostería maní y almendras.",
+        "price": 0,
+        "image": "conos/chocobana.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 30,
+        "name": "Fruhu Frutilla",
+        "description": "Helado de agua con pulpa de fruta",
+        "price": 1500,
+        "image": "conos/fruhu_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 31,
+        "name": "Fruhu Limón",
+        "description": "Helado de agua con pulpa de fruta",
+        "price": 1500,
+        "image": "conos/fruhu_limon.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 32,
+        "name": "Fruhu Maracuyá",
+        "description": "Helado de agua con pulpa de fruta",
+        "price": 1500,
+        "image": "conos/fruhu_maracuya.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 33,
+        "name": "Cono Osada",
+        "description": "Cono de crema helada americana con galletitas de chocolate y corazón de dulce de leche",
+        "price": 2500,
+        "image": "conos/osada_cono.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 34,
+        "name": "Paleta La 10",
+        "description": "Helado de agua con pulpa de fruta",
+        "price": 1700,
+        "image": "conos/la10.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 35,
+        "name": "Palito Bombón",
+        "description": "Palito de crema americana con baño de repostería",
+        "price": 2160,
+        "image": "conos/palito_bombon.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 36,
+        "name": "Grani Bom!",
+        "description": "Palito de crema granizada sabor crema americana",
+        "price": 1400,
+        "image": "conos/granibom.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 37,
+        "name": "Maxui Blanco",
+        "description": "Palito de crema sabor dulce de leche bañado en chocolate blanco",
+        "price": 2500,
+        "image": "conos/maxui_blanco.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 38,
+        "name": "Maxui Almendras",
+        "description": "Palito  de crema americana bañado en chocolate con almendras",
+        "price": 2500,
+        "image": "conos/maxui_almendras.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 39,
+        "name": "Maxui Choco Duo",
+        "description": "Palito de chocolate blanco y chocolate bañado en chocolate",
+        "price": 2500,
+        "image": "conos/maxui_duo.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 40,
+        "name": "Surfy Frutilla",
+        "description": "Helado de agua sabor frutilla",
+        "price": 650,
+        "image": "conos/surfy_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 41,
+        "name": "Surfy Uva",
+        "description": "Helado de agua sabor uva",
+        "price": 650,
+        "image": "conos/surfy_uva.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 42,
+        "name": "Surfy Ananá & Frutilla",
+        "description": "Helado de agua sabor ananá y frutilla",
+        "price": 650,
+        "image": "conos/surfy_anana.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 43,
+        "name": "Surfy Naranja & Frutilla",
+        "description": "Helado de agua sabor naranja y frutilla",
+        "price": 650,
+        "image": "conos/surfy_naranja.jpg",
+        "in_stock": true,
+        "category_id": 2
+      },
+      {
+        "id": 44,
+        "name": "Scrum Black",
+        "description": "Cono con helado de dulce de leche bañado en chocolate",
+        "price": 2500,
+        "image": "conos/scrum_black.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 45,
+        "name": "Scrum White",
+        "description": "Helado de agua sabor naranja y frutilla",
+        "price": 2500,
+        "image": "conos/scrum_white.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 46,
+        "name": "Scrum Dulce de Leche",
+        "description": "Cono con helado de crema americana con corazón de dulce de leche bañado en chocolate",
+        "price": 2500,
+        "image": "conos/scrum_dulceleche.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 47,
+        "name": "Cremissimo Frutilla",
+        "description": "Palito de crema helada sabor frutilla",
+        "price": 1400,
+        "image": "conos/cremissimo_frutilla.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 48,
+        "name": "Cremissimo Americana",
+        "description": "Palito de crema helada de americana",
+        "price": 1400,
+        "image": "conos/cremissimo_americana.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 49,
+        "name": "Cremissimo Dulce de Leche",
+        "description": "Palito de crema helada sabor dulce de leche",
+        "price": 1400,
+        "image": "conos/cremissimo_dulceleche.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 50,
+        "name": "Cremissimo Chocolate",
+        "description": "Palito de crema helada sabor chocolate",
+        "price": 1400,
+        "image": "conos/cremissimo_chocolate.jpg",
+        "in_stock": false,
+        "category_id": 2
+      },
+      {
+        "id": 51,
+        "name": "Pinta 350g Americana",
+        "description": "Pinta de crema helada de americana con frutos del bosque y merengues",
+        "price": 6500,
+        "image": "pintas/pinta_americana.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 52,
+        "name": "Pinta 350g Chocolate",
+        "description": "Pinta de crema helada de chocolate con maní",
+        "price": 6500,
+        "image": "pintas/pinta_chocolate.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 53,
+        "name": "Pinta 350g Osada",
+        "description": "Pinta de crema helada de americana con galletitas de chocolate",
+        "price": 6500,
+        "image": "pintas/pinta_osada.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 54,
+        "name": "Pinta 350g Dulce de Leche",
+        "description": "Pinta de crema helada de dulce de leche con granas de chocolate",
+        "price": 6500,
+        "image": "pintas/pinta_dulceleche.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 55,
+        "name": "Pinta Diet Americana & Frutilla",
+        "description": "Pinta de 1Lt de Americana y Frutilla",
+        "price": 8100,
+        "image": "pintas/pinta_diet_frutilla.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 56,
+        "name": "Pinta Diet Chocolate & Vainilla",
+        "description": "Pinta de 1Lt de Chocolate y Vainilla",
+        "price": 8100,
+        "image": "pintas/pinta_diet_choco.jpg",
+        "in_stock": true,
+        "category_id": 5
       }
     ]
   }
