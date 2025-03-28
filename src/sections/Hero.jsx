@@ -28,8 +28,8 @@ const Hero = () => {
               </div>
               <div data-aos="slide-up" data-aos-delay="400">
                 <button type="button" className="btn btn-lg btn-dark me-4 hvr-grow-shadow mt-2">
-                  <HashLink to="/cart/#order">
-                  Pedite el tuyo
+                  <HashLink to='/flavors#buckets'>
+                    Armá tu balde <i className="fa-solid fa-arrow-right"></i>
                   </HashLink>
                 </button>
                 <button type="button" className="btn btn-lg btn-light me-4 hvr-grow-shadow mt-2">
