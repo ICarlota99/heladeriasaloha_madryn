@@ -148,7 +148,7 @@ const CheckoutPage = () => {
               <h5 className="card-title">Información de contacto</h5>
               <form onSubmit={handleSubmit} >
                 <div className="mb-3">
-                  <label className="form-label">Nombre completo *</label>
+                  <label className="form-label">Nombre *</label>
                   <input
                     type="text"
                     className={`form-control ${errors.nombre ? 'is-invalid' : ''}`}
@@ -176,7 +176,7 @@ const CheckoutPage = () => {
                   {errors.telefono && <div className="invalid-feedback">{errors.telefono}</div>}
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Dirección de entrega</label>
+                  <label className="form-label">Dirección de entrega *</label>
                   <textarea
                     className={`form-control ${errors.direccion ? 'is-invalid' : ''}`}
                     id="direccion"
