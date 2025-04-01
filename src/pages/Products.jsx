@@ -26,7 +26,7 @@ const Products = () => {
       easing: 'ease-in-sine',
     });
 
-    // Fetch data from public/data/products.json
+    // Fetch data
     fetch('/data/products.json')
       .then((response) => {
         if (!response.ok) throw new Error('Failed to load products');

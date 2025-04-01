@@ -14,7 +14,7 @@ const Sabores = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    // Fetch data from public/data/sabores.json
+    // Fetch data
     fetch('/data/sabores.json')
       .then(response => {
         if (!response.ok) throw new Error('Failed to load flavors data');
