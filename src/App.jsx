@@ -10,6 +10,7 @@ import About from './pages/About';
 import Products from './pages/Products';
 import Footer from './sections/Footer';
 import WhatsAppButton from './components/WhatsappButton';
+import { SpeedInsights } from '@vercel/speed-insights';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         </Routes>
         <Footer />
         <WhatsAppButton />
+        <SpeedInsights />
       </Router>
     </CartProvider>
   )
