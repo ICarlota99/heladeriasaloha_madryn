@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import productsData from '../data/products.json';
 
 const Products = () => {
   const { category } = useParams();
@@ -27,14 +26,23 @@ const Products = () => {
       easing: 'ease-in-sine',
     });
 
-    // Filter and sort products
-    const filteredProducts = productsData.products
-      // Check if it´s in stock
-      .filter((product) => product.category_id === getCategoryId(category) && product.in_stock)
-      // Sort alphabetically
-      .sort((a, b) => a.name.localeCompare(b.name));
-    
-    setProducts(filteredProducts);
+    // Fetch data from public/data/products.json
+    fetch('/data/products.json')
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to load products');
+        return response.json();
+      })
+      .then((data) => {
+        // Filter and sort products
+        const filteredProducts = data.products
+          .filter((product) => product.category_id === getCategoryId(category) && product.in_stock)
+          .sort((a, b) => a.name.localeCompare(b.name));
+        setProducts(filteredProducts);
+      })
+      .catch((err) => {
+        console.error('Error loading products:', err);
+        setError(err.message);
+      });
   }, [category]);
 
   // Helper function to map category names to their IDs
@@ -52,6 +60,7 @@ const Products = () => {
   return (
     <div className='text-center container-fluid mt-5'>
       <h1>{h1Text}</h1>
+      {error && <p className="text-danger">{error}</p>}
       <div className='row'>
         {products.length > 0 ? (
           products.map((product, index) => (

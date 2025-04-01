@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
-import saboresData from '../data/sabores.json';
 import styles from '../styles/Sabores.module.css';
 
 const Sabores = () => {
@@ -9,7 +8,28 @@ const Sabores = () => {
   const [quantity, setQuantity] = useState(1);
   const [coneQuantity, setConeQuantity] = useState(0);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [saboresData, setSaboresData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { addToCart } = useCart();
+
+  useEffect(() => {
+    // Fetch data from public/data/sabores.json
+    fetch('/data/sabores.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to load flavors data');
+        return response.json();
+      })
+      .then(data => {
+        setSaboresData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error loading flavors:', err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
   // Bucket size options
   const bucketSizes = [
@@ -42,12 +62,6 @@ const Sabores = () => {
       image: '/assets/baldes/0.25kg.jpg' 
     },
   ];
-
-  // Cone options (empty cones to go with buckets)
-  const coneOptions = {
-    price: 250,
-    label: 'Conos vacíos'
-  };
 
   // Handle flavor selection
   const handleFlavorSelect = (flavorId) => {
@@ -108,12 +122,21 @@ const Sabores = () => {
     setActiveCategory(null);
   };
 
+  // Cone options (empty cones to go with buckets)
+  const coneOptions = {
+    price: 250,
+    label: 'Conos vacíos'
+  };
+
   // Calculate total price
   const calculateTotal = () => {
     if (!selectedSize) return 0;
     const sizeInfo = bucketSizes.find(s => s.size === selectedSize);
     return (sizeInfo.price * quantity) + (coneOptions.price * coneQuantity);
   };
+
+  if (loading) return <div className="text-center my-5">Cargando sabores...</div>;
+  if (error) return <div className="text-center my-5 text-danger">Error: {error}</div>;
 
   return (
     <div id='buckets' className={`container my-5 ${styles.saboresContainer}`}>
