@@ -1,39 +1,35 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "build"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
       }
-    ],
-    "routes": [
-      {
-        "src": "/data/(.*)",
-        "headers": {
-          "Content-Type": "application/json",
-          "Cache-Control": "public, max-age=3600, immutable"
-        },
-        "continue": true
-      },
-      {
-        "src": "/heladeriasaloha_madryn/(.*)",
-        "dest": "/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/index.html",
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate"
-        }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=3600, immutable"
       }
-    ],
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
       }
-    ]
-  }
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
