@@ -37,6 +37,7 @@ const CheckoutPage = () => {
 
   const validatePhone = (phone) => {
     if (!phone.trim()) return 'El teléfono es obligatorio';
+    if (!phone.length < 7) return 'El teléfono debe tener al menos 7 caracteres';
     if (!/^[0-9+()\s-]{8,20}$/.test(phone)) return 'Teléfono inválido';
     return '';
   };
