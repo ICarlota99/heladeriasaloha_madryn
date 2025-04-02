@@ -138,6 +138,8 @@ const Sabores = () => {
   if (loading) return <div className="text-center my-5">Cargando sabores...</div>;
   if (error) return <div className="text-center my-5 text-danger">Error: {error}</div>;
 
+  window.scrollTo(0, 0);
+  
   return (
     <div id='buckets' className={`container my-5 ${styles.saboresContainer}`}>
       <h2 className="text-center mb-4">Armá tu balde de helado</h2>
