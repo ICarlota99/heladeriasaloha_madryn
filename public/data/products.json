@@ -510,6 +510,78 @@
         "image": "pintas/pinta_diet_choco.jpg",
         "in_stock": true,
         "category_id": 5
+      },
+      {
+        "id": 57,
+        "name": "Balde 5Lt Chocolate/ Granizado/ Vainilla/ Dulce de Leche",
+        "description": "Crema helada de chocolate, granizado, vainilla y dulce de leche",
+        "price": 24000,
+        "image": "pintas/balde_choco_5lt.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 58,
+        "name": "Balde 5Lt Dulce de Leche Granizado/ Chocolate/ Americana/ Frutilla",
+        "description": "Crema helada de dulce de leche granizado, chocolate, americana y frutilla",
+        "price": 24000,
+        "image": "pintas/balde_dulceleche_5lt.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 59,
+        "name": "Balde 5Lt Banana Split/ Dulce de Leche/ Vainilla/ Tiramisú",
+        "description": "Crema helada de banana split, dulce de leche, vainilla y tiramisú",
+        "price": 24000,
+        "image": "pintas/balde_banana_5lt.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 60,
+        "name": "Balde 5Lt Frutilla/ Dulce de Leche/ Vainilla/ Tramontana",
+        "description": "Crema helada de frutilla, dulce de leche, vainilla y tramontana",
+        "price": 24000,
+        "image": "pintas/balde_frutilla_5lt.jpg",
+        "in_stock": true,
+        "category_id": 5
+      },
+      {
+        "id": 61,
+        "name": "Balde 3Lt Chocolate/ Granizado/ Vainilla/ Dulce de Leche",
+        "description": "Crema helada de chocolate, granizado, vainilla y dulce de leche",
+        "price": 0,
+        "image": "pintas/balde_choco_3lt.jpg",
+        "in_stock": false,
+        "category_id": 5
+      },
+      {
+        "id": 62,
+        "name": "Balde 3Lt Dulce de Leche Granizado/ Chocolate/ Americana/ Frutilla",
+        "description": "Crema helada de dulce de leche granizado, chocolate, americana y frutilla",
+        "price": 0,
+        "image": "pintas/balde_dulceleche_3lt.jpg",
+        "in_stock": false,
+        "category_id": 5
+      },
+      {
+        "id": 63,
+        "name": "Balde 3Lt Banana Split/ Dulce de Leche/ Vainilla/ Tiramisú",
+        "description": "Crema helada de banana split, dulce de leche, vainilla y tiramisú",
+        "price": 0,
+        "image": "pintas/balde_banana_3lt.jpg",
+        "in_stock": false,
+        "category_id": 5
+      },
+      {
+        "id": 64,
+        "name": "Balde 3Lt Frutilla/ Dulce de Leche/ Vainilla/ Tramontana",
+        "description": "Crema helada de frutilla, dulce de leche, vainilla y tramontana",
+        "price": 0,
+        "image": "pintas/balde_frutilla_3lt.jpg",
+        "in_stock": false,
+        "category_id": 5
       }
     ]
   }

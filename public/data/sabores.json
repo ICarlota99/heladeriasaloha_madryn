@@ -14,7 +14,7 @@
       },
       {
         "id": "dl-03",
-        "name": "Dulce de leche tentación",
+        "name": "Dulce de leche rhum",
         "image": "/assets/sabores/dulce-tentacion.jpg"
       },
       {
@@ -24,13 +24,13 @@
       },
       {
         "id": "dl-05",
-        "name": "Dulce de leche con Brownie",
+        "name": "Dulce de leche bombón",
         "image": "/assets/sabores/dulce-brownie.jpg"
       },
       {
         "id": "dl-06",
-        "name": "Dulce de leche con nuez",
-        "image": "/assets/sabores/dulce-nuez.jpg"
+        "name": "Chocorrica",
+        "image": "/assets/sabores/chocorrica.jpg"
       }
     ]
   },
@@ -39,43 +39,28 @@
     "flavors": [
       {
         "id": "cr-01",
-        "name": "Frutilla a la crema",
+        "name": "Crema rusa",
         "image": "/assets/sabores/frutilla-crema.jpg"
       },
       {
         "id": "cr-02",
-        "name": "Frutilla a la reina",
+        "name": "Crema vainilla",
         "image": "/assets/sabores/frutilla-reina.jpg"
       },
       {
         "id": "cr-03",
-        "name": "Cereza a la crema",
+        "name": "Crema del cielo",
         "image": "/assets/sabores/cereza-crema.jpg"
       },
       {
         "id": "cr-04",
-        "name": "Frutos del bosque",
+        "name": "Crema flan",
         "image": "/assets/sabores/frutos-bosque.jpg"
       },
       {
         "id": "cr-05",
-        "name": "Vainilla",
-        "image": "/assets/sabores/vainilla.jpg"
-      },
-      {
-        "id": "cr-06",
-        "name": "Mousse de maracuyá",
-        "image": "/assets/sabores/maracuya.jpg"
-      },
-      {
-        "id": "cr-07",
-        "name": "Granizado",
+        "name": "Granizado",  
         "image": "/assets/sabores/granizado.jpg"
-      },
-      {
-        "id": "cr-08",
-        "name": "Sambayón",
-        "image": "/assets/sabores/sambayon.jpg"
       },
       {
         "id": "cr-09",
@@ -84,8 +69,8 @@
       },
       {
         "id": "cr-10",
-        "name": "Crema rusa",
-        "image": "/assets/sabores/crema-rusa.jpg"
+        "name": "Crema Bon o Bon",
+        "image": "/assets/sabores/crema-bon-o-bon.jpg"
       },
       {
         "id": "cr-11",
@@ -94,8 +79,13 @@
       },
       {
         "id": "cr-12",
-        "name": "Crema del cielo",
-        "image": "/assets/sabores/crema-cielo.jpg"
+        "name": "Crema irlandesa",
+        "image": "/assets/sabores/crema-irlandesa.jpg"
+      },
+      {
+        "id": "cr-13",
+        "name": "Crema de almendras",
+        "image": "/assets/sabores/crema-almendras.jpg"
       }
     ]
   },
@@ -124,8 +114,8 @@
       },
       {
         "id": "fr-05",
-        "name": "Frutilla al natural",
-        "image": "/assets/sabores/frutilla-natural.jpg"
+        "name": "Frutilla al agua",
+        "image": "/assets/sabores/frutilla-al-agua.jpg"
       },
       {
         "id": "fr-06",
@@ -134,8 +124,38 @@
       },
       {
         "id": "fr-07",
-        "name": "Frutos de estación",
-        "image": "/assets/sabores/frutos-estacion.jpg"
+        "name": "Frutos del bosque",
+        "image": "/assets/sabores/frutos-del-bosque.jpg"
+      },
+      {
+        "id": "fr-08",
+        "name": "Banana Split",
+        "image": "/assets/sabores/banana-split.jpg"
+      },
+      {
+        "id": "fr-09",
+        "name": "Banana granizada",
+        "image": "/assets/sabores/banana-granizada.jpg"
+      },
+      {
+        "id": "fr-10",
+        "name": "Frutilla a la reina",
+        "image": "/assets/sabores/frutilla-reina.jpg"
+      },
+      {
+        "id": "fr-11",
+        "name": "Cereza a la crema",
+        "image": "/assets/sabores/cereza-crema.jpg"
+      },
+      {
+        "id": "fr-12",
+        "name": "Coco",
+        "image": "/assets/sabores/coco.jpg"
+      },
+      {
+        "id": "fr-13",
+        "name": "Fruhu",
+        "image": "/assets/sabores/fruhu.jpg"
       }
     ]
   },
@@ -164,8 +184,18 @@
       },
       {
         "id": "ch-05",
-        "name": "Chocolate extra black",
-        "image": "/assets/sabores/chocolate-black.jpg"
+        "name": "Bombón Rocher",
+        "image": "/assets/sabores/rocher.jpg"
+      },
+      {
+        "id": "ch-06",
+        "name": "Mousse de chocolate y frutilla",
+        "image": "/assets/saboresmouse-choco-frutilla.jpg"
+      },
+      {
+        "id": "ch-07",
+        "name": "Chocolate suizo",
+        "image": "/assets/sabores/chocolate-suizo.jpg"
       }
     ]
   },
@@ -174,17 +204,17 @@
     "flavors": [
       {
         "id": "es-01",
-        "name": "Banana Split",
-        "image": "/assets/sabores/banana-split.jpg"
+        "name": "Selva Negra",
+        "image": "/assets/sabores/selva-negra.jpg"
       },
       {
         "id": "es-02",
-        "name": "Flan con dulce de leche",
-        "image": "/assets/sabores/flan-dulce.jpg"
+        "name": "Tramontana",
+        "image": "/assets/sabores/tramontana.jpg"
       },
       {
         "id": "es-03",
-        "name": "Mascarpone con frutos del bosque",
+        "name": "Mascarpone con frutos rojos",
         "image": "/assets/sabores/mascarpone.jpg"
       },
       {
@@ -204,33 +234,18 @@
       },
       {
         "id": "es-07",
-        "name": "Crema Marroc",
-        "image": "/assets/sabores/marroc.jpg"
+        "name": "Campari con naranja",
+        "image": "/assets/sabores/campari.jpg"
       },
       {
         "id": "es-08",
-        "name": "Ferrero Rocher",
-        "image": "/assets/sabores/ferrero.jpg"
+        "name": "Sambayón",
+        "image": "/assets/sabores/sambayon.jpg"
       },
       {
         "id": "es-09",
-        "name": "Bananita",
-        "image": "/assets/sabores/bananita.jpg"
-      },
-      {
-        "id": "es-10",
-        "name": "Selva Negra",
-        "image": "/assets/sabores/selva-negra.jpg"
-      },
-      {
-        "id": "es-11",
-        "name": "Yogurt con Maracuyá",
-        "image": "/assets/sabores/yogurt-maracuya.jpg"
-      },
-      {
-        "id": "es-12",
-        "name": "Alfajor Marplatense",
-        "image": "/assets/sabores/alfajor-marplatense.jpg"
+        "name": "Menta granizada",
+        "image": "/assets/sabores/menta-granizada.jpg"
       },
       {
         "id": "es-13",
