@@ -42,8 +42,16 @@ to {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-.dropdown-menu-custom {
-    background: #2c3e50;
-    margin-top: 0.5rem;
-}
+    .dropdown-menu-custom {
+        background: #2c3e50;
+        margin-top: 0.5rem;
+    }
+    .navbar-toggler {
+        padding: 0;
+    }
+
+    /* Ensure cart badge is visible on dark background */
+    .dark-container .badge {
+    color: white !important;
+    }
 }
