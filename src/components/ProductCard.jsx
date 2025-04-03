@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/ProductCard.module.css';
 import { useCart } from '../context/useCart';
 
-// Dynamic import all images from assets folder at build time
 const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
 
 const ProductCard = ({ product, ...props }) => {
@@ -10,60 +9,64 @@ const ProductCard = ({ product, ...props }) => {
   const [visibleDescriptions, setVisibleDescriptions] = useState(false);
   const { addToCart } = useCart();
   const [imageSrc, setImageSrc] = useState('');
+  const [showFlavorModal, setShowFlavorModal] = useState(false);
+  const [selectedFlavor, setSelectedFlavor] = useState('');
 
   // Load image dynamically
-  useState(() => {
+  useEffect(() => {
     if (product?.image) {
       const loadImage = async () => {
         try {
-          // Remove any leading dots/slashes from the path
           const cleanPath = product.image.replace(/^\.+\//, '');
           const imagePath = `../assets/${cleanPath}`;
           const module = await imageModules[imagePath]();
           setImageSrc(module.default);
         } catch (err) {
           console.error('Error loading image:', err);
-          setImageSrc(''); // Fallback to empty or placeholder
+          setImageSrc('');
         }
       };
       loadImage();
     }
   }, [product?.image]);
 
-  if (!product) {
-    console.error('Product is undefined or null');
-    return <div>No product data available.</div>;
-  }
+  useEffect(() => {
+    // Set default flavor when modal opens
+    if (showFlavorModal && product.flavors?.length > 0) {
+      setSelectedFlavor(product.flavors[0]);
+    }
+  }, [showFlavorModal, product.flavors]);
 
-  const { id, name, description, price } = product;
-
-  const handleIncrement = () => {
-    setQuantity((prev) => prev + 1);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
+  const handleAddToCart = () => {
+    if (product.flavors && product.flavors.length > 0) {
+      setShowFlavorModal(true);
+    } else {
+      addToCart({ ...product }, quantity);
+      setQuantity(1);
     }
   };
 
-  const handleAddToCart = () => {
-    addToCart(product, quantity);
-    setQuantity(1); // Reset quantity after adding to cart
+  const confirmFlavorSelection = () => {
+    addToCart({ 
+      ...product,
+      selectedFlavor: selectedFlavor 
+    }, quantity);
+    setShowFlavorModal(false);
+    setQuantity(1);
   };
 
-  const toggleDescription = (id) => {
-    setVisibleDescriptions((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
+  if (!product) {
+    return <div>No product data available.</div>;
+  }
+
+  const { id, name, description, price, flavors } = product;
 
   return (
     <div {...props}>
       <div className={`card my-3 ${styles.productCard}`}>
-        <div
-          onClick={() => toggleDescription(id)}
+        {/* Product Image and Info */}
+        <div 
+          onClick={() => setVisibleDescriptions(!visibleDescriptions)} 
           style={{ cursor: 'pointer' }}
         >
           <div className={styles.imageContainer}>
@@ -74,15 +77,10 @@ const ProductCard = ({ product, ...props }) => {
                 className={`card-img-top ${styles.productImage}`}
               />
             )}
-            {/* Info Icon */}
             <i className={`fa-solid fa-info-circle fa-2x ${styles.infoIcon}`}></i>
-
-            {(visibleDescriptions[id] || styles.overlayHover) && (
-              <div
-                className={`${styles.overlay} ${
-                  visibleDescriptions[id] ? styles.overlayVisible : ''
-                }`}
-              >
+            
+            {visibleDescriptions && (
+              <div className={`${styles.overlay} ${visibleDescriptions ? styles.overlayVisible : ''}`}>
                 <p className={styles.description}>{description}</p>
               </div>
             )}
@@ -90,28 +88,100 @@ const ProductCard = ({ product, ...props }) => {
           <div className="card-body pt-3">
             <h5 className="card-title">{name}</h5>
             <p className="card-text">Precio: ARS {price}</p>
+            {flavors && (
+              <p className="text-muted small">
+                {flavors.length} {flavors.length === 1 ? 'sabor' : 'sabores'} disponible{flavors.length > 1 ? 's' : ''}
+              </p>
+            )}
           </div>
         </div>
-        <div className='pb-3'>
-          <button onClick={handleDecrement} className={styles.quantityButton} aria-label="Decrease quantity">
+        
+        {/* Quantity and Add to Cart */}
+        <div className='pb-3 d-flex align-items-center justify-content-center'>
+          <button 
+            onClick={() => setQuantity(q => Math.max(1, q - 1))} 
+            className={`btn btn-outline-secondary ${styles.quantityButton}`}
+          >
             -
           </button>
           <input
             type="number"
             value={quantity}
             readOnly
-            className={styles.quantityInput}
-            aria-label="Quantity"
+            className={`text-center mx-2 ${styles.quantityInput}`}
+            style={{ width: '50px' }}
           />
-          <button onClick={handleIncrement} className={styles.quantityButton} aria-label="Increase quantity">
+          <button 
+            onClick={() => setQuantity(q => q + 1)} 
+            className={`btn btn-outline-secondary ${styles.quantityButton}`}
+          >
             +
           </button>
           <button
-            className='btn btn-dark hvr-grow-shadow mx-2'
+            className='btn btn-dark ms-2 hvr-grow-shadow'
             onClick={handleAddToCart}
           >
-            Añadir <i className="fa-solid fa-cart-shopping"></i>
+            Añadir <i className="fa-solid fa-cart-shopping ms-1"></i>
           </button>
+        </div>
+      </div>
+
+      {/* Flavor Selection Modal */}
+      <div 
+        className={`modal fade ${showFlavorModal ? 'show' : ''}`} 
+        style={{ display: showFlavorModal ? 'block' : 'none', backgroundColor: 'rgba(0,0,0,0.5)' }}
+        tabIndex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Selecciona un sabor</h5>
+              <button 
+                type="button" 
+                className="btn-close" 
+                onClick={() => setShowFlavorModal(false)}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <div className="list-group">
+                {flavors?.map((flavor, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`list-group-item list-group-item-action ${selectedFlavor === flavor ? 'active' : ''}`}
+                    onClick={() => setSelectedFlavor(flavor)}
+                  >
+                    {flavor}
+                  </button>
+                ))}
+              </div>
+              
+              <div className="d-flex align-items-center justify-content-between mt-3">
+                <div className="d-flex align-items-center">
+                  <button 
+                    onClick={() => setQuantity(q => Math.max(1, q - 1))} 
+                    className="btn btn-outline-secondary"
+                  >
+                    -
+                  </button>
+                  <span className="mx-3">{quantity}</span>
+                  <button 
+                    onClick={() => setQuantity(q => q + 1)} 
+                    className="btn btn-outline-secondary"
+                  >
+                    +
+                  </button>
+                </div>
+                <button 
+                  className="btn btn-primary"
+                  onClick={confirmFlavorSelection}
+                  disabled={!selectedFlavor}
+                >
+                  Confirmar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -124,8 +194,8 @@ ProductCard.defaultProps = {
     name: 'Product Name',
     description: 'Product Description',
     price: 0,
+    flavors: []
   },
-  onAddToCart: () => {},
 };
 
 export default ProductCard;

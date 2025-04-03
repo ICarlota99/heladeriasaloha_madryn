@@ -81,3 +81,25 @@
      0.5px  0.5px 0 #F48D68;
     z-index: 2;
 }
+
+.quantityButton {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+  
+.quantityInput {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+  
+/* Modal backdrop fix */
+.modal {
+    background-color: #fce0c9;
+}

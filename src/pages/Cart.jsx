@@ -1,18 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../utils/formatPrice';
 
-// Dynamic import all images from assets folder at build time
 const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
-
-// Format prices
-const formatPrice = (price) => {
-  if (isNaN(price)) return '0.00';
-  return Number(price).toLocaleString('es-AR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-};
 
 const CartPage = () => {
   const { 
@@ -23,7 +14,6 @@ const CartPage = () => {
     clearCart 
   } = useCart();
 
-  // State to store loaded images
   const [loadedImages, setLoadedImages] = useState({});
 
   // Load all cart images dynamically
@@ -41,7 +31,7 @@ const CartPage = () => {
           }
         } catch (err) {
           console.error(`Error loading image for ${item.name}:`, err);
-          newLoadedImages[item.id] = ''; // Fallback to empty
+          newLoadedImages[item.id] = '';
         }
       }
 
@@ -69,7 +59,6 @@ const CartPage = () => {
         <table className="table">
           <thead>
             <tr>
-              <th>Imagen</th>
               <th>Producto</th>
               <th>Cantidad</th>
               <th>Precio Unitario</th>
@@ -79,7 +68,7 @@ const CartPage = () => {
           </thead>
           <tbody>
             {cart.map(item => (
-              <tr key={item.id}>
+              <tr key={`${item.id}-${item.selectedFlavor || 'default'}`}>
                 <td>
                   <div className="d-flex align-items-center">
                     {loadedImages[item.id] && (
@@ -90,25 +79,26 @@ const CartPage = () => {
                         style={{ width: '80px', height: '80px', objectFit: 'cover' }}
                       />
                     )}
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <h5 className="mb-1">{item.name}</h5>
+                    <div>
+                      <h5 className="mb-1">{item.name}</h5>
+                      {item.selectedFlavor && (
+                        <p className="text-muted mb-0">Sabor: {item.selectedFlavor}</p>
+                      )}
+                    </div>
                   </div>
                 </td>
                 <td>
                   <div className="d-flex align-items-center">
                     <button 
                       className="btn btn-outline-secondary btn-sm" 
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      onClick={() => updateQuantity(item.id, item.quantity - 1, item.selectedFlavor)}
                     >
                       -
                     </button>
                     <span className="mx-2">{item.quantity}</span>
                     <button 
                       className="btn btn-outline-secondary btn-sm" 
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      onClick={() => updateQuantity(item.id, item.quantity + 1, item.selectedFlavor)}
                     >
                       +
                     </button>
@@ -119,7 +109,7 @@ const CartPage = () => {
                 <td>
                   <button 
                     className="btn btn-danger btn-sm" 
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item.id, item.selectedFlavor)}
                   >
                     <i className="fas fa-trash"></i>
                   </button>
