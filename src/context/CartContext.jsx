@@ -10,7 +10,17 @@ export const CartProvider = ({ children }) => {
   // Load/save to localStorage
   useEffect(() => {
     const savedCart = localStorage.getItem('icecreamCart');
-    if (savedCart) setCart(JSON.parse(savedCart));
+    if (savedCart) {
+      try {
+        const parsedCart = JSON.parse(savedCart);
+        if (Array.isArray(parsedCart)) {
+          setCart(parsedCart);
+        }
+      } catch (error) {
+        console.error('Error parsing cart data:', error);
+        localStorage.removeItem('icecreamCart');
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -45,7 +55,7 @@ export const CartProvider = ({ children }) => {
       ? `${product.name} (${product.selectedFlavor})` 
       : product.name;
     
-    toast.success(`${quantity > 1 ? `${quantity} x ` : ''}${displayName} añadido al carrito`, {
+    toast.success(`${quantity > 1 ? `${quantity} × ` : ''}${displayName} añadido al carrito`, {
       icon: '🛒',
     });
   };
@@ -78,9 +88,14 @@ export const CartProvider = ({ children }) => {
     toast.info('Carrito vaciado', { icon: '🗑️' });
   };
 
-  // Calculations
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = cart.reduce((sum, item) => sum + (Number(item.price) * item.quantity, 0));
+  // Calculations with proper initial values
+  const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+  const subtotal = cart.reduce((sum, item) => {
+    const price = typeof item.price === 'string' 
+      ? parseFloat(item.price.replace(',', '.')) 
+      : Number(item.price) || 0;
+    return sum + (price * (item.quantity || 0));
+  }, 0);
 
   return (
     <CartContext.Provider 
