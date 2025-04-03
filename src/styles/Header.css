@@ -43,7 +43,6 @@ to {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .dropdown-menu-custom {
-        background: #2c3e50;
         margin-top: 0.5rem;
     }
     .navbar-toggler {
