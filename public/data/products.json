@@ -406,7 +406,7 @@
       {
         "id": 45,
         "name": "Scrum White",
-        "description": "Helado de agua sabor naranja y frutilla",
+        "description": "Cono con helado de chocolate bañado en chocolate blanco.",
         "price": 2500,
         "image": "products/conos/scrum_white.jpg",
         "in_stock": true,
