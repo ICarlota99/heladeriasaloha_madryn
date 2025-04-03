@@ -427,7 +427,7 @@
         "description": "Palito de crema helada",
         "price": 1400,
         "image": "products/conos/cremissimo.jpg",
-        "in_stock": false,
+        "in_stock": true,
         "category_id": 2,
         "flavors": ["Americana", "Chocolate", "Dulce de Leche", "Frutilla"]
       },
