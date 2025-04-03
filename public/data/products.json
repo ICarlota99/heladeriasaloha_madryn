@@ -400,7 +400,7 @@
         "description": "Cono con helado de dulce de leche bañado en chocolate",
         "price": 2500,
         "image": "products/conos/scrum_black.jpg",
-        "in_stock": false,
+        "in_stock": true,
         "category_id": 2
       },
       {
@@ -409,7 +409,7 @@
         "description": "Helado de agua sabor naranja y frutilla",
         "price": 2500,
         "image": "products/conos/scrum_white.jpg",
-        "in_stock": false,
+        "in_stock": true,
         "category_id": 2
       },
       {
@@ -418,17 +418,18 @@
         "description": "Cono con helado de crema americana con corazón de dulce de leche bañado en chocolate",
         "price": 2500,
         "image": "products/conos/scrum_dulceleche.jpg",
-        "in_stock": false,
+        "in_stock": true,
         "category_id": 2
       },
       {
         "id": 47,
-        "name": "Cremissimo Frutilla",
-        "description": "Palito de crema helada sabor frutilla",
+        "name": "Cremissimo",
+        "description": "Palito de crema helada",
         "price": 1400,
-        "image": "products/conos/cremissimo_frutilla.jpg",
+        "image": "products/conos/cremissimo.jpg",
         "in_stock": false,
-        "category_id": 2
+        "category_id": 2,
+        "flavors": ["Americana", "Chocolate", "Dulce de Leche", "Frutilla"]
       },
       {
         "id": 48,
