@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from '../styles/ProductCard.module.css';
 import { useCart } from '../context/useCart';
 
+// Dynamic import all images from assets folder at build time
 const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
 
 const ProductCard = ({ product, ...props }) => {
@@ -9,70 +10,61 @@ const ProductCard = ({ product, ...props }) => {
   const [visibleDescriptions, setVisibleDescriptions] = useState(false);
   const { addToCart } = useCart();
   const [imageSrc, setImageSrc] = useState('');
-  const [showFlavorModal, setShowFlavorModal] = useState(false);
-  const [selectedFlavor, setSelectedFlavor] = useState('');
 
   // Load image dynamically
-  useEffect(() => {
+  useState(() => {
     if (product?.image) {
       const loadImage = async () => {
         try {
+          // Remove any leading dots/slashes from the path
           const cleanPath = product.image.replace(/^\.+\//, '');
           const imagePath = `../assets/${cleanPath}`;
           const module = await imageModules[imagePath]();
           setImageSrc(module.default);
         } catch (err) {
           console.error('Error loading image:', err);
-          setImageSrc('');
+          setImageSrc(''); // Fallback to empty or placeholder
         }
       };
       loadImage();
     }
   }, [product?.image]);
 
-  useEffect(() => {
-    // Set default flavor when modal opens
-    if (showFlavorModal && product.flavors?.length > 0) {
-      setSelectedFlavor(product.flavors[0]);
-    }
-  }, [showFlavorModal, product.flavors]);
-
-  const handleAddToCart = () => {
-    if (product.flavors && product.flavors.length > 1) {
-      setShowFlavorModal(true);
-    } else {
-      // If only one flavor or no flavors, add directly to cart
-      addToCart({ 
-        ...product,
-        selectedFlavor: product.flavors?.[0] || null
-      }, quantity);
-      setQuantity(1);
-    }
-  };
-
-  const confirmFlavorSelection = () => {
-    addToCart({ 
-      ...product,
-      selectedFlavor: selectedFlavor || product.flavors[0]
-    }, quantity);
-    setShowFlavorModal(false);
-    setQuantity(1);
-  };
-
-  if (!product || !product.in_stock) {
-    return null; // Don't render out-of-stock products
+  if (!product) {
+    console.error('Product is undefined or null');
+    return <div>No product data available.</div>;
   }
 
-  const { id, name, description, price, flavors } = product;
+  const { id, name, description, price } = product;
+
+  const handleIncrement = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    setQuantity(1); // Reset quantity after adding to cart
+  };
+
+  const toggleDescription = (id) => {
+    setVisibleDescriptions((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   return (
-    <div {...props} className="col-md-4 mb-4">
-      <div className={`card h-100 ${styles.productCard}`}>
-        {/* Product Image and Info */}
-        <div 
-          onClick={() => setVisibleDescriptions(!visibleDescriptions)} 
+    <div {...props}>
+      <div className={`card my-3 ${styles.productCard}`}>
+        <div
+          onClick={() => toggleDescription(id)}
           style={{ cursor: 'pointer' }}
-          className="h-100 d-flex flex-column"
         >
           <div className={styles.imageContainer}>
             {imageSrc && (
@@ -82,113 +74,46 @@ const ProductCard = ({ product, ...props }) => {
                 className={`card-img-top ${styles.productImage}`}
               />
             )}
+            {/* Info Icon */}
             <i className={`fa-solid fa-info-circle fa-2x ${styles.infoIcon}`}></i>
-            
-            {visibleDescriptions && (
-              <div className={`${styles.overlay} ${visibleDescriptions ? styles.overlayVisible : ''}`}>
+
+            {(visibleDescriptions[id] || styles.overlayHover) && (
+              <div
+                className={`${styles.overlay} ${
+                  visibleDescriptions[id] ? styles.overlayVisible : ''
+                }`}
+              >
                 <p className={styles.description}>{description}</p>
               </div>
             )}
           </div>
-          <div className="card-body pt-3 d-flex flex-column">
+          <div className="card-body pt-3">
             <h5 className="card-title">{name}</h5>
-            <p className="card-text">ARS {price.toLocaleString('es-AR')}</p>
-            {flavors?.length > 1 && (
-              <p className="text-muted small mb-2">
-                {flavors.length} sabores disponibles
-              </p>
-            )}
-            
-            <div className="mt-auto">
-              <div className="d-flex align-items-center justify-content-center mb-3">
-                <button 
-                  onClick={() => setQuantity(q => Math.max(1, q - 1))} 
-                  className="btn btn-outline-secondary"
-                >
-                  -
-                </button>
-                <span className="mx-3">{quantity}</span>
-                <button 
-                  onClick={() => setQuantity(q => q + 1)} 
-                  className="btn btn-outline-secondary"
-                >
-                  +
-                </button>
-              </div>
-              
-              <button
-                className='btn btn-dark w-100'
-                onClick={handleAddToCart}
-              >
-                Añadir <i className="fa-solid fa-cart-shopping ms-1"></i>
-              </button>
-            </div>
+            <p className="card-text">Precio: ARS {price}</p>
           </div>
+        </div>
+        <div className='pb-3'>
+          <button onClick={handleDecrement} className={styles.quantityButton} aria-label="Decrease quantity">
+            -
+          </button>
+          <input
+            type="number"
+            value={quantity}
+            readOnly
+            className={styles.quantityInput}
+            aria-label="Quantity"
+          />
+          <button onClick={handleIncrement} className={styles.quantityButton} aria-label="Increase quantity">
+            +
+          </button>
+          <button
+            className='btn btn-dark hvr-grow-shadow mx-2'
+            onClick={handleAddToCart}
+          >
+            Añadir <i className="fa-solid fa-cart-shopping"></i>
+          </button>
         </div>
       </div>
-
-      {/* Flavor Selection Modal */}
-      {flavors?.length > 1 && (
-        <div 
-          className={`modal fade ${showFlavorModal ? 'show' : ''}`} 
-          style={{ 
-            display: showFlavorModal ? 'block' : 'none', 
-            backgroundColor: 'rgba(0,0,0,0.5)' 
-          }}
-          tabIndex="-1"
-        >
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Selecciona un sabor</h5>
-                <button 
-                  type="button" 
-                  className="btn-close" 
-                  onClick={() => setShowFlavorModal(false)}
-                ></button>
-              </div>
-              <div className="modal-body">
-                <div className="list-group">
-                  {flavors.map((flavor, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      className={`list-group-item list-group-item-action ${selectedFlavor === flavor ? 'active' : ''}`}
-                      onClick={() => setSelectedFlavor(flavor)}
-                    >
-                      {flavor}
-                    </button>
-                  ))}
-                </div>
-                
-                <div className="d-flex justify-content-between mt-3">
-                  <div className="d-flex align-items-center">
-                    <button 
-                      onClick={() => setQuantity(q => Math.max(1, q - 1))} 
-                      className="btn btn-outline-secondary"
-                    >
-                      -
-                    </button>
-                    <span className="mx-3">{quantity}</span>
-                    <button 
-                      onClick={() => setQuantity(q => q + 1)} 
-                      className="btn btn-outline-secondary"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <button 
-                    className="btn btn-primary"
-                    onClick={confirmFlavorSelection}
-                  >
-                    Confirmar
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
@@ -199,9 +124,8 @@ ProductCard.defaultProps = {
     name: 'Product Name',
     description: 'Product Description',
     price: 0,
-    flavors: [],
-    in_stock: true
   },
+  onAddToCart: () => {},
 };
 
 export default ProductCard;
