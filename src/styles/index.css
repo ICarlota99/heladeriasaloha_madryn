@@ -188,15 +188,14 @@ p span {
 }
 /* Mobile Phone Responsiveness */
 @media (max-width: 900px) {
-    /* p {
-      font-size: 14px;
-    } */
-
     #navbar_div{
         padding: 0.3% !important;
     }
     #hero_section{
         text-align: center;
+    }
+    #hero-img {
+        margin: 0 !important;
     }
     .title {
         font-size: 40px;

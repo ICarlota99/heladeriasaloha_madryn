@@ -45,9 +45,10 @@ const Hero = () => {
             data-aos="slide-left" data-aos-delay="200"
           >
             <img
+              id='hero-img'
               src={heroicecream}
-              alt="cono de helado"
-              className="mw-100 mh-100"
+              alt='cono de helado'
+              className='mw-100 mh-100'
               style={{ objectFit: 'cover', overflow: 'show', marginRight: '20%'}}
             />
         </div>
