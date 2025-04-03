@@ -5,13 +5,15 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Footer = () => {
-    useEffect(() => {
-      AOS.init({
-        offset: 200,
-        duration: 600,
-        easing: 'ease-in-sine',
-      });
-    }, [])
+  const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+    });
+  }, [])
 
   return (
     <div 
@@ -44,7 +46,7 @@ const Footer = () => {
         <hr/>    
       </div>
       <div className='text-center pt-5 pb-1'>
-        <p className="copyright">©2024 ALOSURMORA.SA Todos los derechos reservados</p>
+        <p className="copyright">©{currentYear} ALOSURMORA.SA Todos los derechos reservados</p>
         <p>Diseñado y desarrollado por <a className='light-link' href='https://github.com/ICarlota99'>ICarlota99</a></p>
       </div>
     </div>
