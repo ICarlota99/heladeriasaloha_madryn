@@ -19,7 +19,7 @@ const Hero = () => {
     <section id="hero">
         <div className="row align-items-center">
           <div className="col-lg-5" style={{ paddingLeft: '10%' }}>
-              <h1 className="mt-5" data-aos="zoom-in" data-aos-delay="200">Comete un helado <br/>
+              <h1 className="mt-5" data-aos="zoom-in" data-aos-delay="200">Cómete un helado <br/>
               <span className='orange-color'>Disfrutá la vida</span>
               </h1>
               <div data-aos="zoom-in" data-aos-delay="300">
