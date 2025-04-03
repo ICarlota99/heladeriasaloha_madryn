@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
@@ -137,9 +137,7 @@ const CheckoutPage = () => {
     );
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);  
+  window.scrollTo(0, 0);
 
   return (
     <div className="container my-5">

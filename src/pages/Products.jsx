@@ -57,8 +57,6 @@ const Products = () => {
     return categoryMap[categoryName];
   };
 
-  window.scrollTo(0, 0);
-
   return (
     <div className='text-center container-fluid mt-5'>
       <h1>{h1Text}</h1>
