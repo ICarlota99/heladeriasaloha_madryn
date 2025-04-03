@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/useCart';
 import styles from '../styles/Sabores.module.css';
 
 const Sabores = () => {

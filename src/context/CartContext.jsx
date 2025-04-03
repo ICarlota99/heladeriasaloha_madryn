@@ -45,7 +45,7 @@ export const CartProvider = ({ children }) => {
       ? `${product.name} (${product.selectedFlavor})` 
       : product.name;
     
-    toast.success(`${quantity > 1 ? `${quantity} × ` : ''}${displayName} añadido al carrito`, {
+    toast.success(`${quantity > 1 ? `${quantity} x ` : ''}${displayName} añadido al carrito`, {
       icon: '🛒',
     });
   };
@@ -54,6 +54,7 @@ export const CartProvider = ({ children }) => {
     setCart(prevCart => 
       prevCart.filter(item => 
         !(item.id === productId && item.selectedFlavor === flavor)
+      )
     );
   };
 
@@ -79,7 +80,7 @@ export const CartProvider = ({ children }) => {
 
   // Calculations
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = cart.reduce((sum, item) => sum + (Number(item.price) * item.quantity, 0);
+  const subtotal = cart.reduce((sum, item) => sum + (Number(item.price) * item.quantity, 0));
 
   return (
     <CartContext.Provider 
@@ -102,4 +103,4 @@ CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CartContext;s
+export default CartContext;
