@@ -3,7 +3,7 @@ import styles from '../styles/ProductCard.module.css';
 import { useCart } from '../context/useCart';
 
 // Dynamic import all images from assets folder at build time
-const imageModules = import.meta.glob('../assets/**/*.{jpg,png,webp}');
+const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
 
 const ProductCard = ({ product, ...props }) => {
   const [quantity, setQuantity] = useState(1);

@@ -2,7 +2,7 @@ import styles from '../styles/ProductCard.module.css';
 import { useState } from 'react';
 
 // Dynamic import all images from assets folder at build time
-const imageModules = import.meta.glob('../assets/**/*.{jpg,png,webp}');
+const imageModules = import.meta.glob('../assets/flavors/*.{jpg,png,webp}');
 
 const SimpleProductCard = ({ product, ...props }) => {
     const [visibleDescriptions, setVisibleDescriptions] = useState(false);

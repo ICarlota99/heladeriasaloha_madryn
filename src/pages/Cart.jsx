@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
-// Dynamic import all images from assets folder
-const imageModules = import.meta.glob('../assets/**/*.{jpg,png,webp}');
+// Dynamic import all images from assets folder at build time
+const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
 
 // Format prices
 const formatPrice = (price) => {
