@@ -19,7 +19,7 @@
       {
         "id": 2,
         "name": "Torta Chocorrica",
-        "description": "El sabor de la torta más rica",
+        "description": "Crema helada de dulce de leche con galletitas de chocolate y salsa de dulce de leche",
         "price": 20950,
         "image": "products/tortas_heladas/torta_chocorrica.jpg",
         "in_stock": true,
@@ -37,7 +37,7 @@
       {
         "id": 4,
         "name": "Torta Osada",
-        "description": "Crema helada de americana con galletitas de chocolate y crema helada de chocolates con pionono, decorada con dulce de leche y galletitas de chocolate",
+        "description": "Crema helada de americana y chocolate decorada con dulce de leche y galletitas de chocolate",
         "price": 20950,
         "image": "products/tortas_heladas/torta_osada.jpg",
         "in_stock": true,
@@ -307,7 +307,7 @@
       {
         "id": 34,
         "name": "Paleta La 10",
-        "description": "Helado de agua con pulpa de fruta",
+        "description": "Paleta de crema helada americana y crema cielo",
         "price": 1700,
         "image": "products/conos/la10.jpg",
         "in_stock": true,
@@ -325,7 +325,7 @@
       {
         "id": 36,
         "name": "Grani Bom!",
-        "description": "Palito de crema granizada sabor crema americana",
+        "description": "Palito de crema americana granizada",
         "price": 1400,
         "image": "products/conos/granibom.jpg",
         "in_stock": true,
@@ -397,7 +397,7 @@
       {
         "id": 44,
         "name": "Scrum Black",
-        "description": "Cono con helado de dulce de leche bañado en chocolate",
+        "description": "Cono de helado de dulce de leche bañado en chocolate",
         "price": 2500,
         "image": "products/conos/scrum_black.jpg",
         "in_stock": true,
@@ -406,7 +406,7 @@
       {
         "id": 45,
         "name": "Scrum White",
-        "description": "Cono con helado de chocolate bañado en chocolate blanco.",
+        "description": "Cono de helado de chocolate bañado en chocolate blanco",
         "price": 2500,
         "image": "products/conos/scrum_white.jpg",
         "in_stock": true,
@@ -415,7 +415,7 @@
       {
         "id": 46,
         "name": "Scrum Dulce de Leche",
-        "description": "Cono con helado de crema americana con corazón de dulce de leche bañado en chocolate",
+        "description": "Cono de helado de crema americana con corazón de dulce de leche bañado en chocolate",
         "price": 2500,
         "image": "products/conos/scrum_dulceleche.jpg",
         "in_stock": true,
