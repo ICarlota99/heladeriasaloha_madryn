@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import './Products.css';
 
 const Products = () => {
   const { category } = useParams();
@@ -28,15 +29,14 @@ const Products = () => {
     });
 
     setIsLoading(true);
-
-    // Fetch data
+    
+    // Remove the artificial delay and just fetch directly
     fetch('/data/products.json')
       .then((response) => {
         if (!response.ok) throw new Error('Failed to load products');
         return response.json();
       })
       .then((data) => {
-        // Filter and sort products
         const filteredProducts = data.products
           .filter((product) => product.category_id === getCategoryId(category) && product.in_stock)
           .sort((a, b) => a.name.localeCompare(b.name));
@@ -45,10 +45,13 @@ const Products = () => {
       .catch((err) => {
         console.error('Error loading products:', err);
         setError(err.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
+
   }, [category]);
 
-  // Helper function to map category names to their IDs
   const getCategoryId = (categoryName) => {
     const categoryMap = {
       cakes: 1,
@@ -88,7 +91,7 @@ const Products = () => {
               />
             ))
           ) : (
-            <p>No products found in this category.</p>
+            <p>No hay productos en esta categoría.</p>
           )}
         </div>
       )}
