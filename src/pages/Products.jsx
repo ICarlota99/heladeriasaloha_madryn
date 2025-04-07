@@ -8,6 +8,7 @@ const Products = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const categoryToH1 = {
     cakes: 'Tortas Heladas',
@@ -25,6 +26,8 @@ const Products = () => {
       duration: 600,
       easing: 'ease-in-sine',
     });
+
+    setIsLoading(true);
 
     // Fetch data
     fetch('/data/products.json')
@@ -61,21 +64,34 @@ const Products = () => {
     <div className='text-center container-fluid mt-5'>
       <h1>{h1Text}</h1>
       {error && <p className="text-danger">{error}</p>}
-      <div className='row'>
-        {products.length > 0 ? (
-          products.map((product, index) => (
-            <ProductCard 
-              className='col-lg-3 col-md-6'
-              key={product.id} 
-              product={product}
-              data-aos='fade-left'
-              data-aos-delay={index * 100}
-            />
-          ))
-        ) : (
-          <p>No products found in this category.</p>
-        )}
-      </div>
+      
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="ice-cream-loader">
+            <div className="scoop scoop-1"></div>
+            <div className="scoop scoop-2"></div>
+            <div className="scoop scoop-3"></div>
+            <div className="cone"></div>
+          </div>
+          <p>Cargando helados...</p>
+        </div>
+      ) : (
+        <div className='row'>
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <ProductCard 
+                className='col-lg-3 col-md-6'
+                key={product.id} 
+                product={product}
+                data-aos='fade-left'
+                data-aos-delay={index * 100}
+              />
+            ))
+          ) : (
+            <p>No products found in this category.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

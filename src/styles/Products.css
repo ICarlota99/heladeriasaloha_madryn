@@ -1,0 +1,70 @@
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 20px;
+  }
+  
+  .ice-cream-loader {
+    position: relative;
+    width: 100px;
+    height: 120px;
+  }
+  
+  .scoop {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+  
+  .scoop-1 {
+    background: #FFB6C1; /* Light pink */
+    top: 0;
+    left: 20px;
+    animation-delay: 0s;
+  }
+  
+  .scoop-2 {
+    background: #87CEFA; /* Light blue */
+    top: 30px;
+    left: 0;
+    animation-delay: 0.2s;
+  }
+  
+  .scoop-3 {
+    background: #98FB98; /* Light green */
+    top: 60px;
+    left: 20px;
+    animation-delay: 0.4s;
+  }
+  
+  .cone {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 60px solid #F4A460; /* Sandy brown */
+    bottom: -50px;
+    left: 20px;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .loading-container p {
+    color: #666;
+    font-size: 1.2rem;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
