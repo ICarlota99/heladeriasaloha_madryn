@@ -20,25 +20,25 @@ const Flavors = () => {
       id: 1,
       name: 'Alfajor Marplatense',
       description: 'Helado con trozos de alfajor marplatense',
-      image: 'flavors/alfajor_marplatense.jpg',
+      image: 'flavors/alfajor_marplatense.webp',
     },
     {
       id: 2,
       name: 'Chocorrica',
       description: 'El sabor de la torta más rica',
-      image: 'flavors/chocorrica.jpg',
+      image: 'flavors/chocorrica.webp',
     },
     {
       id: 3,
       name: 'Cookies & Cream',
       description: 'Crema de leche helada con galletitas de chocolate',
-      image: 'flavors/cookies_and_cream.jpg',
+      image: 'flavors/cookies_and_cream.webp',
     },
     {
       id: 4,
       name: 'Mousse de Chocolate con Frutilla',
       description: 'Crema helada tipo mousse de chocolate con frutilla natural',
-      image: 'flavors/mousse_de_chocolate_con_frutilla.jpg',
+      image: 'flavors/mousse_de_chocolate_con_frutilla.webp',
     },
   ];
 

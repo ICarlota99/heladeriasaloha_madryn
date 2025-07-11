@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import conosImg from '../assets/conos.png';
-import pintasImg from '../assets/pintas.png';
-import postresImg from '../assets/postres.png';
-import tortasImg from '../assets/tortas.png';
+import conosImg from '../assets/conos.webp';
+import pintasImg from '../assets/pintas.webp';
+import postresImg from '../assets/postres.webp';
+import tortasImg from '../assets/tortas.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -32,6 +32,7 @@ const Shop = () => {
                 className="img-fluid product_img hvr-grow-shadow"
                 src={conosImg}
                 alt="conos y paletas"
+                loading='lazy'
               />
             </Link>
             <Link className="col-lg-3 col-md-6" to="/category/desserts"data-aos="zoom-in" data-aos-delay="200">
@@ -39,6 +40,7 @@ const Shop = () => {
                 className="img-fluid product_img hvr-grow-shadow"
                 src={postresImg}
                 alt="postres"
+                loading='lazy'
               />
             </Link>
             <Link className="col-lg-3 col-md-6" to="/category/pints" data-aos="zoom-in" data-aos-delay="200">
@@ -46,6 +48,7 @@ const Shop = () => {
                 className="img-fluid product_img hvr-grow-shadow"
                 src={pintasImg}
                 alt="pintas"
+                loading='lazy'
               />
             </Link>
             <Link className="col-lg-3 col-md-6" to="/category/cakes" data-aos="zoom-in" data-aos-delay="200">
@@ -53,6 +56,7 @@ const Shop = () => {
                 className="img-fluid product_img hvr-grow-shadow"
                 src={tortasImg}
                 alt="tortas heladas"
+                loading='lazy'
               />
             </Link>
           </div>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import heroicecream from '../assets/hero_icecream.png';
+import heroicecream from '../assets/hero_icecream.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

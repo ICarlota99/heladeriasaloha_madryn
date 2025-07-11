@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import frame from '../assets/frame.png';
+import frame from '../assets/frame.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -55,6 +55,7 @@ const Delivery = () => {
           alt="shop image"
           className="position-absolute"
           style={{ zIndex: -1, top: '0%', right: '0%', width: '60%' }}
+          loading='lazy'
         />
       </div>
 

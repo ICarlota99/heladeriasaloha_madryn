@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import whyus from '../assets/whyus.jpg';
+import whyus from '../assets/whyus.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -16,7 +16,7 @@ const Whyus = () => {
   return (
     <section id='whyus' className='row container-fluid my-5 py-5 d-flex align-items-stretch'>
       <div data-aos="slide-right" data-aos-delay="300" className='col-lg-6'>
-        <img src={whyus} alt="why us image" className='w-100 h-100 object-cover' />
+        <img src={whyus} alt="why us image" className='w-100 h-100 object-cover' loading='lazy'/>
       </div> 
       <div data-aos="slide-left" data-aos-delay="300" className='col-lg-6 px-5 bg-white'>
         <div className='d-flex flex-column align-items-center justify-content-center h-100 py-2'>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import banner from '../assets/banner_about.jpg';
-import localImage from '../assets/local.png';
+import banner from '../assets/banner_about.webp';
+import localImage from '../assets/local.webp';
 import GoogleMaps from '../components/GoogleMapsLink';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -16,7 +16,7 @@ const About = () => {
 
   return (
     <section id='about'>
-      <img src={banner} alt='banner' className='w-100 text-center'/>
+      <img src={banner} alt='banner' className='w-100 text-center' loading='lazy'/>
         <div className='container-fluid mt-5 info row'>
           <div 
             className='col-lg-8' 
@@ -60,7 +60,7 @@ const About = () => {
             data-aos='zoom-out-left'
             data-aos-delay='200'
           >
-            <img src={localImage} alt='Local de Aloha' className='w-100'/>
+            <img src={localImage} alt='Local de Aloha' className='w-100'loading='lazy'/>
           </div>
         </div>
         <div 

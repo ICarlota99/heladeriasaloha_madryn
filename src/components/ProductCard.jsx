@@ -72,6 +72,7 @@ const ProductCard = ({ product, ...props }) => {
                 src={imageSrc}
                 alt={name}
                 className={`card-img-top ${styles.productImage}`}
+                loading='lazy'
               />
             )}
             {/* Info Icon */}
