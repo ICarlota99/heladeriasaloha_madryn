@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.svg';
@@ -34,6 +34,7 @@ function CartLink({ totalItems, className = '' }) {
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const productsCloseTimer = useRef(null);
   const { totalItems } = useCart();
   const location = useLocation();
 
@@ -54,6 +55,23 @@ const Header = () => {
     setProductsOpen(false);
   };
 
+  const openProducts = () => {
+    if (productsCloseTimer.current) {
+      clearTimeout(productsCloseTimer.current);
+      productsCloseTimer.current = null;
+    }
+    setProductsOpen(true);
+  };
+
+  const scheduleCloseProducts = () => {
+    if (!window.matchMedia('(min-width: 1024px)').matches) return;
+    productsCloseTimer.current = setTimeout(() => setProductsOpen(false), 200);
+  };
+
+  useEffect(() => () => {
+    if (productsCloseTimer.current) clearTimeout(productsCloseTimer.current);
+  }, []);
+
   const links = (
         <>
           <li>
@@ -64,11 +82,9 @@ const Header = () => {
           <li
             className="relative"
             onMouseEnter={() => {
-              if (window.matchMedia('(min-width: 1024px)').matches) setProductsOpen(true);
+              if (window.matchMedia('(min-width: 1024px)').matches) openProducts();
             }}
-            onMouseLeave={() => {
-              if (window.matchMedia('(min-width: 1024px)').matches) setProductsOpen(false);
-            }}
+            onMouseLeave={scheduleCloseProducts}
           >
             <button
               type="button"
@@ -76,7 +92,7 @@ const Header = () => {
               aria-expanded={productsOpen}
               onClick={() => {
                 if (window.matchMedia('(min-width: 1024px)').matches) {
-                  setProductsOpen(true);
+                  openProducts();
                   return;
                 }
                 setProductsOpen((open) => !open);
@@ -85,10 +101,9 @@ const Header = () => {
               Productos
               <i className="fa-solid fa-chevron-down text-xs"></i>
             </button>
+            <div className={`${productsOpen ? 'mt-3 block' : 'hidden'} lg:absolute lg:right-0 lg:top-full lg:z-20 lg:mt-0 lg:pt-2`}>
             <ul
-              className={`${
-                productsOpen ? 'mt-3 flex' : 'hidden'
-              } flex-col gap-1 lg:absolute lg:right-0 lg:top-full lg:z-20 lg:mt-2 lg:w-56 lg:rounded-2xl lg:bg-white lg:p-2 lg:shadow-xl`}
+              className="flex flex-col gap-1 lg:w-56 lg:rounded-2xl lg:bg-white lg:p-2 lg:shadow-xl"
             >
               {productLinks.map((item) => (
                 <li key={item.to}>
@@ -102,6 +117,7 @@ const Header = () => {
                 </li>
               ))}
             </ul>
+            </div>
           </li>
           <li>
             <HashLink to="/#flavors" className={navLinkClass} onClick={closeMenu}>
