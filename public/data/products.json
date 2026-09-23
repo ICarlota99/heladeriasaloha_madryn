@@ -246,7 +246,7 @@
         "name": "Cono Bola Americana",
         "description": "Cono de crema helada americana con corazón de frutilla y baño de repostería.",
         "price": 4900,
-        "image": "products/conos/chocobana.webp",
+        "image": "products/conos/conobola_americana.webp",
         "in_stock": true,
         "category_id": 2
       },
@@ -255,7 +255,7 @@
         "name": "Cono Bola Dulce de Leche",
         "description": "Cono de helado de dulce de leche con baño de repostería y maní crocante.",
         "price": 4900,
-        "image": "products/conos/chocobana.webp",
+        "image": "products/conos/conobola_dulceleche.webp",
         "in_stock": true,
         "category_id": 2
       },
