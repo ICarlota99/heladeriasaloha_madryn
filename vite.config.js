@@ -47,9 +47,6 @@ export default defineConfig(({ command, mode }) => {
       port: 3000,
       strictPort: true,
       open: true,
-      headers: {
-        "Content-Type": "application/json"
-      }
     },
     preview: {
       port: 3000,

@@ -124,7 +124,7 @@ const Sabores = () => {
 
   // Cone options (empty cones to go with buckets)
   const coneOptions = {
-    price: 250,
+    price: 500,
     label: 'Conos vacíos'
   };
 
