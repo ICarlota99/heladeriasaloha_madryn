@@ -67,7 +67,7 @@
         "description": "Barrita de helada de crema americana con salsa de dulce de leche cubierta con chocolate",
         "price": 1400,
         "image": "products/postres_helados/barrita_voodoo.webp",
-        "in_stock": true,
+        "in_stock": false,
         "category_id": 3
       },
       {

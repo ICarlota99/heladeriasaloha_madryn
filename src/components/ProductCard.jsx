@@ -5,7 +5,7 @@ import { useCart } from '../context/useCart';
 // Dynamic import all images from assets folder at build time
 const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
 
-const ProductCard = ({ product, ...props }) => {
+const ProductCard = ({ product, className, ...props }) => {
   const [quantity, setQuantity] = useState(1);
   const [visibleDescriptions, setVisibleDescriptions] = useState(false);
   const { addToCart } = useCart();
@@ -60,11 +60,11 @@ const ProductCard = ({ product, ...props }) => {
   };
 
   return (
-    <div {...props}>
-      <div className={`card my-3 ${styles.productCard}`}>
+    <div className={`${styles.cardColumn} ${className ?? ''}`} {...props}>
+      <div className={`card my-3 ${styles.productCard} ${styles.catalogCard}`}>
         <div
+          className={styles.cardMain}
           onClick={() => toggleDescription(id)}
-          style={{ cursor: 'pointer' }}
         >
           <div className={styles.imageContainer}>
             {imageSrc && (
@@ -88,12 +88,12 @@ const ProductCard = ({ product, ...props }) => {
               </div>
             )}
           </div>
-          <div className="card-body pt-3">
-            <h5 className="card-title">{name}</h5>
-            <p className="card-text">Precio: ARS {price}</p>
+          <div className={`card-body pt-3 ${styles.cardBody}`}>
+            <h5 className={`card-title ${styles.cardTitle}`}>{name}</h5>
+            <p className={`card-text ${styles.price}`}>Precio: ARS {price}</p>
           </div>
         </div>
-        <div className='pb-3'>
+        <div className={styles.cardActions}>
           <button onClick={handleDecrement} className={styles.quantityButton} aria-label="Decrease quantity">
             -
           </button>

@@ -1,3 +1,7 @@
+.cardColumn {
+    display: flex;
+}
+
 .productCard {
     position: relative;
     overflow: hidden;
@@ -5,6 +9,39 @@
     transition: transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
+}
+
+.catalogCard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1 1 auto;
+}
+
+.cardMain {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.cardTitle {
+    margin-bottom: 0.75rem;
+}
+
+.price {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.cardActions {
+    padding-bottom: 1rem;
 }
   
 .productCard:hover {
@@ -50,6 +87,20 @@
 .imageContainer {
     position: relative;
     overflow: hidden;
+}
+
+.catalogCard .imageContainer {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    flex-shrink: 0;
+    background-color: #fff;
+}
+
+.catalogCard .productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .overlay {
