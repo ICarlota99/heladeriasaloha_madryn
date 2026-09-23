@@ -37,28 +37,28 @@ const Sabores = () => {
       size: '1kg', 
       label: 'Balde 1kg', 
       maxFlavors: 4, 
-      price: 13000, 
+      price: 22500, 
       image: '/assets/baldes/1kg.jpg'
     },
     {
       size: '3/4kg',
       label: 'Balde 3/4kg',
       maxFlavors: 4,
-      price: 11000,
+      price: 18000,
       image: '/assets/baldes/3/4kg.jpg'
     },
     { 
       size: '1/2kg', 
       label: 'Balde 1/2kg', 
       maxFlavors: 3, 
-      price: 7500, 
+      price: 12500, 
       image: '/assets/baldes/0.5kg.jpg' 
     },
     { 
       size: '1/4kg', 
       label: 'Balde 1/4kg', 
       maxFlavors: 2, 
-      price: 5000, 
+      price: 6800, 
       image: '/assets/baldes/0.25kg.jpg' 
     },
   ];
