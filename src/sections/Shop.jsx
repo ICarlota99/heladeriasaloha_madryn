@@ -24,7 +24,7 @@ const Shop = () => {
   }, []);
 
   return (
-    <section id="shop" className="brand-band py-20">
+    <section id="shop" className="brand-band pb-20 pt-28">
       <div id="products" className="mx-auto max-w-7xl px-6 text-center">
         <div data-aos="slide-down" data-aos-delay="200">
           <h2 className="font-display text-4xl md:text-5xl">Elegí tu helado favorito</h2>

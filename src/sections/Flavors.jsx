@@ -42,7 +42,7 @@ const Flavors = () => {
   ];
 
   return (
-    <section id="flavors" className="mx-auto max-w-7xl px-6 py-16 text-center">
+    <section id="flavors" className="mx-auto max-w-7xl px-6 pb-16 pt-28 text-center">
       <div className="mb-10" data-aos="fade-down" data-aos-delay="200">
         <h2 className="font-display text-4xl text-ink md:text-5xl">Explorá nuestros sabores más populares</h2>
       </div>

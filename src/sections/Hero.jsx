@@ -16,7 +16,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="mx-auto grid w-full max-w-6xl items-center gap-8 px-8 py-10 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-12 lg:py-0">
+    <section id="hero" className="mx-auto mb-16 grid w-full max-w-6xl items-center gap-8 px-8 py-10 lg:mb-24 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-12 lg:py-0">
       <div className="text-center lg:flex lg:flex-col lg:justify-center lg:py-16 lg:text-left">
         <h1 className="font-display text-5xl leading-tight text-ink md:text-6xl" data-aos="zoom-in" data-aos-delay="200">
           Cómete un helado

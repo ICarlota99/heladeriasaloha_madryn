@@ -423,10 +423,10 @@
       },
       {
         "id": 47,
-        "name": "Cremissimo",
-        "description": "Palito de crema helada",
+        "name": "Cremissimo Frutilla",
+        "description": "Palito de crema helada sabor frutilla",
         "price": 2700,
-        "image": "products/conos/cremissimo.webp",
+        "image": "products/conos/cremissimo_frutilla.webp",
         "in_stock": true,
         "category_id": 2,
         "flavors": ["Americana", "Chocolate", "Dulce de Leche", "Frutilla"]
@@ -434,7 +434,7 @@
       {
         "id": 48,
         "name": "Cremissimo Americana",
-        "description": "Palito de crema helada de americana",
+        "description": "Palito de crema helada sabor crema americana",
         "price": 2700,
         "image": "products/conos/cremissimo_americana.webp",
         "in_stock": true,
@@ -455,7 +455,7 @@
         "description": "Palito de crema helada sabor chocolate",
         "price": 2700,
         "image": "products/conos/cremissimo_chocolate.webp",
-        "in_stock": true,
+        "in_stock": false,
         "category_id": 2
       },
       {

@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="brand-band mt-16"
+      className="brand-band mt-28"
       data-aos="zoom-in-up"
       data-aos-delay="300"
     >

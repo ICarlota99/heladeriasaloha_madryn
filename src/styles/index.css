@@ -38,12 +38,39 @@ body {
 }
 
 .brand-band {
+  position: relative;
   background-color: var(--color-brand);
-  background-image: url('../assets/orange_section_bg.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: white;
+}
+
+.brand-band::before,
+.brand-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 6rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.brand-band::before {
+  top: 0;
+  transform: translateY(-100%);
+  background-image: url('../assets/section_wave.svg');
+}
+
+.brand-band::after {
+  bottom: 0;
+  transform: translateY(100%);
+  background-image: url('../assets/section_wave_bottom.svg');
+}
+
+#footer.brand-band::after {
+  content: none;
 }
 
 .scoop {
