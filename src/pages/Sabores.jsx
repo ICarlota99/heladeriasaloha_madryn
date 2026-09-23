@@ -1,6 +1,37 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
-import styles from '../styles/Sabores.module.css';
+import Button from '../components/ui/Button';
+
+const formatPrice = (price) =>
+  Number(price).toLocaleString('es-AR', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
+function Stepper({ value, onDecrement, onIncrement, decrementDisabled }) {
+  return (
+    <div className="flex items-center gap-3">
+      <button
+        type="button"
+        className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand text-lg font-bold text-brand disabled:opacity-40"
+        onClick={onDecrement}
+        disabled={decrementDisabled}
+        aria-label="Restar"
+      >
+        -
+      </button>
+      <span className="min-w-8 text-center text-2xl font-bold">{value}</span>
+      <button
+        type="button"
+        className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand text-lg font-bold text-brand"
+        onClick={onIncrement}
+        aria-label="Sumar"
+      >
+        +
+      </button>
+    </div>
+  );
+}
 
 const Sabores = () => {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -14,7 +45,6 @@ const Sabores = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    // Fetch data
     fetch('/data/sabores.json')
       .then(response => {
         if (!response.ok) throw new Error('Failed to load flavors data');
@@ -31,13 +61,12 @@ const Sabores = () => {
       });
   }, []);
 
-  // Bucket size options
   const bucketSizes = [
-    { 
-      size: '1kg', 
-      label: 'Balde 1kg', 
-      maxFlavors: 4, 
-      price: 22500, 
+    {
+      size: '1kg',
+      label: 'Balde 1kg',
+      maxFlavors: 4,
+      price: 22500,
       image: '/assets/baldes/1kg.jpg'
     },
     {
@@ -47,23 +76,22 @@ const Sabores = () => {
       price: 18000,
       image: '/assets/baldes/3/4kg.jpg'
     },
-    { 
-      size: '1/2kg', 
-      label: 'Balde 1/2kg', 
-      maxFlavors: 3, 
-      price: 12500, 
-      image: '/assets/baldes/0.5kg.jpg' 
+    {
+      size: '1/2kg',
+      label: 'Balde 1/2kg',
+      maxFlavors: 3,
+      price: 12500,
+      image: '/assets/baldes/0.5kg.jpg'
     },
-    { 
-      size: '1/4kg', 
-      label: 'Balde 1/4kg', 
-      maxFlavors: 2, 
-      price: 6800, 
-      image: '/assets/baldes/0.25kg.jpg' 
+    {
+      size: '1/4kg',
+      label: 'Balde 1/4kg',
+      maxFlavors: 2,
+      price: 6800,
+      image: '/assets/baldes/0.25kg.jpg'
     },
   ];
 
-  // Handle flavor selection
   const handleFlavorSelect = (flavorId) => {
     if (selectedFlavors.includes(flavorId)) {
       setSelectedFlavors(selectedFlavors.filter(id => id !== flavorId));
@@ -72,13 +100,11 @@ const Sabores = () => {
     }
   };
 
-  // Add to cart handler
   const handleAddToCart = () => {
     if (!selectedSize || selectedFlavors.length === 0) return;
 
     const sizeInfo = bucketSizes.find(s => s.size === selectedSize);
-    
-    // Find all selected flavors from all categories
+
     const selectedFlavorsInfo = [];
     saboresData.forEach(category => {
       category.flavors?.forEach(flavor => {
@@ -88,20 +114,18 @@ const Sabores = () => {
       });
     });
 
-    // Add bucket to cart
     const product = {
       id: `balde-${selectedSize}-${Date.now()}`,
       name: `Balde ${selectedSize} (${selectedFlavorsInfo.map(f => f.name).join(', ')})`,
       price: sizeInfo.price,
       quantity: quantity,
-      image: sizeInfo.image, 
+      image: sizeInfo.image,
       flavors: selectedFlavorsInfo,
       size: selectedSize
     };
 
     addToCart(product, quantity);
 
-    // Add cones to cart if selected
     if (coneQuantity > 0) {
       const coneProduct = {
         id: `cono-vacio-${Date.now()}`,
@@ -114,7 +138,6 @@ const Sabores = () => {
       addToCart(coneProduct, coneQuantity);
     }
 
-    // Reset selection
     setSelectedSize(null);
     setSelectedFlavors([]);
     setQuantity(1);
@@ -122,180 +145,175 @@ const Sabores = () => {
     setActiveCategory(null);
   };
 
-  // Cone options (empty cones to go with buckets)
   const coneOptions = {
     price: 500,
     label: 'Conos vacíos'
   };
 
-  // Calculate total price
   const calculateTotal = () => {
     if (!selectedSize) return 0;
     const sizeInfo = bucketSizes.find(s => s.size === selectedSize);
     return (sizeInfo.price * quantity) + (coneOptions.price * coneQuantity);
   };
 
-  if (loading) return <div className="text-center my-5">Cargando sabores...</div>;
-  if (error) return <div className="text-center my-5 text-danger">Error: {error}</div>;
-  
+  if (loading) return <div className="py-24 text-center text-lg">Cargando sabores...</div>;
+  if (error) return <div className="py-24 text-center text-lg text-red-600">Error: {error}</div>;
+
+  const currentSize = bucketSizes.find(s => s.size === selectedSize);
+
   return (
-    <div id='buckets' className={`container my-5 ${styles.saboresContainer}`}>
-      <h2 className="text-center mb-4">Armá tu balde de helado</h2>
-      
-      {/* Size Selection */}
-      <div className={`mb-4 text-center ${styles.sizeSelection}`}>
-        <h4 className="mb-3">Seleccioná el tamaño:</h4>
-        <div className="d-flex flex-wrap gap-3 justify-content-center">
-          {bucketSizes.map((size) => (
-            <button
-              key={size.size}
-              className={`btn btn-lg ${selectedSize === size.size ? 'btn-dark' : 'btn-light'}`}
-              onClick={() => {
-                setSelectedSize(size.size);
-                setSelectedFlavors([]);
-              }}
-            >
-              <div className="fw-bold">{size.label}</div>
-              <div className="small">{size.maxFlavors} sabores</div>
-              <div className="small">ARS {size.price}</div>
-            </button>
-          ))}
-        </div>
+    <div id="buckets" className="mx-auto max-w-6xl px-4 py-12">
+      <div className="mb-10 text-center">
+        <h1 className="font-display text-5xl text-ink">Armá tu balde de helado</h1>
+        <p className="mt-3 text-ink/80">Elegí el tamaño, combiná sabores y llevátelo a casa.</p>
       </div>
 
-      {/* Flavor Selection */}
+      <section className="rounded-3xl bg-white p-6 text-center shadow-md md:p-8">
+        <h2 className="text-2xl font-bold">Seleccioná el tamaño</h2>
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
+          {bucketSizes.map((size) => {
+            const active = selectedSize === size.size;
+            return (
+              <button
+                key={size.size}
+                type="button"
+                className={`min-w-40 rounded-2xl border-2 px-5 py-4 text-center transition ${
+                  active
+                    ? 'border-brand bg-brand text-white shadow-md'
+                    : 'border-peach bg-white text-ink hover:border-brand hover:bg-peach-light'
+                }`}
+                onClick={() => {
+                  setSelectedSize(size.size);
+                  setSelectedFlavors([]);
+                }}
+              >
+                <div className="font-bold">{size.label}</div>
+                <div className="mt-1 text-sm">{size.maxFlavors} sabores</div>
+                <div className="mt-1 text-sm font-semibold">ARS {formatPrice(size.price)}</div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       {selectedSize && (
-        <div className={`mb-4 ${styles.flavorSelection}`}>
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h4 className="mb-0">
-              Elegí hasta {bucketSizes.find(s => s.size === selectedSize).maxFlavors} sabores:
+        <section className="mt-6 rounded-3xl bg-white p-6 shadow-md md:p-8">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-2xl font-bold">
+              Elegí hasta {currentSize.maxFlavors} sabores
               {selectedFlavors.length > 0 && (
-                <span className="ms-2 badge dark-container">
+                <span className="ml-2 rounded-full bg-brand px-3 py-1 text-sm font-bold text-white">
                   {selectedFlavors.length} seleccionados
                 </span>
               )}
-            </h4>
-            <div className="text-muted">
-              {selectedFlavors.length}/{bucketSizes.find(s => s.size === selectedSize).maxFlavors}
-            </div>
+            </h2>
+            <p className="text-ink/60">
+              {selectedFlavors.length}/{currentSize.maxFlavors}
+            </p>
           </div>
 
-          {/* Category Tabs */}
-          <div className="mb-4">
-            <ul className="nav nav-tabs">
-              {saboresData.map((category) => (
-                <li className="nav-item" key={category.category}>
-                  <button
-                    className={`nav-link text-dark ${activeCategory === category.category ? 'active' : ''}`}
-                    onClick={() => setActiveCategory(category.category)}
-                  >
-                    {category.category}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <div className="mb-6 flex flex-wrap gap-2">
+            <button
+              type="button"
+              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                activeCategory === null ? 'bg-brand text-white' : 'bg-peach-light text-ink hover:bg-peach'
+              }`}
+              onClick={() => setActiveCategory(null)}
+            >
+              Todos
+            </button>
+            {saboresData.map((category) => (
+              <button
+                key={category.category}
+                type="button"
+                className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                  activeCategory === category.category
+                    ? 'bg-brand text-white'
+                    : 'bg-peach-light text-ink hover:bg-peach'
+                }`}
+                onClick={() => setActiveCategory(category.category)}
+              >
+                {category.category}
+              </button>
+            ))}
           </div>
 
-          {/* Flavors Grid */}
-          <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
             {saboresData
               .filter(category => !activeCategory || category.category === activeCategory)
               .map(category => (
-                category.flavors?.map(flavor => (
-                  <div key={flavor.id} className="col">
-                    <div
-                      className={`card h-100 ${styles.flavorCard} ${
-                        selectedFlavors.includes(flavor.id) ? styles.selected : ''
+                category.flavors?.map(flavor => {
+                  const selected = selectedFlavors.includes(flavor.id);
+                  return (
+                    <button
+                      key={flavor.id}
+                      type="button"
+                      className={`flex h-full min-h-28 flex-col items-center justify-center rounded-2xl border-2 p-4 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md ${
+                        selected
+                          ? 'border-brand bg-peach-light'
+                          : 'border-transparent bg-cream/50'
                       }`}
                       onClick={() => handleFlavorSelect(flavor.id)}
                     >
-                      <div className="card-body text-center">
-                        <h5 className="card-title">
-                          {flavor.name}
-                          {flavor.new && (
-                            <span className="badge bg-success ms-2">Nuevo</span>
-                          )}
-                        </h5>
-                        {selectedFlavors.includes(flavor.id) && (
-                          <div className="text-primary mt-2">
-                            <i className="bi bi-check-circle-fill"></i> Seleccionado
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))
+                      <span className="font-bold text-ink">{flavor.name}</span>
+                      {flavor.new && (
+                        <span className="mt-2 rounded-full bg-brand px-2 py-0.5 text-xs font-bold text-white">
+                          Nuevo
+                        </span>
+                      )}
+                      {selected && (
+                        <span className="mt-2 text-sm font-semibold text-brand">
+                          <i className="fa-solid fa-circle-check"></i> Seleccionado
+                        </span>
+                      )}
+                    </button>
+                  );
+                })
               ))}
           </div>
-        </div>
+        </section>
       )}
 
-      {/* Cone Selection */}
       {selectedSize && (
-        <div className={`mb-4 p-3 bg-light rounded ${styles.coneSelection}`}>
-          <h4 className="mb-3">¿Querés agregar conos vacíos para llevar?</h4>
-          <div className="d-flex align-items-center justify-content-between">
-            <div className="d-flex align-items-center">
-              <span className="me-2 fw-bold">{coneOptions.label}</span>
-              <span className="text-muted">(ARS {coneOptions.price} c/u)</span>
-            </div>
-            <div className="d-flex align-items-center">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setConeQuantity(Math.max(0, coneQuantity - 1))}
-                disabled={coneQuantity === 0}
-              >
-                -
-              </button>
-              <span className="mx-3 fs-5 fw-bold">{coneQuantity}</span>
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setConeQuantity(coneQuantity + 1)}
-              >
-                +
-              </button>
-            </div>
+        <section className="mt-6 rounded-3xl bg-white p-6 shadow-md md:p-8">
+          <h2 className="text-2xl font-bold">¿Querés agregar conos vacíos para llevar?</h2>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <p>
+              <span className="font-bold">{coneOptions.label}</span>{' '}
+              <span className="text-ink/60">(ARS {formatPrice(coneOptions.price)} c/u)</span>
+            </p>
+            <Stepper
+              value={coneQuantity}
+              decrementDisabled={coneQuantity === 0}
+              onDecrement={() => setConeQuantity(Math.max(0, coneQuantity - 1))}
+              onIncrement={() => setConeQuantity(coneQuantity + 1)}
+            />
           </div>
-        </div>
+        </section>
       )}
 
-      {/* Quantity and Add to Cart */}
       {selectedSize && selectedFlavors.length > 0 && (
-        <div className={`mt-4 p-4 bg-light rounded ${styles.cartActions}`}>
-          <div className="d-flex align-items-center justify-content-between mb-4">
-            <h5 className="mb-0">Cantidad de baldes:</h5>
-            <div className="d-flex align-items-center">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                disabled={quantity === 1}
-              >
-                -
-              </button>
-              <span className="mx-3 fs-4 fw-bold">{quantity}</span>
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                +
-              </button>
-            </div>
+        <section className="sticky bottom-4 z-30 mt-6 rounded-3xl bg-white p-6 shadow-xl md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <h2 className="text-xl font-bold">Cantidad de baldes</h2>
+            <Stepper
+              value={quantity}
+              decrementDisabled={quantity === 1}
+              onDecrement={() => setQuantity(Math.max(1, quantity - 1))}
+              onIncrement={() => setQuantity(quantity + 1)}
+            />
           </div>
-
-          <div className="d-flex justify-content-between align-items-center">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-peach/60 pt-6">
             <div>
-              <h4 className="mb-0">Total:</h4>
-              <h3 className="orange-color">ARS {calculateTotal()}</h3>
+              <p className="text-sm font-semibold uppercase tracking-wide text-ink/60">Total</p>
+              <p className="font-display text-4xl text-brand">ARS {formatPrice(calculateTotal())}</p>
             </div>
-            <button
-              className="btn btn-dark btn-lg"
-              onClick={handleAddToCart}
-            >
-                <i className="fas fa-shopping-cart me-3"></i> 
-                Agregar al carrito
-            </button>
+            <Button onClick={handleAddToCart}>
+              <i className="fa-solid fa-cart-shopping"></i>
+              Agregar al carrito
+            </Button>
           </div>
-        </div>
+        </section>
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -13,7 +14,7 @@ export default defineConfig(({ command, mode }) => {
   const base = isVercel ? '/' : isGHPages ? '/heladeriasaloha_madryn/' : '/'
 
   return {
-    plugins: [react()],
+    plugins: [tailwindcss(), react()],
     base,
     esbuild: {
       loader: 'jsx',

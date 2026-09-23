@@ -103,7 +103,7 @@
         "description": "Crema helada de banana con corazón de dulce de leche y decorado de chocolate",
         "price": 19000,
         "image": "products/postres_helados/finery_banana_split.webp",
-        "in_stock": true,
+        "in_stock": false,
         "category_id": 3
       },
       {
@@ -264,7 +264,7 @@
         "name": "Súper Bombón Crocante",
         "description": "Palito de crema americana recubierto con baño de repostería maní y almendras.",
         "price": 3800,
-        "image": "products/conos/chocobana.webp",
+        "image": "products/conos/super_bombon_crocante.webp",
         "in_stock": true,
         "category_id": 2
       },
@@ -355,7 +355,7 @@
         "description": "Palito de chocolate blanco y chocolate bañado en chocolate",
         "price": 4700,
         "image": "products/conos/maxui_duo.webp",
-        "in_stock": true,
+        "in_stock": false,
         "category_id": 2
       },
       {
@@ -369,26 +369,26 @@
       },
       {
         "id": 41,
-        "name": "Surfy Uva",
-        "description": "Helado de agua sabor uva",
+        "name": "Surfy Chicle Globo",
+        "description": "Helado de agua sabor chicle",
         "price": 1500,
-        "image": "products/conos/surfy_uva.webp",
+        "image": "products/conos/surfy_chicle.webp",
         "in_stock": true,
         "category_id": 2
       },
       {
         "id": 42,
-        "name": "Surfy Ananá & Frutilla",
-        "description": "Helado de agua sabor ananá y frutilla",
+        "name": "Surfy Limón",
+        "description": "Helado de agua sabor limón",
         "price": 1500,
-        "image": "products/conos/surfy_anana.webp",
+        "image": "products/conos/surfy_limon.webp",
         "in_stock": true,
         "category_id": 2
       },
       {
         "id": 43,
-        "name": "Surfy Naranja & Frutilla",
-        "description": "Helado de agua sabor naranja y frutilla",
+        "name": "Surfy Naranja Mango",
+        "description": "Helado de agua sabor naranja y mango",
         "price": 1500,
         "image": "products/conos/surfy_naranja.webp",
         "in_stock": true,

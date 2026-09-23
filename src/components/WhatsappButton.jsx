@@ -1,36 +1,17 @@
 const WhatsAppButton = () => {
   const phoneNumber = '+542804881974';
   const message = '¡Hola! Quiero hacer un pedido de helados.';
-
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-  const buttonStyle = {
-    position: 'fixed',
-    bottom: '30px',
-    right: '30px',
-    backgroundColor: '#F47821',
-    color: 'white',
-    borderRadius: '50%',
-    width: '60px',
-    height: '60px',
-    textAlign: 'center',
-    fontSize: '38px',
-    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.3)',
-    zIndex: 1000,
-  };
-
-  const iconStyle = {
-    lineHeight: '60px',
-  };
 
   return (
     <a
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      style={buttonStyle}
+      aria-label="Escribir por WhatsApp"
+      className="fixed bottom-7 right-7 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-brand text-4xl text-white shadow-lg transition duration-300 hover:scale-110 hover:bg-brand-dark"
     >
-      <i className="fa fa-whatsapp" style={iconStyle}></i>
+      <i className="fa-brands fa-whatsapp"></i>
     </a>
   );
 };

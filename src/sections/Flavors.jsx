@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SimpleProductCard from '../components/SimpleProductCard';
+import { buttonClass } from '../components/ui/Button';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Flavors = () => {
-
   useEffect(() => {
     AOS.init({
       offset: 200,
@@ -14,7 +14,6 @@ const Flavors = () => {
     });
   }, []);
 
-  // Data for popular flavors
   const flavors = [
     {
       id: 1,
@@ -43,32 +42,29 @@ const Flavors = () => {
   ];
 
   return (
-    <section id="flavors" className="container-fluid text-center pt-5">
-      <div className="my-4" data-aos="fade-down" data-aos-delay="200">
-        <h2>Explorá nuestros sabores más populares</h2>
+    <section id="flavors" className="mx-auto max-w-7xl px-6 py-16 text-center">
+      <div className="mb-10" data-aos="fade-down" data-aos-delay="200">
+        <h2 className="font-display text-4xl text-ink md:text-5xl">Explorá nuestros sabores más populares</h2>
       </div>
 
-      <div className='row g-4 pt-4'>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {flavors.length > 0 ? (
           flavors.map((flavor, index) => (
             <SimpleProductCard
-              className="col-lg-3 col-md-6 mb-4"
-              key={flavor.id} 
-              product={flavor} 
-              data-aos='fade-left'
+              key={flavor.id}
+              product={flavor}
+              data-aos="fade-left"
               data-aos-delay={index * 300}
-              />
+            />
           ))
         ) : (
           <p>No products found in this category.</p>
         )}
       </div>
 
-      <button className="btn btn-lg btn-dark mt-2 hvr-grow-shadow">
-        <Link to='/flavors'>
-          Armá tu balde personalizado <i className="fa-solid fa-arrow-right"></i>
-        </Link>
-      </button>
+      <Link to="/flavors" className={`${buttonClass('primary')} mt-10`}>
+        Armá tu balde personalizado <i className="fa-solid fa-arrow-right"></i>
+      </Link>
     </section>
   );
 };

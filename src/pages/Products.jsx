@@ -3,7 +3,14 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import '../styles/Products.css';
+
+const categoryCopy = {
+  cakes: 'Tortas heladas para compartir y celebrar.',
+  cones: 'Conos y paletas para llevar y disfrutar al paso.',
+  flavors: 'Sabores de helado para armar tu pedido.',
+  desserts: 'Postres helados para el final perfecto.',
+  pints: 'Pintas y baldes para llevar a casa.',
+};
 
 const Products = () => {
   const { category } = useParams();
@@ -29,8 +36,7 @@ const Products = () => {
     });
 
     setIsLoading(true);
-    
-    // Remove the artificial delay and just fetch directly
+
     fetch('/data/products.json')
       .then((response) => {
         if (!response.ok) throw new Error('Failed to load products');
@@ -49,7 +55,6 @@ const Products = () => {
       .finally(() => {
         setIsLoading(false);
       });
-
   }, [category]);
 
   const getCategoryId = (categoryName) => {
@@ -58,40 +63,40 @@ const Products = () => {
       cones: 2,
       desserts: 3,
       flavors: 4,
-      pints: 5
+      pints: 5,
     };
     return categoryMap[categoryName];
   };
 
   return (
-    <div className='text-center container-fluid mt-5'>
-      <h1>{h1Text}</h1>
-      {error && <p className="text-danger">{error}</p>}
-      
+    <div className="mx-auto max-w-7xl px-6 py-12 text-center">
+      <h1 className="font-display text-5xl text-ink">{h1Text}</h1>
+      <p className="mx-auto mt-3 max-w-xl text-ink/80">{categoryCopy[category]}</p>
+      {error && <p className="mt-4 text-red-600">{error}</p>}
+
       {isLoading ? (
-        <div className="loading-container">
-          <div className="ice-cream-loader">
-            <div className="scoop scoop-1"></div>
-            <div className="scoop scoop-2"></div>
-            <div className="scoop scoop-3"></div>
-            <div className="cone"></div>
+        <div className="flex min-h-[300px] flex-col items-center justify-center gap-8">
+          <div className="relative h-32 w-24">
+            <span className="scoop left-5 top-0 bg-peach-light"></span>
+            <span className="scoop left-0 top-8 bg-peach [animation-delay:0.2s]"></span>
+            <span className="scoop left-5 top-16 bg-brand [animation-delay:0.4s]"></span>
+            <span className="cone-shape"></span>
           </div>
-          <p>Cargando helados...</p>
+          <p className="animate-pulse text-lg text-ink/70">Cargando helados...</p>
         </div>
       ) : (
-        <div className='row'>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {products.length > 0 ? (
             products.map((product, index) => (
-              <ProductCard 
-                className='col-lg-3 col-md-6'
-                key={product.id} 
+              <ProductCard
+                key={product.id}
                 product={product}
-                data-aos='fade-left'
+                data-aos="fade-left"
                 data-aos-delay={index * 100}
               />
             ))
           ) : (
-            <p>No hay productos en esta categoría.</p>
+            <p className="col-span-full">No hay productos en esta categoría.</p>
           )}
         </div>
       )}

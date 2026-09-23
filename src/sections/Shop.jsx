@@ -7,6 +7,13 @@ import tortasImg from '../assets/tortas.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+const categories = [
+  { to: '/category/cones', src: conosImg, alt: 'conos y paletas', label: 'Conos y paletas' },
+  { to: '/category/desserts', src: postresImg, alt: 'postres', label: 'Postres helados' },
+  { to: '/category/pints', src: pintasImg, alt: 'pintas', label: 'Pintas y baldes' },
+  { to: '/category/cakes', src: tortasImg, alt: 'tortas heladas', label: 'Tortas heladas' },
+];
+
 const Shop = () => {
   useEffect(() => {
     AOS.init({
@@ -17,52 +24,33 @@ const Shop = () => {
   }, []);
 
   return (
-    <div id='shop' className='dark-section'>
-      {/* Products Section */}
-      <div className="my-5 py-5">
-        <section id="products" className="container-fluid text-center">
-          <div data-aos="slide-down" data-aos-delay="200">
-            <h2>Elegí tu helado favorito</h2>
-            <h4>¿Cuál preferís probar hoy?</h4>
-          </div>
-          {/* Product options */}
-          <div className="row position-relative">
-            <Link className="col-lg-3 col-md-6" to="/category/cones" data-aos="zoom-in" data-aos-delay="200">
+    <section id="shop" className="brand-band py-20">
+      <div id="products" className="mx-auto max-w-7xl px-6 text-center">
+        <div data-aos="slide-down" data-aos-delay="200">
+          <h2 className="font-display text-4xl md:text-5xl">Elegí tu helado favorito</h2>
+          <p className="mt-2 text-lg">¿Cuál preferís probar hoy?</p>
+        </div>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category) => (
+            <Link
+              key={category.to}
+              to={category.to}
+              className="group text-white no-underline"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
               <img
-                className="img-fluid product_img hvr-grow-shadow"
-                src={conosImg}
-                alt="conos y paletas"
-                loading='lazy'
+                className="mx-auto aspect-square w-4/5 rounded-[2rem] object-cover shadow-lg transition duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                src={category.src}
+                alt={category.alt}
+                loading="lazy"
               />
+              <p className="mt-4 text-lg font-bold">{category.label}</p>
             </Link>
-            <Link className="col-lg-3 col-md-6" to="/category/desserts"data-aos="zoom-in" data-aos-delay="200">
-              <img
-                className="img-fluid product_img hvr-grow-shadow"
-                src={postresImg}
-                alt="postres"
-                loading='lazy'
-              />
-            </Link>
-            <Link className="col-lg-3 col-md-6" to="/category/pints" data-aos="zoom-in" data-aos-delay="200">
-              <img
-                className="img-fluid product_img hvr-grow-shadow"
-                src={pintasImg}
-                alt="pintas"
-                loading='lazy'
-              />
-            </Link>
-            <Link className="col-lg-3 col-md-6" to="/category/cakes" data-aos="zoom-in" data-aos-delay="200">
-              <img
-                className="img-fluid product_img hvr-grow-shadow"
-                src={tortasImg}
-                alt="tortas heladas"
-                loading='lazy'
-              />
-            </Link>
-          </div>
-        </section>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

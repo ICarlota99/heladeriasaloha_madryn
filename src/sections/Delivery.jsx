@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import frame from '../assets/frame.webp';
+import { buttonClass } from '../components/ui/Button';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Delivery = () => {
-  const [customDiv, setCustomDiv] = useState({ position: 'absolute', top: '10%', right: '5%', width: '50%' }); // Default div styles
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Initial width
-  
-  // Whatsapp data
   const phoneNumber = '+542804881974';
   const message = '¡Hola! Quiero hacer un pedido de helados.';
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -18,83 +15,53 @@ const Delivery = () => {
       duration: 600,
       easing: 'ease-in-sine',
     });
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth); // Update the width on resize
-    };
-    // Listen for resize events
-    window.addEventListener('resize', handleResize);
-    // Clean up the event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
-  useEffect(() => {
-    // Determine window width
-    if (windowWidth < 900) {
-      // Small and medium screens
-      setCustomDiv({ width: '100%' });
-    } else {
-      // XL screens
-      setCustomDiv({ width: '50%' });
-    }
-  }, [windowWidth]);
-
   return (
-    <div
-      id="delivery"
-      className="container-fluid position-relative my-4"
-    >
-      {/* Image on the left */}
-      <div className="position-relative">
-        <img
-        id='delivery-img'
-          data-aos="slide-left"
-          data-aos-delay="300"
-          src={frame}
-          alt="shop image"
-          className="position-absolute"
-          style={{ zIndex: -1, top: '0%', right: '0%', width: '60%' }}
-          loading='lazy'
-        />
-      </div>
-
-      <div
-        className="d-flex flex-column mt-5">
+    <section id="delivery" className="mx-auto my-16 grid max-w-7xl items-center gap-8 px-6 lg:grid-cols-2">
+      <img
+        id="delivery-img"
+        data-aos="slide-left"
+        data-aos-delay="300"
+        src={frame}
+        alt="Helados Aloha"
+        className="hidden w-full rounded-[2rem] object-cover lg:block"
+        loading="lazy"
+      />
+      <div className="flex flex-col gap-6">
         <div
           data-aos="slide-down"
           data-aos-delay="400"
-          className="dark-container py-5 px-3 mt-5"
-          style={customDiv}
+          className="rounded-[2rem] bg-brand px-6 py-12 text-center text-white shadow-lg"
         >
-          <h1 className="font-lobster text-center pt-5">🛒 Tienda Online 🚙</h1>
-          <p className="text-center fs-3 mx-4 pb-5">DELIVERY EN TODO MADRYN</p>
+          <h2 className="font-display text-4xl md:text-5xl">Tienda Online</h2>
+          <p className="mt-3 text-2xl font-semibold tracking-wide">Delivery en todo Madryn</p>
         </div>
-
         <div
           data-aos="slide-up"
           data-aos-delay="400"
-          className="px-4 py-4 mt-4 bg-white text-center"
-          style={customDiv}
+          className="rounded-[2rem] bg-white px-6 py-10 text-center shadow-lg"
         >
-          <h1 className="font-lobster py-2">Helados & Postres</h1>
-          <p className="lh-lg">
-            Queremos endulzar cada momento de tu vida con nuestras cremas heladas, 
-            tortas, postres, alfajores y palitos helados que deleitan el paladar. 
-            No te quedes con las ganas.          
-            </p>
-            <h4 className='py-4'>Pedi <span><strong>DELIVERY</strong></span> 🚚 <br />
-            y disfruta de una experiencia inolvidable.</h4>
-          <button className="btn btn-lg btn-dark hvr-grow-shadow ">
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >CONTÁCTANOS</a>
-          </button>
+          <h2 className="font-display text-4xl text-ink">Helados & Postres</h2>
+          <p className="mt-4 leading-relaxed">
+            Queremos endulzar cada momento de tu vida con nuestras cremas heladas,
+            tortas, postres, alfajores y palitos helados que deleitan el paladar.
+            No te quedes con las ganas.
+          </p>
+          <p className="mt-4 text-lg font-semibold">
+            Pedí <strong>delivery</strong> y disfrutá de una experiencia inolvidable.
+          </p>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${buttonClass('primary')} mt-6`}
+          >
+            Contáctanos
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

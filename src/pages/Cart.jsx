@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import Button, { buttonClass } from '../components/ui/Button';
 
-// Dynamic import all images from assets folder at build time
 const imageModules = import.meta.glob('../assets/products/**/*.{jpg,png,webp}');
 
-// Format prices
 const formatPrice = (price) => {
   if (isNaN(price)) return '0.00';
   return Number(price).toLocaleString('es-AR', {
@@ -15,22 +14,20 @@ const formatPrice = (price) => {
 };
 
 const CartPage = () => {
-  const { 
-    cart, 
-    removeFromCart, 
+  const {
+    cart,
+    removeFromCart,
     updateQuantity,
     subtotal,
-    clearCart 
+    clearCart
   } = useCart();
 
-  // State to store loaded images
   const [loadedImages, setLoadedImages] = useState({});
 
-  // Load all cart images dynamically
   useEffect(() => {
     const loadImages = async () => {
       const newLoadedImages = {};
-      
+
       for (const item of cart) {
         try {
           if (item.image && !loadedImages[item.id]) {
@@ -41,7 +38,7 @@ const CartPage = () => {
           }
         } catch (err) {
           console.error(`Error loading image for ${item.name}:`, err);
-          newLoadedImages[item.id] = ''; // Fallback to empty
+          newLoadedImages[item.id] = '';
         }
       }
 
@@ -53,9 +50,10 @@ const CartPage = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="container my-5 text-center">
-        <h2>Tu carrito está vacío</h2>
-        <Link to="/" className="btn btn-dark mt-3">
+      <div className="mx-auto flex min-h-[50vh] max-w-xl flex-col items-center justify-center px-6 py-16 text-center">
+        <h1 className="font-display text-5xl text-ink">Tu carrito está vacío</h1>
+        <p className="mt-3 text-ink/70">Elegí un helado y armá tu pedido.</p>
+        <Link to="/" className={`${buttonClass('primary')} mt-6`}>
           Volver al menú
         </Link>
       </div>
@@ -63,101 +61,78 @@ const CartPage = () => {
   }
 
   return (
-    <div className="container my-5">
-      <h2 className="mb-4">Tu Pedido</h2>
-      <div className="table-responsive">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Imagen</th>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Precio Unitario</th>
-              <th>Subtotal</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map(item => (
-              <tr key={item.id}>
-                <td>
-                  <div className="d-flex align-items-center">
-                    {loadedImages[item.id] && (
-                      <img 
-                        src={loadedImages[item.id]} 
-                        alt={item.name} 
-                        className="img-thumbnail me-3" 
-                        style={{ width: '80px', height: '80px', objectFit: 'cover' }}
-                      />
-                    )}
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <h5 className="mb-1">{item.name}</h5>
-                  </div>
-                </td>
-                <td>
-                  <div className="d-flex align-items-center">
-                    <button 
-                      className="btn btn-outline-secondary btn-sm" 
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    >
-                      -
-                    </button>
-                    <span className="mx-2">{item.quantity}</span>
-                    <button 
-                      className="btn btn-outline-secondary btn-sm" 
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </td>
-                <td>ARS {formatPrice(item.price)}</td>
-                <td>ARS {formatPrice(Number(item.price) * item.quantity)}</td>
-                <td>
-                  <button 
-                    className="btn btn-danger btn-sm" 
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      
-      <div className="row mt-4">
-        <div className="col-md-6 offset-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Resumen del Pedido</h5>
-              <div className="d-flex justify-content-between mb-2">
-                <span>Subtotal:</span>
-                <span>ARS {formatPrice(subtotal)}</span>
+    <div className="mx-auto max-w-6xl px-4 py-12">
+      <h1 className="font-display text-5xl text-ink">Tu pedido</h1>
+      <div className="mt-8 grid items-start gap-8 lg:grid-cols-3">
+        <ul className="space-y-4 lg:col-span-2">
+          {cart.map(item => (
+            <li key={item.id} className="flex flex-col gap-4 rounded-3xl bg-white p-4 shadow-md sm:flex-row sm:items-center">
+              <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-peach-light">
+                {loadedImages[item.id] && (
+                  <img
+                    src={loadedImages[item.id]}
+                    alt={item.name}
+                    className="h-full w-full object-cover"
+                  />
+                )}
               </div>
-              <div className="d-flex justify-content-between fw-bold">
-                <span>Total:</span>
-                <span>ARS {formatPrice(subtotal)}</span>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-lg font-bold">{item.name}</h2>
+                <p className="text-sm text-ink/70">ARS {formatPrice(item.price)} c/u</p>
               </div>
-            </div>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand font-bold text-brand"
+                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  aria-label="Restar"
+                >
+                  -
+                </button>
+                <span className="min-w-6 text-center font-bold">{item.quantity}</span>
+                <button
+                  type="button"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand font-bold text-brand"
+                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  aria-label="Sumar"
+                >
+                  +
+                </button>
+              </div>
+              <p className="font-bold text-brand sm:w-32 sm:text-right">
+                ARS {formatPrice(Number(item.price) * item.quantity)}
+              </p>
+              <button
+                type="button"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white"
+                onClick={() => removeFromCart(item.id)}
+                aria-label="Quitar producto"
+              >
+                <i className="fa-solid fa-trash"></i>
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <aside className="rounded-3xl bg-white p-6 shadow-md lg:sticky lg:top-24">
+          <h2 className="text-xl font-bold">Resumen del pedido</h2>
+          <div className="mt-4 flex justify-between">
+            <span>Subtotal</span>
+            <span>ARS {formatPrice(subtotal)}</span>
           </div>
-          
-          <div className="d-flex justify-content-between mt-4">
-            <button 
-              className="btn btn-light" 
-              onClick={clearCart}
-            >
-              Vaciar Carrito
-            </button>
-            <Link to="/checkout" className="btn btn-dark">
+          <div className="mt-2 flex justify-between border-t border-peach/70 pt-3 text-lg font-bold">
+            <span>Total</span>
+            <span className="text-brand">ARS {formatPrice(subtotal)}</span>
+          </div>
+          <div className="mt-6 flex flex-col gap-3">
+            <Button variant="secondary" onClick={clearCart}>
+              Vaciar carrito
+            </Button>
+            <Link to="/checkout" className={buttonClass('primary')}>
               Continuar
             </Link>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   );
