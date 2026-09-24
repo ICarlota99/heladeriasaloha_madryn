@@ -36,12 +36,12 @@ const Hero = () => {
           </HashLink>
         </div>
       </div>
-      <div className="relative h-72 overflow-hidden sm:h-96 lg:h-full lg:min-h-[32rem] lg:overflow-visible" data-aos="slide-left" data-aos-delay="200">
+      <div className="relative h-72 overflow-hidden sm:h-96 lg:h-full lg:min-h-[32rem]" data-aos="slide-left" data-aos-delay="200">
         <img
           id="hero-img"
           src={heroicecream}
           alt="Cono de helado"
-          className="absolute inset-0 h-full w-full object-cover object-bottom lg:inset-auto lg:top-0 lg:left-1/2 lg:h-full lg:w-auto lg:max-w-none lg:-translate-x-1/2"
+          className="absolute inset-0 h-full w-full object-cover object-bottom"
         />
       </div>
     </section>

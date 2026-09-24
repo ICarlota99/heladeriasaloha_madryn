@@ -138,12 +138,12 @@ const Header = () => {
   );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-50 w-full max-w-full">
       <div className="border-b border-white/15 bg-brand shadow-sm">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
-        <Link to="/" className="flex items-center gap-3 no-underline" onClick={closeMenu}>
-          <img src={logo} alt="Heladerías Aloha" className="h-12 w-auto md:h-14" />
-          <span className="hidden font-brand text-2xl font-semibold leading-tight text-white xl:block">
+      <nav className="mx-auto flex w-full min-w-0 max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
+        <Link to="/" className="flex min-w-0 items-center gap-3 no-underline" onClick={closeMenu}>
+          <img src={logo} alt="Heladerías Aloha" className="h-12 w-[6.3rem] shrink-0 md:h-14 md:w-[7.35rem]" />
+          <span className="hidden min-w-0 truncate font-brand text-2xl font-semibold leading-tight text-white xl:block">
             Heladerías Aloha, Madryn
           </span>
         </Link>
@@ -161,7 +161,7 @@ const Header = () => {
           </button>
         </div>
 
-        <ul className="hidden items-center gap-6 lg:flex">
+        <ul className="hidden min-w-0 items-center gap-4 lg:flex xl:gap-6">
           {links}
           <li>
             <CartLink totalItems={totalItems} />
@@ -173,7 +173,7 @@ const Header = () => {
       <ul
         className={`${
           menuOpen ? 'flex' : 'hidden'
-        } fixed inset-x-0 bottom-0 top-(--header-offset) z-40 flex-col gap-5 overflow-y-auto bg-brand px-6 py-8 lg:hidden`}
+        } fixed inset-x-0 bottom-0 top-(--header-offset) z-40 w-full max-w-full flex-col gap-5 overflow-y-auto overflow-x-clip bg-brand px-6 py-8 lg:hidden`}
       >
         {links}
       </ul>
