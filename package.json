@@ -6,28 +6,29 @@
   "homepage": "https://icarlota99.github.io/heladeriasaloha_madryn/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:vercel": "VITE_VERCEL=true vite build",
-    "build:gh-pages": "vite build --base=/heladeriasaloha_madryn/",
+    "build": "tsc -b && vite build",
+    "build:vercel": "VITE_VERCEL=true tsc -b && VITE_VERCEL=true vite build",
+    "build:gh-pages": "tsc -b && vite build --mode gh-pages --base=/heladeriasaloha_madryn/",
     "lint": "eslint .",
     "preview": "vite preview",
+    "typecheck": "tsc -b --pretty",
     "predeploy": "npm run build:gh-pages",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "@vercel/speed-insights": "^1.2.0",
-    "aos": "^2.3.4",
+    "motion": "^13.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.3.0",
     "react-router-hash-link": "^2.4.3",
-    "react-scroll": "^1.9.3",
     "react-toastify": "^11.0.5",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.10",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
@@ -39,6 +40,8 @@
     "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
     "postcss": "^8.5.3",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1",
     "vite": "^6.1.1"
   }
 }
