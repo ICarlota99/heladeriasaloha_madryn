@@ -1,35 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import conosImg from '../assets/conos.webp';
-import pintasImg from '../assets/pintas.webp';
-import postresImg from '../assets/postres.webp';
-import tortasImg from '../assets/tortas.webp';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import conosImg from '@/assets/conos.webp';
+import pintasImg from '@/assets/pintas.webp';
+import postresImg from '@/assets/postres.webp';
+import tortasImg from '@/assets/tortas.webp';
+import Reveal from '@/components/ui/Reveal';
+import SectionHeading from '@/components/ui/SectionHeading';
+import type { ShopCategory } from '@/types';
 
-const categories = [
-  { to: '/category/cones', src: conosImg, alt: 'conos y paletas', label: 'Conos y paletas' },
-  { to: '/category/desserts', src: postresImg, alt: 'postres', label: 'Postres helados' },
-  { to: '/category/pints', src: pintasImg, alt: 'pintas', label: 'Pintas y baldes' },
-  { to: '/category/cakes', src: tortasImg, alt: 'tortas heladas', label: 'Tortas heladas' },
+const categories: ShopCategory[] = [
+  { to: '/category/cones', src: conosImg, alt: 'Conos y paletas', label: 'Conos y paletas' },
+  { to: '/category/desserts', src: postresImg, alt: 'Postres helados', label: 'Postres helados' },
+  { to: '/category/pints', src: pintasImg, alt: 'Pintas y baldes', label: 'Pintas y baldes' },
+  { to: '/category/cakes', src: tortasImg, alt: 'Tortas heladas', label: 'Tortas heladas' },
 ];
 
-const Shop = () => {
-  const scrollerRef = useRef(null);
+export default function Shop() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    AOS.init({
-      offset: 100,
-      duration: 600,
-      easing: 'ease-in-sine',
-    });
-  }, []);
 
   const syncActive = () => {
     const el = scrollerRef.current;
     if (!el) return;
-    const cards = [...el.querySelectorAll('[data-card]')];
+    const cards = [...el.querySelectorAll<HTMLElement>('[data-card]')];
     if (!cards.length) return;
     const center = el.scrollLeft + el.clientWidth / 2;
     let closest = 0;
@@ -45,9 +38,9 @@ const Shop = () => {
     setActive(closest);
   };
 
-  const scrollToIndex = (index) => {
+  const scrollToIndex = (index: number) => {
     const el = scrollerRef.current;
-    const card = el?.querySelectorAll('[data-card]')[index];
+    const card = el?.querySelectorAll<HTMLElement>('[data-card]')[index];
     if (!el || !card) return;
     const left = card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2;
     el.scrollTo({ left, behavior: 'smooth' });
@@ -55,11 +48,15 @@ const Shop = () => {
 
   return (
     <section id="shop" className="brand-band pb-20 pt-28">
-      <div id="products" className="mx-auto max-w-7xl text-center">
-        <div className="px-6" data-aos="slide-down" data-aos-delay="200">
-          <h2 className="font-display text-4xl md:text-5xl">Elegí tu helado favorito</h2>
-          <p className="mt-2 text-lg">¿Cuál preferís probar hoy?</p>
-        </div>
+      <div id="products" className="mx-auto max-w-7xl">
+        <Reveal>
+          <SectionHeading
+            title="Elegí tu helado favorito"
+            subtitle="¿Cuál preferís probar hoy?"
+            tone="light"
+            className="px-6"
+          />
+        </Reveal>
 
         <div className="relative mt-10">
           <div
@@ -95,17 +92,17 @@ const Shop = () => {
             type="button"
             aria-label="Categoría anterior"
             onClick={() => scrollToIndex(Math.max(0, active - 1))}
-            className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand shadow-md transition hover:bg-white xl:hidden"
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand shadow-md transition hover:bg-white xl:hidden"
           >
-            <i className="fa-solid fa-chevron-left"></i>
+            <i className="fa-solid fa-chevron-left" aria-hidden />
           </button>
           <button
             type="button"
             aria-label="Categoría siguiente"
             onClick={() => scrollToIndex(Math.min(categories.length - 1, active + 1))}
-            className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand shadow-md transition hover:bg-white xl:hidden"
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand shadow-md transition hover:bg-white xl:hidden"
           >
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className="fa-solid fa-chevron-right" aria-hidden />
           </button>
         </div>
 
@@ -126,6 +123,4 @@ const Shop = () => {
       </div>
     </section>
   );
-};
-
-export default Shop;
+}
