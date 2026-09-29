@@ -12,11 +12,27 @@
   --font-display: "Lobster", cursive;
   --font-brand: "Playwrite DK Loopet", cursive;
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: 0 18px 40px rgb(42 33 24 / 0.12);
+  --radius-section: 2rem;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 :root {
@@ -31,7 +47,10 @@ html {
 
 body {
   overflow-x: hidden;
-  background-color: var(--color-cream);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgb(244 120 33 / 0.14), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgb(240 177 122 / 0.28), transparent 50%),
+    var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -96,4 +115,9 @@ body {
 @keyframes scoop-bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-1.25rem); }
+}
+
+.toastify-brand .Toastify__toast {
+  border-radius: 1rem;
+  font-family: var(--font-sans);
 }
