@@ -30,11 +30,15 @@ export interface FlavorCategory {
   flavors: Flavor[];
 }
 
+export type FlavorAccent = 'peach' | 'rose' | 'sky' | 'blush';
+
 export interface FeaturedFlavor {
   id: number;
   name: string;
   description: string;
   image: string;
+  tags: string[];
+  accent: FlavorAccent;
 }
 
 export interface CartItem extends Product {
