@@ -1,125 +1,169 @@
-import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import conosImg from '@/assets/conos.webp';
 import pintasImg from '@/assets/pintas.webp';
 import postresImg from '@/assets/postres.webp';
 import tortasImg from '@/assets/tortas.webp';
+import CategoryCarousel from '@/components/CategoryCarousel';
+import ProductCategoryCard from '@/components/ProductCategoryCard';
 import Reveal from '@/components/ui/Reveal';
-import SectionHeading from '@/components/ui/SectionHeading';
 import type { ShopCategory } from '@/types';
 
 const categories: ShopCategory[] = [
-  { to: '/category/cones', src: conosImg, alt: 'Conos y paletas', label: 'Conos y paletas' },
-  { to: '/category/desserts', src: postresImg, alt: 'Postres helados', label: 'Postres helados' },
-  { to: '/category/pints', src: pintasImg, alt: 'Pintas y baldes', label: 'Pintas y baldes' },
-  { to: '/category/cakes', src: tortasImg, alt: 'Tortas heladas', label: 'Tortas heladas' },
+  {
+    to: '/category/cones',
+    src: conosImg,
+    alt: 'Conos y paletas',
+    label: 'Conos y paletas',
+    description: 'El clásico que nunca falla. ¡Crujientes, cremosos y llenos de sabor!',
+    accent: 'orange',
+    icon: 'fa-ice-cream',
+  },
+  {
+    to: '/category/desserts',
+    src: postresImg,
+    alt: 'Postres helados',
+    label: 'Postres helados',
+    description: 'Tortas, postres y helados en una sola experiencia.',
+    accent: 'coral',
+    icon: 'fa-cookie-bite',
+  },
+  {
+    to: '/category/pints',
+    src: pintasImg,
+    alt: 'Pintas y baldes',
+    label: 'Pintas y baldes',
+    description: 'Compartí la felicidad en cada cucharada.',
+    accent: 'yellow',
+    icon: 'fa-mug-hot',
+  },
+  {
+    to: '/category/cakes',
+    src: tortasImg,
+    alt: 'Tortas heladas',
+    label: 'Tortas heladas',
+    description: 'La opción perfecta para celebrar cada momento.',
+    accent: 'teal',
+    icon: 'fa-cake-candles',
+  },
 ];
 
-export default function Shop() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+const benefits = [
+  {
+    icon: 'fa-leaf',
+    title: 'Ingredientes de calidad',
+    subtitle: 'Sabor real, sin vueltas.',
+  },
+  {
+    icon: 'fa-heart',
+    title: 'Hechos con pasión',
+    subtitle: 'Porque cada helado importa.',
+  },
+  {
+    icon: 'fa-snowflake',
+    title: 'Siempre frescos',
+    subtitle: 'Directo a tu mesa.',
+  },
+  {
+    icon: 'fa-face-smile',
+    title: 'Clientes felices',
+    subtitle: 'Nuestra mejor receta.',
+  },
+] as const;
 
-  const syncActive = () => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const cards = [...el.querySelectorAll<HTMLElement>('[data-card]')];
-    if (!cards.length) return;
-    const center = el.scrollLeft + el.clientWidth / 2;
-    let closest = 0;
-    let best = Infinity;
-    cards.forEach((card, index) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(cardCenter - center);
-      if (distance < best) {
-        best = distance;
-        closest = index;
-      }
-    });
-    setActive(closest);
-  };
-
-  const scrollToIndex = (index: number) => {
-    const el = scrollerRef.current;
-    const card = el?.querySelectorAll<HTMLElement>('[data-card]')[index];
-    if (!el || !card) return;
-    const left = card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2;
-    el.scrollTo({ left, behavior: 'smooth' });
-  };
-
+function TitleRays({ side }: { side: 'left' | 'right' }) {
   return (
-    <section id="shop" className="brand-band pb-20 pt-28">
-      <div id="products" className="mx-auto max-w-7xl">
-        <Reveal>
-          <SectionHeading
-            title="Elegí tu helado favorito"
-            subtitle="¿Cuál preferís probar hoy?"
-            tone="light"
-            className="px-6"
-          />
+    <span
+      className={`hidden text-brand sm:inline-flex ${side === 'left' ? 'mr-3 -scale-x-100' : 'ml-3'}`}
+      aria-hidden
+    >
+      <svg width="28" height="36" viewBox="0 0 28 36" fill="none">
+        <path d="M4 6 L14 2" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M2 18 L14 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M4 30 L14 34" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    </span>
+  );
+}
+
+export default function Shop() {
+  return (
+    <section
+      id="shop"
+      className="relative overflow-hidden bg-cream-soft px-5 py-16 sm:px-6 sm:py-20 lg:py-24"
+    >
+      <div
+        className="pointer-events-none absolute -left-24 -top-16 h-56 w-56 rounded-[45%] bg-brand/20 blur-0 sm:h-72 sm:w-72"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-20 -right-16 h-64 w-64 rounded-[48%] bg-brand/15 sm:h-80 sm:w-80"
+        aria-hidden
+      />
+
+      <div id="products" className="relative mx-auto max-w-7xl">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="flex items-center justify-center gap-3 text-xs font-bold tracking-[0.22em] text-brand uppercase sm:text-sm">
+            <span className="hidden h-px w-10 bg-brand/70 sm:block" aria-hidden />
+            Nuestros
+            <i className="fa-solid fa-ice-cream text-base normal-case tracking-normal" aria-hidden />
+            Productos
+            <span className="hidden h-px w-10 bg-brand/70 sm:block" aria-hidden />
+          </p>
+
+          <h2 className="mt-4 flex items-center justify-center font-display text-4xl leading-tight text-ink sm:text-5xl md:text-6xl">
+            <TitleRays side="left" />
+            <span>Elegí tu helado favorito</span>
+            <TitleRays side="right" />
+          </h2>
+
+          <p className="mt-3 text-base text-ink/75 sm:text-lg">
+            Sabores únicos, momentos inolvidables
+          </p>
+
+          <svg
+            className="mx-auto mt-4 h-3 w-40 text-brand sm:w-48"
+            viewBox="0 0 160 12"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M2 8 C30 2 50 10 80 6 C110 2 130 10 158 5"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
         </Reveal>
 
-        <div className="relative mt-10">
-          <div
-            ref={scrollerRef}
-            onScroll={syncActive}
-            role="region"
-            aria-roledescription="carrusel"
-            aria-label="Categorías de productos"
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 [scrollbar-width:none] xl:grid xl:grid-cols-4 xl:gap-8 xl:overflow-visible xl:px-6 [&::-webkit-scrollbar]:hidden"
-          >
-            {categories.map((category) => (
-              <Link
-                key={category.to}
-                to={category.to}
-                data-card
-                aria-label={category.label}
-                className="group relative aspect-[4/5] w-[82%] shrink-0 snap-center overflow-hidden rounded-[1.75rem] text-white no-underline shadow-lg sm:w-[46%] xl:aspect-square xl:w-auto"
-              >
-                <img
-                  className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  src={category.src}
-                  alt={category.alt}
-                  loading="lazy"
-                />
-                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent px-4 pb-5 pt-16 text-left text-xl font-bold md:text-2xl">
-                  {category.label}
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            aria-label="Categoría anterior"
-            onClick={() => scrollToIndex(Math.max(0, active - 1))}
-            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand shadow-md transition hover:bg-white xl:hidden"
-          >
-            <i className="fa-solid fa-chevron-left" aria-hidden />
-          </button>
-          <button
-            type="button"
-            aria-label="Categoría siguiente"
-            onClick={() => scrollToIndex(Math.min(categories.length - 1, active + 1))}
-            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand shadow-md transition hover:bg-white xl:hidden"
-          >
-            <i className="fa-solid fa-chevron-right" aria-hidden />
-          </button>
+        {/* Mobile / tablet: Embla carousel with slow autoplay + touch pause */}
+        <div className="-mx-5 mt-10 sm:-mx-6 lg:hidden">
+          <CategoryCarousel categories={categories} />
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-2 xl:hidden">
+        {/* Desktop: static grid */}
+        <div className="mt-12 hidden gap-6 lg:grid lg:grid-cols-2 xl:grid-cols-4 xl:gap-7">
           {categories.map((category, index) => (
-            <button
-              key={category.to}
-              type="button"
-              aria-label={`Ir a ${category.label}`}
-              aria-current={index === active ? 'true' : undefined}
-              onClick={() => scrollToIndex(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === active ? 'w-6 bg-white' : 'w-2 bg-white/50'
-              }`}
-            />
+            <Reveal key={category.to} delay={Math.min(index * 0.08, 0.24)}>
+              <ProductCategoryCard category={category} />
+            </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.15} className="mt-12 sm:mt-16">
+          <ul className="grid grid-cols-1 gap-6 rounded-[1.75rem] bg-white/70 px-5 py-8 shadow-sm ring-1 ring-brand/10 sm:grid-cols-2 sm:gap-8 sm:px-8 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-ink/10">
+            {benefits.map((benefit) => (
+              <li
+                key={benefit.title}
+                className="flex flex-col items-center gap-2 px-2 text-center lg:px-5"
+              >
+                <span className="flex h-11 w-11 items-center justify-center text-2xl text-brand">
+                  <i className={`fa-solid ${benefit.icon}`} aria-hidden />
+                </span>
+                <p className="font-bold text-ink">{benefit.title}</p>
+                <p className="text-sm text-ink/65">{benefit.subtitle}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

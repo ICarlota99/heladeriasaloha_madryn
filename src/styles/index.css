@@ -3,11 +3,18 @@
 
 @theme {
   --color-cream: #FCE0C9;
+  --color-cream-soft: #FFF8F1;
   --color-brand: #F47821;
   --color-brand-dark: #E06A14;
   --color-brand-soft: #E78D3E;
   --color-peach: #F0B17A;
   --color-peach-light: #F6EACB;
+  --color-coral: #E8897A;
+  --color-coral-dark: #D67263;
+  --color-butter: #F2D46B;
+  --color-butter-dark: #E0C04A;
+  --color-mint: #7DB8B0;
+  --color-mint-dark: #5FA39A;
   --color-ink: #2A2118;
   --font-display: "Lobster", cursive;
   --font-brand: "Playwrite DK Loopet", cursive;

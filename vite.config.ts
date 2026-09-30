@@ -41,6 +41,12 @@ export default defineConfig(({ command, mode }) => {
       port: 3000,
       strictPort: false,
       open: true,
+      // Avoid EBUSY crashes on Windows when assets are locked (OneDrive/AV)
+      watch: {
+        ignored: ['**/src/assets/**'],
+        usePolling: true,
+        interval: 1000,
+      },
     },
     preview: {
       port: 3000,

@@ -68,9 +68,14 @@ export interface ProductsResponse {
   products: Product[];
 }
 
+export type ShopAccent = 'orange' | 'coral' | 'yellow' | 'teal';
+
 export interface ShopCategory {
   to: string;
   src: string;
   alt: string;
   label: string;
+  description: string;
+  accent: ShopAccent;
+  icon: string;
 }
