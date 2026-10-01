@@ -59,7 +59,7 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
       </div>
 
       <div className="flex flex-1 flex-col bg-gradient-to-b from-[#F6EADF] to-[#EFE0D0] px-2.5 pt-2 pb-2.5 sm:px-3 sm:pt-3 sm:pb-3">
-        <h3 className="line-clamp-2 min-h-[2.5rem] text-center font-display text-sm leading-tight text-ink sm:min-h-[2.75rem] sm:text-base">
+        <h3 className="line-clamp-2 min-h-[2.5rem] text-center font-display text-lg leading-tight text-ink sm:min-h-[2.75rem] sm:text-xl">
           {product.name}
         </h3>
 
