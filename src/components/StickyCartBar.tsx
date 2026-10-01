@@ -7,7 +7,7 @@ export default function StickyCartBar() {
   const { totalItems, subtotal } = useCart();
   const location = useLocation();
   const reduceMotion = useReducedMotion();
-  const hiddenRoutes = ['/cart', '/checkout'];
+  const hiddenRoutes = ['/cart', '/checkout', '/flavors'];
   const visible = totalItems > 0 && !hiddenRoutes.includes(location.pathname);
 
   return (
