@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import ScrollToTop from '@/components/ScrollToTop';
 import StickyCartBar from '@/components/StickyCartBar';
 import WhatsAppButton from '@/components/WhatsappButton';
 import { CartProvider } from '@/context/CartContext';
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <Header />
         <ToastContainer
           position="top-right"

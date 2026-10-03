@@ -14,8 +14,10 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp"
-      className={`fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-3xl text-white shadow-lg transition duration-300 hover:scale-110 hover:brightness-110 sm:bottom-7 sm:right-7 sm:h-16 sm:w-16 ${
-        raiseForSticky ? 'bottom-24 right-4 md:bottom-7 md:right-7' : 'bottom-24 right-4 md:bottom-7'
+      className={`fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-3xl text-white shadow-lg transition duration-300 hover:scale-110 hover:brightness-110 sm:h-16 sm:w-16 ${
+        raiseForSticky
+          ? 'right-4 bottom-24 sm:right-7 md:bottom-24'
+          : 'right-4 bottom-24 sm:right-7 md:bottom-7'
       }`}
     >
       <i className="fa-brands fa-whatsapp" aria-hidden />

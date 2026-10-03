@@ -56,35 +56,49 @@ export const PRODUCT_NAV_LINKS = [
   { to: '/category/cakes', label: 'Tortas heladas' },
 ] as const;
 
+/** Fallback public paths; cart/UI should prefer BUCKET_SIZE_IMAGES (bundled webp). */
 export const BUCKET_SIZES: BucketSize[] = [
   {
     size: '1kg',
     label: 'Balde 1kg',
     maxFlavors: 4,
     price: 22500,
-    image: '/assets/baldes/1kg.jpg',
+    image: 'products/baldes/1kg.webp',
   },
   {
     size: '3/4kg',
     label: 'Balde 3/4kg',
     maxFlavors: 4,
     price: 18000,
-    image: '/assets/baldes/3/4kg.jpg',
+    image: 'products/baldes/0.75kg.webp',
   },
   {
     size: '1/2kg',
     label: 'Balde 1/2kg',
     maxFlavors: 3,
     price: 12500,
-    image: '/assets/baldes/0.5kg.jpg',
+    image: 'products/baldes/0.5kg.webp',
   },
   {
     size: '1/4kg',
     label: 'Balde 1/4kg',
     maxFlavors: 2,
     price: 6800,
-    image: '/assets/baldes/0.25kg.jpg',
+    image: 'products/baldes/0.25kg.webp',
   },
 ];
 
-export const EMPTY_CONE_PRICE = 500;
+export const BUCKET_EXTRAS = [
+  {
+    id: 'cono-pasta',
+    name: 'Cono de pasta',
+    price: 500,
+  },
+  {
+    id: 'cucurucho-dulce',
+    name: 'Cucurucho dulce',
+    price: 800,
+  },
+] as const;
+
+export type BucketExtraId = (typeof BUCKET_EXTRAS)[number]['id'];
