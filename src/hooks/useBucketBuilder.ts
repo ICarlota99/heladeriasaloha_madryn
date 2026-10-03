@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useCart } from '@/hooks/useCart';
-import { BUCKET_EXTRA_IMAGES } from '@/lib/bucketImages';
+import { BUCKET_EXTRA_IMAGES, BUCKET_SIZE_IMAGES } from '@/lib/bucketImages';
 import { BUCKET_EXTRAS, BUCKET_SIZES, type BucketExtraId } from '@/lib/constants';
 import { POPULAR_FLAVOR_IDS, type BrowseMode } from '@/lib/popularFlavors';
 import type { Flavor, FlavorCategory, Product } from '@/types';
@@ -161,7 +161,7 @@ export function useBucketBuilder() {
       id: `balde-${selectedSize}-${Date.now()}`,
       name: `Balde ${selectedSize} (${selectedFlavorDetails.map((f) => f.name).join(', ')})`,
       price: currentSize.price,
-      image: currentSize.image,
+      image: BUCKET_SIZE_IMAGES[selectedSize] ?? currentSize.image,
       flavors: selectedFlavorDetails,
       size: selectedSize,
       description: selectedFlavorDetails.map((f) => f.name).join(', '),

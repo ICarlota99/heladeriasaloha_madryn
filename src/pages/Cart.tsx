@@ -2,8 +2,19 @@ import { Link } from 'react-router-dom';
 import Button, { buttonClass } from '@/components/ui/Button';
 import Stepper from '@/components/ui/Stepper';
 import { useCart } from '@/hooks/useCart';
+import { BUCKET_SIZE_IMAGES } from '@/lib/bucketImages';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImageSrc } from '@/lib/productImages';
+
+function getCartItemImageSrc(item: { image: string; size?: string }): string | undefined {
+  // Custom baldes store size; prefer bundled size art over legacy public paths.
+  if (item.size && BUCKET_SIZE_IMAGES[item.size]) {
+    return BUCKET_SIZE_IMAGES[item.size];
+  }
+  if (item.image.startsWith('/assets/baldes/')) return undefined;
+
+  return getProductImageSrc(item.image) ?? (item.image.startsWith('/') ? item.image : undefined);
+}
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, subtotal, clearCart } = useCart();
@@ -26,7 +37,7 @@ export default function CartPage() {
       <div className="mt-8 grid items-start gap-8 lg:grid-cols-3">
         <ul className="space-y-4 lg:col-span-2">
           {cart.map((item) => {
-            const imageSrc = getProductImageSrc(item.image) ?? (item.image.startsWith('/') ? item.image : undefined);
+            const imageSrc = getCartItemImageSrc(item);
             return (
               <li
                 key={item.id}
@@ -34,7 +45,7 @@ export default function CartPage() {
               >
                 <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-peach-light">
                   {imageSrc ? (
-                    <img src={imageSrc} alt={item.name} className="h-full w-full object-cover" />
+                    <img src={imageSrc} alt={item.name} className="h-full w-full object-contain" />
                   ) : null}
                 </div>
                 <div className="min-w-0 flex-1">
