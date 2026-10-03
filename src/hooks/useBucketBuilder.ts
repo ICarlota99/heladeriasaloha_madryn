@@ -1,18 +1,25 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useCart } from '@/hooks/useCart';
-import { BUCKET_SIZES, EMPTY_CONE_PRICE } from '@/lib/constants';
+import { BUCKET_EXTRA_IMAGES } from '@/lib/bucketImages';
+import { BUCKET_EXTRAS, BUCKET_SIZES, type BucketExtraId } from '@/lib/constants';
 import { POPULAR_FLAVOR_IDS, type BrowseMode } from '@/lib/popularFlavors';
 import type { Flavor, FlavorCategory, Product } from '@/types';
 
 export type WizardStep = 1 | 2 | 3;
+
+const EMPTY_EXTRA_QTY: Record<BucketExtraId, number> = {
+  'cono-pasta': 0,
+  'cucurucho-dulce': 0,
+};
 
 export function useBucketBuilder() {
   const [step, setStep] = useState<WizardStep>(1);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedFlavors, setSelectedFlavors] = useState<string[]>([]);
   const [quantity, setQuantity] = useState(1);
-  const [coneQuantity, setConeQuantity] = useState(0);
+  const [extraQuantities, setExtraQuantities] =
+    useState<Record<BucketExtraId, number>>(EMPTY_EXTRA_QTY);
   const [browseMode, setBrowseMode] = useState<BrowseMode>('popular');
   const [query, setQuery] = useState('');
   const [saboresData, setSaboresData] = useState<FlavorCategory[]>([]);
@@ -97,8 +104,16 @@ export function useBucketBuilder() {
 
   const total = useMemo(() => {
     if (!currentSize) return 0;
-    return currentSize.price * quantity + EMPTY_CONE_PRICE * coneQuantity;
-  }, [coneQuantity, currentSize, quantity]);
+    const extrasTotal = BUCKET_EXTRAS.reduce(
+      (sum, extra) => sum + extra.price * (extraQuantities[extra.id] ?? 0),
+      0,
+    );
+    return currentSize.price * quantity + extrasTotal;
+  }, [currentSize, extraQuantities, quantity]);
+
+  const setExtraQuantity = useCallback((id: BucketExtraId, value: number) => {
+    setExtraQuantities((prev) => ({ ...prev, [id]: Math.max(0, value) }));
+  }, []);
 
   const selectSize = useCallback((size: string) => {
     setSelectedSize(size);
@@ -133,7 +148,7 @@ export function useBucketBuilder() {
     setSelectedSize(null);
     setSelectedFlavors([]);
     setQuantity(1);
-    setConeQuantity(0);
+    setExtraQuantities(EMPTY_EXTRA_QTY);
     setBrowseMode('popular');
     setQuery('');
     setStep(1);
@@ -154,24 +169,27 @@ export function useBucketBuilder() {
 
     addToCart(product, quantity);
 
-    if (coneQuantity > 0) {
+    const stamp = Date.now();
+    BUCKET_EXTRAS.forEach((extra) => {
+      const qty = extraQuantities[extra.id] ?? 0;
+      if (qty <= 0) return;
       addToCart(
         {
-          id: `cono-vacio-${Date.now()}`,
-          name: 'Cono vacío (para llevar)',
-          price: EMPTY_CONE_PRICE,
-          image: '/assets/baldes/cono.jpg',
-          type: 'cono-vacio',
+          id: `${extra.id}-${stamp}`,
+          name: extra.name,
+          price: extra.price,
+          image: BUCKET_EXTRA_IMAGES[extra.id],
+          type: extra.id,
         },
-        coneQuantity,
+        qty,
       );
-    }
+    });
 
     resetBuilder();
   }, [
     addToCart,
-    coneQuantity,
     currentSize,
+    extraQuantities,
     quantity,
     resetBuilder,
     selectedFlavorDetails,
@@ -187,8 +205,8 @@ export function useBucketBuilder() {
     selectedFlavorDetails,
     quantity,
     setQuantity,
-    coneQuantity,
-    setConeQuantity,
+    extraQuantities,
+    setExtraQuantity,
     browseMode,
     setBrowseMode,
     query,

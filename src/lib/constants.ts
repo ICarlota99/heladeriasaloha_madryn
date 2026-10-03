@@ -69,7 +69,7 @@ export const BUCKET_SIZES: BucketSize[] = [
     label: 'Balde 3/4kg',
     maxFlavors: 4,
     price: 18000,
-    image: '/assets/baldes/3/4kg.jpg',
+    image: '/assets/baldes/0.75kg.jpg',
   },
   {
     size: '1/2kg',
@@ -87,4 +87,17 @@ export const BUCKET_SIZES: BucketSize[] = [
   },
 ];
 
-export const EMPTY_CONE_PRICE = 500;
+export const BUCKET_EXTRAS = [
+  {
+    id: 'cono-pasta',
+    name: 'Cono de pasta',
+    price: 500,
+  },
+  {
+    id: 'cucurucho-dulce',
+    name: 'Cucurucho dulce',
+    price: 800,
+  },
+] as const;
+
+export type BucketExtraId = (typeof BUCKET_EXTRAS)[number]['id'];

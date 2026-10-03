@@ -5,8 +5,8 @@ import Button from '@/components/ui/Button';
 import IceCreamLoader from '@/components/ui/IceCreamLoader';
 import Stepper from '@/components/ui/Stepper';
 import { useBucketBuilder } from '@/hooks/useBucketBuilder';
-import { BUCKET_SIZE_IMAGES } from '@/lib/bucketImages';
-import { BUCKET_SIZES, EMPTY_CONE_PRICE } from '@/lib/constants';
+import { BUCKET_EXTRA_IMAGES, BUCKET_SIZE_IMAGES } from '@/lib/bucketImages';
+import { BUCKET_EXTRAS, BUCKET_SIZES } from '@/lib/constants';
 import { formatPrice } from '@/lib/formatPrice';
 
 const STEPS = [
@@ -25,8 +25,8 @@ export default function Sabores() {
     selectedFlavorDetails,
     quantity,
     setQuantity,
-    coneQuantity,
-    setConeQuantity,
+    extraQuantities,
+    setExtraQuantity,
     browseMode,
     setBrowseMode,
     query,
@@ -286,19 +286,44 @@ export default function Sabores() {
             </div>
 
             <div className="rounded-[1.75rem] bg-white/90 p-5 shadow-sm ring-1 ring-brand/10 sm:p-8">
-              <h2 className="text-xl font-bold text-ink">¿Querés agregar conos vacíos?</h2>
-              <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-                <p className="text-ink/75">
-                  <span className="font-bold text-ink">Conos vacíos</span>{' '}
-                  <span className="text-sm">(ARS {formatPrice(EMPTY_CONE_PRICE)} c/u)</span>
-                </p>
-                <Stepper
-                  value={coneQuantity}
-                  decrementDisabled={coneQuantity === 0}
-                  onDecrement={() => setConeQuantity(Math.max(0, coneQuantity - 1))}
-                  onIncrement={() => setConeQuantity(coneQuantity + 1)}
-                />
-              </div>
+              <h2 className="text-xl font-bold text-ink">¿Querés agregar extras?</h2>
+              <p className="mt-1 text-sm text-ink/65">Opcional · sumá conos para acompañar tu balde</p>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {BUCKET_EXTRAS.map((extra) => {
+                  const qty = extraQuantities[extra.id];
+                  return (
+                    <li
+                      key={extra.id}
+                      className="flex flex-col gap-3 rounded-2xl bg-[#F6EADF]/70 p-3 ring-1 ring-ink/5 sm:p-4"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white sm:h-24 sm:w-24">
+                          <img
+                            src={BUCKET_EXTRA_IMAGES[extra.id]}
+                            alt={extra.name}
+                            className="h-full w-full object-contain p-1.5"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-bold text-ink">{extra.name}</p>
+                          <p className="mt-0.5 text-sm font-semibold text-brand">
+                            ARS {formatPrice(extra.price)} c/u
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex justify-end">
+                        <Stepper
+                          value={qty}
+                          decrementDisabled={qty === 0}
+                          onDecrement={() => setExtraQuantity(extra.id, qty - 1)}
+                          onIncrement={() => setExtraQuantity(extra.id, qty + 1)}
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
 
             <div className="rounded-[1.75rem] bg-white/90 p-5 shadow-sm ring-1 ring-brand/10 sm:p-8">
