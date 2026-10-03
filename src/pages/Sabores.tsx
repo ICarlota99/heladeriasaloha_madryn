@@ -1,10 +1,11 @@
+import { useCallback } from 'react';
 import BucketStickyBar from '@/components/bucket/BucketStickyBar';
 import FlavorPickerTile from '@/components/bucket/FlavorPickerTile';
 import SelectedFlavorsTray from '@/components/bucket/SelectedFlavorsTray';
 import Button from '@/components/ui/Button';
 import IceCreamLoader from '@/components/ui/IceCreamLoader';
 import Stepper from '@/components/ui/Stepper';
-import { useBucketBuilder } from '@/hooks/useBucketBuilder';
+import { useBucketBuilder, type WizardStep } from '@/hooks/useBucketBuilder';
 import { BUCKET_EXTRA_IMAGES, BUCKET_SIZE_IMAGES } from '@/lib/bucketImages';
 import { BUCKET_EXTRAS, BUCKET_SIZES } from '@/lib/constants';
 import { formatPrice } from '@/lib/formatPrice';
@@ -42,12 +43,21 @@ export default function Sabores() {
     addBucketToCart,
   } = useBucketBuilder();
 
+  const goToStep = useCallback(
+    (next: WizardStep) => {
+      setStep(next);
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    },
+    [setStep],
+  );
+
   if (loading) return <IceCreamLoader label="Cargando sabores..." />;
   if (error) {
     return <div className="py-24 text-center text-lg text-red-600">Error: {error}</div>;
   }
 
   const isSearching = query.trim().length > 0;
+  const stickyVisible = Boolean(currentSize) && step !== 1;
 
   return (
     <div id="buckets" className="relative overflow-hidden bg-cream-soft">
@@ -60,7 +70,11 @@ export default function Sabores() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-10 pb-32 sm:px-6 sm:py-14 md:pb-16">
+      <div
+        className={`relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 ${
+          stickyVisible ? 'pb-32' : 'pb-16'
+        }`}
+      >
         <header className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold tracking-[0.22em] text-brand uppercase">Armá tu balde</p>
           <h1 className="mt-2 font-display text-4xl leading-tight text-ink sm:text-5xl">
@@ -77,7 +91,7 @@ export default function Sabores() {
                 disabled={
                   (item.id === 2 && !selectedSize) || (item.id === 3 && selectedFlavors.length === 0)
                 }
-                onClick={() => setStep(item.id)}
+                onClick={() => goToStep(item.id)}
                 className={`rounded-full px-4 py-2 text-sm font-bold transition disabled:opacity-40 ${
                   step === item.id ? 'bg-brand text-white' : 'bg-white text-ink shadow-sm ring-1 ring-ink/5'
                 }`}
@@ -231,26 +245,6 @@ export default function Sabores() {
               </div>
             )}
 
-            <div className="hidden items-center justify-between gap-3 pt-2 md:flex">
-              <Button variant="secondary" onClick={() => setStep(1)}>
-                Volver
-              </Button>
-              <div className="text-right">
-                <p className="text-xs text-ink/55">
-                  {selectedFlavors.length}/{currentSize.maxFlavors} sabores
-                  {selectedFlavors.length > 0 && selectedFlavors.length < currentSize.maxFlavors
-                    ? ' · podés seguir o completar'
-                    : ''}
-                </p>
-                <Button
-                  className="mt-2"
-                  disabled={selectedFlavors.length === 0}
-                  onClick={() => setStep(3)}
-                >
-                  Continuar
-                </Button>
-              </div>
-            </div>
           </section>
         ) : null}
 
@@ -264,7 +258,7 @@ export default function Sabores() {
                     {currentSize.label} · hasta {currentSize.maxFlavors} sabores
                   </p>
                 </div>
-                <Button variant="secondary" className="text-sm" onClick={() => setStep(2)}>
+                <Button variant="secondary" className="text-sm" onClick={() => goToStep(2)}>
                   Editar sabores
                 </Button>
               </div>
@@ -336,20 +330,9 @@ export default function Sabores() {
                   onIncrement={() => setQuantity(quantity + 1)}
                 />
               </div>
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-peach/50 pt-6">
-                <div>
-                  <p className="text-sm font-semibold tracking-wide text-ink/60 uppercase">Total</p>
-                  <p className="font-display text-4xl text-brand">ARS {formatPrice(total)}</p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <Button variant="secondary" className="hidden md:inline-flex" onClick={() => setStep(2)}>
-                    Volver
-                  </Button>
-                  <Button onClick={addBucketToCart}>
-                    <i className="fa-solid fa-cart-shopping" aria-hidden />
-                    Agregar al carrito
-                  </Button>
-                </div>
+              <div className="mt-6 border-t border-peach/50 pt-6">
+                <p className="text-sm font-semibold tracking-wide text-ink/60 uppercase">Total</p>
+                <p className="font-display text-4xl text-brand">ARS {formatPrice(total)}</p>
               </div>
             </div>
           </section>
@@ -364,7 +347,8 @@ export default function Sabores() {
           selectedFlavors={selectedFlavorDetails}
           total={total}
           canContinue={selectedFlavors.length >= 1}
-          onContinue={() => setStep(3)}
+          onBack={() => goToStep(step === 3 ? 2 : 1)}
+          onContinue={() => goToStep(3)}
           onAddToCart={addBucketToCart}
         />
       ) : null}
