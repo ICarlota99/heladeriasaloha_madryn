@@ -28,6 +28,11 @@ html {
   overflow-x: clip;
 }
 
+/* Keep hash targets clear of the fixed header */
+[id] {
+  scroll-margin-top: var(--header-offset);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
