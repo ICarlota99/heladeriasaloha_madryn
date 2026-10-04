@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import ScrollToTop from '@/components/ScrollToTop';
 import StickyCartBar from '@/components/StickyCartBar';
@@ -41,6 +42,7 @@ export default function App() {
         <StickyCartBar />
         <WhatsAppButton />
         <SpeedInsights />
+        <Analytics />
       </Router>
     </CartProvider>
   );
